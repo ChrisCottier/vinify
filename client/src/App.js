@@ -1,31 +1,28 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 
-import {Navbar} from './components/Navbar'
-import UserList from './components/UsersList';
+import "bulma/css/bulma.css";
+import "./index.css";
+import { hasAccessToken } from "./actions/auth";
 
+import Navbar from "./components/Navbar";
+// import UserList from "./components/UsersList";
+import Home from "./components/Home";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(hasAccessToken());
+  });
 
   return (
     <BrowserRouter>
-        <Navbar></Navbar>
-        <nav>
-            <ul>
-                <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
-            </ul>
-        </nav>
-
-        <Switch>
-            <Route path="/users">
-                <UserList />
-            </Route>
-
-            <Route path="/">
-                <h1>My Home Page</h1>
-            </Route>
-        </Switch>
+      <Navbar></Navbar>
+      <Switch>
+        <Route path="/" component={Home}></Route>
+      </Switch>
     </BrowserRouter>
   );
 }

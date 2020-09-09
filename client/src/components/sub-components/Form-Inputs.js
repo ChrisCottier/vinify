@@ -19,7 +19,7 @@ export const TextAreaInput = (props) => {
   );
 };
 
-export const TextInput = (props) => {
+export const SimpleInput = (props) => {
   const {
     label,
     placeHolder,
@@ -28,6 +28,7 @@ export const TextInput = (props) => {
     require,
     name,
     FAIconLeft,
+    type,
   } = props;
 
   if (!FAIconLeft) {
@@ -37,7 +38,7 @@ export const TextInput = (props) => {
         <div className="control">
           <input
             className="input"
-            type="text"
+            type={type}
             placeholder={placeHolder}
             value={value}
             onChange={handleChange}
@@ -55,7 +56,7 @@ export const TextInput = (props) => {
       <div className="control has-icons-left">
         <input
           className="input"
-          type="text"
+          type={type}
           placeholder={placeHolder}
           value={value}
           onChange={handleChange}
@@ -63,32 +64,32 @@ export const TextInput = (props) => {
           name={name}
         ></input>
         <span className="icon is-small is-left">
-          <FAIconLeft></FAIconLeft>
+          <i className={FAIconLeft}></i>
         </span>
       </div>
     </div>
   );
 };
 
-export const NumberInput = (props) => {
-  const { label, placeHolder, value, handleChange, require, name } = props;
-  return (
-    <div className="field">
-      <label className="label">{label}</label>
-      <div className="control">
-        <input
-          className="input"
-          type="number"
-          placeholder={placeHolder}
-          value={value}
-          onChange={handleChange}
-          required={require}
-          name={name}
-        ></input>
-      </div>
-    </div>
-  );
-};
+// export const NumberInput = (props) => {
+//   const { label, placeHolder, value, handleChange, require, name } = props;
+//   return (
+//     <div className="field">
+//       <label className="label">{label}</label>
+//       <div className="control">
+//         <input
+//           className="input"
+//           type="number"
+//           placeholder={placeHolder}
+//           value={value}
+//           onChange={handleChange}
+//           required={require}
+//           name={name}
+//         ></input>
+//       </div>
+//     </div>
+//   );
+// };
 
 export const FileInput = (props) => {
   const { label, value, handleChange, require, name } = props;

@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { SignUp } from "./SignUp";
+import SignUp from "./SignUp";
+import LogIn from "./LogIn";
+import { SIGN_UP_MODAL, LOG_IN_MODAL } from "../actions/modals";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   // const [showLogin, setShowLogin] = useState(false)
+
+  const showSignUp = () => dispatch({ type: SIGN_UP_MODAL, display: "block" });
+  const showLogIn = () => dispatch({ type: LOG_IN_MODAL, display: "block" });
 
   return (
     <>
@@ -16,23 +22,24 @@ const Navbar = () => {
         <div className="navbar-menu">
           <div className="navbar-start">
             <div className="navbar-item ">
-              {/* <NavLink to="/about">About</NavLink> */}
-              {/* <a onClick={()=> footerRef.current.scrollIntoView({ behavior: 'smooth' })}>About</a> */}
+              <a>hi</a>
             </div>
-            <div className="navbar-item">{/* <SearchBar></SearchBar> */}</div>
+            <div className="navbar-item">
+              <a>sample</a>
+            </div>
           </div>
 
           <div className="navbar-end">
             <div className="navbar-item">
-              <NavLink to="/create-campaign" className="start-campaign">
-                Start A Campaign
-              </NavLink>
+              <a onClick={showSignUp}>Sign Up</a>
             </div>
-            {authLinks}
+            <div className="navbar-item">
+              <a onClick={showLogIn}>Log In</a>
+            </div>
           </div>
         </div>
       </nav>
-      {/* <Login></Login> */}
+      <LogIn></LogIn>
       <SignUp></SignUp>
     </>
 
