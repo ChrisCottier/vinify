@@ -23,6 +23,7 @@ psycopg2-binary = "*"
 Flask-Migrate = "*"
 bcrypt = "*"
 PyJWT = "*"
+varname = "*"
 
 [dev-packages]
 

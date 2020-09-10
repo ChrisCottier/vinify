@@ -10,6 +10,7 @@ import { logIn } from "../actions/auth";
 const LogIn = () => {
   const dispatch = useDispatch();
   const { logInDisplay } = useSelector((state) => state.modals);
+  const { errors } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +44,11 @@ const LogIn = () => {
           <p className="modal-card-title">Log In</p>
         </header>
         <section className="modal-card-body">
+          <ul>
+            {errors.map((error, i) => {
+              return <li key={i}>{error}</li>;
+            })}
+          </ul>
           <form onSubmit={handleSubmit}>
             <div className="field">
               <SimpleInput

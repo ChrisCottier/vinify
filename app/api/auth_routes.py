@@ -3,7 +3,7 @@ import bcrypt
 
 from app.models import db
 from app.models.users import User
-from app.auth import create_jwt, validate_jwt
+from app.auth import create_jwt, validate_jwt, validate_log_in
 
 
 auth_routes = Blueprint('auth', __name__)
@@ -14,8 +14,10 @@ auth_routes = Blueprint('auth', __name__)
 @auth_routes.route('', methods=['post'])
 def sign_up():
     data = request.json
-
-    # Check that validationsTODO
+    errors = validate_sign_up(data)
+    print(errors)
+    if (len(errors) > 0):
+        return jsonify({'validated': False, 'errors': errors})
 
     # Create a hashed password
     password = data['password'].encode()
@@ -43,17 +45,14 @@ def log_in():
     # function to check login and handle errors
 
     data = request.json
-    user = User.query.filter(User.email == data['email']).first()
-    print(user)
-    hashed_password = user.hashed_password
-    if bcrypt.checkpw(data['password'].encode(), hashed_password.encode()):
 
-        user_data = user.to_dict()
-        jwt = create_jwt(user_data)
-        return jsonify({'validated': True, "user": user_data, "token": str(jwt)})
-    else:
+    errors = validate_log_in(data)
+    if len(errors) > 0:
+        return jsonify({'validated': False, 'errors': errors})
 
-        return jsonify('Bad Login')
+    user = User.query.filter(User.email == data['email']).first().to_dict()
+    jwt = create_jwt(user)
+    return jsonify({'validated': True, "user": user, "token": str(jwt)})
 
 
 @auth_routes.route('/restore')

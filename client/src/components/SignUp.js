@@ -10,6 +10,7 @@ import { signUp } from "../actions/auth";
 const SignUp = () => {
   const dispatch = useDispatch();
   const { signUpDisplay } = useSelector((state) => state.modals);
+  const { errors } = useSelector((state) => state.auth);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const SignUp = () => {
     dispatch({ type: SIGN_UP_MODAL, display: "none" });
   };
 
-  if (!signUpDisplay) return null;
+  if (!signUpDisplay || !errors) return null;
   return (
     <div className="modal" style={{ display: signUpDisplay }}>
       <div className="modal-background" onClick={modalOff}></div>
@@ -48,7 +49,11 @@ const SignUp = () => {
           <p className="modal-card-title">Sign Up</p>
         </header>
         <section className="modal-card-body">
-          <div>Sign up to continue.</div>
+          <ul>
+            {errors.map((error) => {
+              return <li>{error}</li>;
+            })}
+          </ul>
           <form onSubmit={handleSubmit}>
             <div className="field">
               <SimpleInput

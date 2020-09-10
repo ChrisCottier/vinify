@@ -1,5 +1,6 @@
 import { apiUrl } from "../config";
 export const SIGN_IN = "SIGN_IN";
+export const SIGN_IN_ERRORS = "SIGN_IN_ERRORS";
 export const LOG_OUT = "LOG_OUT";
 export const ACCESS_TOKEN = "ACCESS_TOKEN";
 
@@ -13,10 +14,15 @@ export const signUp = (data) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    let { token, user } = data;
-    token = token.slice(2, data.token.length - 1);
-    document.cookie = `${ACCESS_TOKEN}=${token}`;
-    dispatch({ type: SIGN_IN, token, user });
+    if (data.validated) {
+      let { token, user } = data;
+      token = token.slice(2, data.token.length - 1);
+      document.cookie = `${ACCESS_TOKEN}=${token}`;
+      dispatch({ type: SIGN_IN, token, user });
+    } else {
+      const { errors } = data;
+      dispatch({ type: SIGN_IN_ERRORS, errors });
+    }
   }
 };
 
@@ -30,11 +36,15 @@ export const logIn = (data) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    let { token, user } = data;
-    if (data === "Bad Login") return;
-    token = token.slice(2, data.token.length - 1);
-    document.cookie = `${ACCESS_TOKEN}=${token}`;
-    dispatch({ type: SIGN_IN, token, user });
+    if (data.validated) {
+      let { token, user } = data;
+      token = token.slice(2, data.token.length - 1);
+      document.cookie = `${ACCESS_TOKEN}=${token}`;
+      dispatch({ type: SIGN_IN, token, user });
+    } else {
+      const { errors } = data;
+      dispatch({ type: SIGN_IN_ERRORS, errors });
+    }
   }
 };
 
