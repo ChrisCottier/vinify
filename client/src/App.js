@@ -1,28 +1,33 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 
-import UserList from './components/UsersList';
+import "bulma/css/bulma.css";
+import "./index.css";
+import { hasAccessToken } from "./actions/auth";
 
+import NavbarLoggedOut from "./components/NavbarLoggedOut";
+import NavbarLoggedIn from "./components/NavbarLoggedIn"
+// import UserList from "./components/UsersList";
+import Home from "./components/Home";
+import Form from "./components/Form";
 
 function App() {
+  const dispatch = useDispatch();
+  const {loggedOut } = useSelector(state => state.auth)
+
+  useEffect(() => {
+    if (!loggedOut) return;
+    dispatch(hasAccessToken());
+  });
 
   return (
     <BrowserRouter>
-        <nav>
-            <ul>
-                <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
-            </ul>
-        </nav>
-        <Switch>
-            <Route path="/users">
-                <UserList />
-            </Route>
-
-            <Route path="/">
-                <h1>My Home Page</h1>
-            </Route>
-        </Switch>
+      {loggedOut ? <NavbarLoggedOut></NavbarLoggedOut> : <NavbarLoggedIn></NavbarLoggedIn>}
+      <Switch>
+        <Route path="/" component={Home}></Route>
+        <Route path="/form" component={Form}></Route>
+      </Switch>
     </BrowserRouter>
   );
 }
