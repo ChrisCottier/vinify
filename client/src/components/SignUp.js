@@ -50,8 +50,8 @@ const SignUp = () => {
         </header>
         <section className="modal-card-body">
           <ul>
-            {errors.map((error) => {
-              return <li>{error}</li>;
+            {errors.map((error, i) => {
+              return <li key={i}>{error}</li>;
             })}
           </ul>
           <form onSubmit={handleSubmit}>
