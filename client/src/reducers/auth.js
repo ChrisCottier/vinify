@@ -16,9 +16,7 @@ const auth = (state = defaultState, action) => {
       };
     }
     case LOG_OUT: {
-      return {
-        loggedOut: true,
-      };
+      return defaultState;
     }
 
     case SIGN_IN_ERRORS: {

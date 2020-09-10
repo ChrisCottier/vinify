@@ -3,7 +3,7 @@ import bcrypt
 
 from app.models import db
 from app.models.users import User
-from app.auth import create_jwt, validate_jwt, validate_log_in
+from app.auth import create_jwt, validate_jwt, validate_log_in, validate_sign_up
 
 
 auth_routes = Blueprint('auth', __name__)

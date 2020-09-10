@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import SignUp from "./SignUp";
-import LogIn from "./LogIn";
-import { SIGN_UP_MODAL, LOG_IN_MODAL } from "../actions/modals";
+import { LOG_OUT, ACCESS_TOKEN } from "../actions/auth";
 
-const Navbar = () => {
+const NavbarLoggedIn = () => {
   const dispatch = useDispatch();
-  // const [showLogin, setShowLogin] = useState(false)
+  const {loggedOut} = useSelector(state => state.auth)
 
-  const showSignUp = () => dispatch({ type: SIGN_UP_MODAL, display: "block" });
-  const showLogIn = () => dispatch({ type: LOG_IN_MODAL, display: "block" });
+  const logOut = () => {
+      
+    document.cookie= `${ACCESS_TOKEN}= ;`;
+    dispatch({ type: LOG_OUT })
+};
 
+  if (loggedOut) return <Redirect to="/"></Redirect>
   return (
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">
-        <NavLink to="/" className="logo navbar-brand">
+        <NavLink to="/form" className="logo navbar-brand">
           {"wine".toUpperCase()}
         </NavLink>
         <div className="navbar-menu">
@@ -31,20 +33,15 @@ const Navbar = () => {
 
           <div className="navbar-end">
             <div className="navbar-item">
-              <a onClick={showSignUp}>Sign Up</a>
-            </div>
-            <div className="navbar-item">
-              <a onClick={showLogIn}>Log In</a>
+              <a onClick={logOut}>Log Out</a>
             </div>
           </div>
         </div>
       </nav>
-      <LogIn></LogIn>
-      <SignUp></SignUp>
     </>
 
     // TODO OTHER DIV THAT HASTHE SEARCH BAR THAT REPLACES THE NAVBAR
   );
 };
 
-export default Navbar;
+export default NavbarLoggedIn;
