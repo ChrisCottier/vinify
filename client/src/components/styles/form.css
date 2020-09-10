@@ -1,0 +1,11 @@
+div.form-container {
+  background-color: gray;
+  display: grid;
+  min-height: 800px;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-columns: 1fr;
+}
+
+div.form-container > div {
+  border: 1px solid yellow;
+}

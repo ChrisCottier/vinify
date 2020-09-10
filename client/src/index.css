@@ -1,5 +1,13 @@
 /* TODO Add site wide styles */
 
 main {
-  margin-top: 60px;
+  margin-top: 50px;
+  height: 100%;
+  width: auto;
+  min-height: 100vh;
+  background-color: #55001e;
+  color: white;
+}
+
+* {
 }
