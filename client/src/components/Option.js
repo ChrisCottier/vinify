@@ -7,11 +7,17 @@ import React from "react";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const Option = (props) => {
-  const { option } = props;
+  const { option, numOptions, num } = props;
   const { optionText } = option;
   return (
-    <div className="option-container">
-      <div className="option">{optionText}</div>
+    <div className={`option options-${numOptions} options-${numOptions}-num-${num}`}>
+      <div className="option-content">
+        <span className={`option-text title is-${numOptions}`}>{optionText}</span>
+        <figure class="image is-128x128">
+          <img src="https://bulma.io/images/placeholders/128x128.png" />
+        </figure>
+        
+      </div>
     </div>
   );
 };

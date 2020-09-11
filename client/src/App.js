@@ -6,6 +6,8 @@ import "bulma/css/bulma.css";
 import "./index.css";
 import "./components/styles/navbar.css";
 import "./components/styles/form.css";
+import "./components/styles/question.css";
+import "./components/styles/options.css";
 
 import { hasAccessToken } from "./actions/auth";
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Question from "./Question";
-import Option from "./Option";
+import OptionsContainer from "./OptionsContainer";
 import Output from "./Output";
 
 //it's job is to maintain state and display each question in turn,
@@ -18,9 +18,7 @@ const FormPage = (props) => {
         <Question question={question}></Question>
       </div>
       <div id="options-container" className="">
-        {options.map((option) => {
-          return <Option option={option} setState={setState}></Option>;
-        })}
+        <OptionsContainer options={options}></OptionsContainer>
       </div>
       <div id="output-container" className="">
         <Output defaultOutput={defaultOutput} state={state}></Output>

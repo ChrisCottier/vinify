@@ -11,6 +11,6 @@ with app.app_context():
     demo = User(name='demo', email='demo@gmail.com',
                 hashed_password="$2b$14$9sH0h2RLTrjkmBxMKdmdk.Oj5Lr4aWSuqX.jHxphBkYwdlo4RK8CS")
 
-    db.session.add(demoq)
+    db.session.add(demo)
 
     db.session.commit()
