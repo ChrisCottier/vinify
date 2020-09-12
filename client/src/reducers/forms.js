@@ -1,20 +1,20 @@
-
+import {SET_FORM} from '../actions/forms'
 
 const defaultState = {
     form: null,
     selections: {
-        
+        // 1: []
     }
 };
 
 const forms = (state = defaultState, action) => {
   switch (action.type) {
-    // case SIGN_UP_MODAL: {
-    //   return {
-    //     ...state,
-    //     signUpDisplay: action.display,
-    //   };
-    // }
+    case SET_FORM: {
+      return {
+        ...state,
+        form: action.value
+      };
+    }
 
     default:
       return state;

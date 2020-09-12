@@ -6,6 +6,8 @@ import FormPage from "../FormPage";
 const WineColor = (props) => {
   const {selections, setSelections} = props;
   console.log('wine color', selections)
+
+
   return (
     <>
       <FormPage
@@ -17,8 +19,9 @@ const WineColor = (props) => {
         question={"What color wine are you interested in?"}
         defaultOutput={"I'm looking for a"}
         canChooseMultiple={false}
-        selections={selections}
-        setSelections={setSelections}
+        type='nav'
+        // selections={selections}
+        // setSelections={setSelections}
         previous={null}
         next='redirect'
       ></FormPage>

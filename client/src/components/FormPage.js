@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Question from "./Question";
 import OptionsContainer from "./OptionsContainer";
 import Output from "./Output";
+import { useSelector } from "react-redux";
+import { NavLink, Redirect } from "react-router-dom";
 
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -11,28 +13,29 @@ import Output from "./Output";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
-  const [redirect, setRedirect] = useState(false);
-
+  // const [redirect, setRedirect] = useState(false);
+  const { form } = useSelector(state => state.forms)
   const { 
-    selections, 
-    setSelections,
+    // selections, 
+    // setSelections,
+    type,
     options, 
     question, 
     defaultOutput, 
     canChooseMultiple,
     previous,
-    next,
-    page,
-    setPage
+    // next,
+    // page,
+    // setPage
    } = props;
 
-   const progress = () => {
-    if (next === 'redirect') {
-      setRedirect(true)
-    }
-   }
+  //  const progress = () => {
+  //   if (next === 'redirect') {
+  //     setRedirect(true)
+  //   }
+  //  }
 
-   console.log('form page', selections)
+
 
 
   return (
@@ -44,21 +47,24 @@ const FormPage = (props) => {
         <OptionsContainer 
         options={options} 
         canChooseMultiple={canChooseMultiple}
-        selections={selections}
-        setSelections={setSelections}
+        type={type}
+        // selections={selections}
+        // setSelections={setSelections}
         ></OptionsContainer>
       </div>
       <div id="output-container" className="">
         <Output 
         defaultOutput={defaultOutput} 
-        selections={selections}
         canChooseMultiple={canChooseMultiple}
-        setSelections={setSelections}
+        type={type}
+        // selections={selections}
+        // setSelections={setSelections}
         ></Output>
       </div>
       <div id="form-navigation-container">
         {previous ? <button className="button"></button> : <span></span>}
-        {next && selections.length > 0 ? <button className="button">Next</button> : <span></span>}
+        {type === 'nav' && form ? <NavLink to={`/${form}`}>Next</NavLink>: <span></span>}
+        {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>
     </div>
   );
