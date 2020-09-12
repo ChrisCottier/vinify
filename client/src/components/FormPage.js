@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Question from "./Question";
 import OptionsContainer from "./OptionsContainer";
@@ -11,13 +11,30 @@ import Output from "./Output";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
+  const [redirect, setRedirect] = useState(false);
+
   const { 
+    selections, 
+    setSelections,
     options, 
     question, 
     defaultOutput, 
-    canChooseMultiple, 
-    selections, 
-    setSelections } = props;
+    canChooseMultiple,
+    previous,
+    next,
+    page,
+    setPage
+   } = props;
+
+   const progress = () => {
+    if (next === 'redirect') {
+      setRedirect(true)
+    }
+   }
+
+   console.log('form page', selections)
+
+
   return (
     <div className="container is-widescreen form-container">
       <div id="question-container" className="">
@@ -36,7 +53,12 @@ const FormPage = (props) => {
         defaultOutput={defaultOutput} 
         selections={selections}
         canChooseMultiple={canChooseMultiple}
+        setSelections={setSelections}
         ></Output>
+      </div>
+      <div id="form-navigation-container">
+        {previous ? <button className="button"></button> : <span></span>}
+        {next && selections.length > 0 ? <button className="button">Next</button> : <span></span>}
       </div>
     </div>
   );

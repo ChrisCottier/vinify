@@ -1,13 +1,13 @@
 import React from "react";
+import {Redirect} from 'react-router-dom'
 
 import FormPage from "../FormPage";
 
 const WineColor = (props) => {
-
   const {selections, setSelections} = props;
+  console.log('wine color', selections)
   return (
     <>
-      <div>wine color</div>
       <FormPage
         options={[
           { optionText: "Red", optionValue: 'red', optionPic: <img src="https://img.icons8.com/color/96/000000/wine-glass.png"/> },
@@ -15,10 +15,12 @@ const WineColor = (props) => {
           { optionText: "Rose", optionValue: 'rose', optionPic: <img src="https://img.icons8.com/officel/80/000000/wine-glass.png"/> },
         ]}
         question={"What color wine are you interested in?"}
-        defaultOutput={"I'm looking for.."}
+        defaultOutput={"I'm looking for a"}
         canChooseMultiple={false}
         selections={selections}
         setSelections={setSelections}
+        previous={null}
+        next='redirect'
       ></FormPage>
     </>
   );

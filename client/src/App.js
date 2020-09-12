@@ -15,7 +15,7 @@ import NavbarLoggedOut from "./components/NavbarLoggedOut";
 import NavbarLoggedIn from "./components/NavbarLoggedIn";
 // import UserList from "./components/UsersList";
 import Home from "./components/Home";
-import Form from "./components/Form";
+import WineColorForm from "./components/WineColorForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function App() {
       )}
       <Switch>
         <Route exact path="/" component={Home}></Route>
-        <Route path="/form" component={Form}></Route>
+        <Route path="/choose-wine-color" component={WineColorForm}></Route>
       </Switch>
     </BrowserRouter>
   );
