@@ -8,13 +8,19 @@ import Option from './Option'
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const OptionsContainer = (props) => {
-  const { options, canChooseMultiple} = props;
+  const { options, canChooseMultiple, selections, setSelections} = props;
   const numOptions = options.length;
   return (
     <div id="options-container">
         <div className={`options-grid-${numOptions}`}>
             {options.map((option, index) => {
-                return <Option canChooseMultiple={canChooseMultiple} option={option} numOptions={numOptions} num={index + 1}></Option>
+                return <Option 
+                canChooseMultiple={canChooseMultiple} 
+                option={option} numOptions={numOptions} 
+                num={index + 1}
+                selections={selections}
+                setSelections={setSelections}
+                ></Option>
             })}
         </div>
     </div>

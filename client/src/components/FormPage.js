@@ -11,17 +11,32 @@ import Output from "./Output";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
-  const { state, setState, options, question, defaultOutput, canChooseMultiple } = props;
+  const { 
+    options, 
+    question, 
+    defaultOutput, 
+    canChooseMultiple, 
+    selections, 
+    setSelections } = props;
   return (
     <div className="container is-widescreen form-container">
       <div id="question-container" className="">
         <Question question={question}></Question>
       </div>
       <div id="options-container" className="">
-        <OptionsContainer options={options} canChooseMultiple={canChooseMultiple}></OptionsContainer>
+        <OptionsContainer 
+        options={options} 
+        canChooseMultiple={canChooseMultiple}
+        selections={selections}
+        setSelections={setSelections}
+        ></OptionsContainer>
       </div>
       <div id="output-container" className="">
-        <Output defaultOutput={defaultOutput} state={state}></Output>
+        <Output 
+        defaultOutput={defaultOutput} 
+        selections={selections}
+        canChooseMultiple={canChooseMultiple}
+        ></Output>
       </div>
     </div>
   );

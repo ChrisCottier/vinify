@@ -2,19 +2,23 @@ import React from "react";
 
 import FormPage from "../FormPage";
 
-const WineColor = () => {
+const WineColor = (props) => {
+
+  const {selections, setSelections} = props;
   return (
     <>
       <div>wine color</div>
       <FormPage
         options={[
-          { optionText: "Red", optionPic: <img src="https://img.icons8.com/color/96/000000/wine-glass.png"/> },
-          { optionText: "White", optionPic: <img src="https://img.icons8.com/color/96/000000/white-wine.png"/> },
-          { optionText: "Rose", optionPic: <img src="https://img.icons8.com/officel/80/000000/wine-glass.png"/> },
+          { optionText: "Red", optionValue: 'red', optionPic: <img src="https://img.icons8.com/color/96/000000/wine-glass.png"/> },
+          { optionText: "White", optionValue: 'white', optionPic: <img src="https://img.icons8.com/color/96/000000/white-wine.png"/> },
+          { optionText: "Rose", optionValue: 'rose', optionPic: <img src="https://img.icons8.com/officel/80/000000/wine-glass.png"/> },
         ]}
         question={"What color wine are you interested in?"}
         defaultOutput={"I'm looking for.."}
-        canChooseMultiple={true}
+        canChooseMultiple={false}
+        selections={selections}
+        setSelections={setSelections}
       ></FormPage>
     </>
   );

@@ -8,10 +8,10 @@ import WineColor from "./form-pages/WineColor";
 //each part of the Form will have a FormPage, which will have a Question, Option(s), Response
 //components that render
 const Form = () => {
-  const [wineColors, setWineColors] = useState([]);
+  const [wineColor, setWineColor] = useState([]);
   return (
     <main>
-      <WineColor></WineColor>
+      <WineColor selections={wineColor} setSelections={setWineColor}></WineColor>
     </main>
   );
 };
