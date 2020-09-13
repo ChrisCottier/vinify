@@ -1,0 +1,9 @@
+#question-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#question {
+    font-size: 50px;
+}
