@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {SET_FORM} from '../actions/forms'
+import {SET_FORM, SET_SELECTION} from '../actions/forms'
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
 
@@ -15,16 +15,23 @@ import {SET_FORM} from '../actions/forms'
 
 const Option = (props) => {
   const dispatch = useDispatch();
-  const {form} = useSelector(state => state.forms)
-
+  const {form, selections} = useSelector(state => state.forms)
+  
   const [isSelected, setIsSelected] = useState(false);
-  const { option, numOptions, num, canChooseMultiple, type} = props;
+
+    if (!form === undefined || !selections === undefined) {
+      return null;
+    }
+
+  const { option, numOptions, num, canChooseMultiple, type, category} = props;
   const { optionText, optionPic, optionValue } = option;
 
-  console.log('type', type)
+
+
   const toggleSelection = (event) => {
     event.stopPropagation();
     const value = event.currentTarget.getAttribute('data-value')
+
     if (type === 'nav') {
       if (!form) {
         setIsSelected(true)
@@ -37,7 +44,25 @@ const Option = (props) => {
       return;
     }
 
+    if (type === 'selections') {
+      const newSelections = selections[category];
+      if (isSelected) {
+        setIsSelected(false);
+        const valueIndex = newSelections.indexOf(value)
+        newSelections.splice(valueIndex, 1)
+        dispatch({type: SET_SELECTION, value: newSelections, category})
+      } else {
+        if (!canChooseMultiple && newSelections.length > 0) {
+          return;
+        }
+        setIsSelected(true);
+        newSelections.push(value);
+        dispatch({type: SET_SELECTION, value: newSelections, category})
+      }
+    }
+
   }
+  //
 
 
   return (

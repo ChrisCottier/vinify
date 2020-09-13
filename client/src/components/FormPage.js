@@ -14,11 +14,12 @@ import { NavLink, Redirect } from "react-router-dom";
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
   // const [redirect, setRedirect] = useState(false);
-  const { form } = useSelector(state => state.forms)
+  const { form, selections } = useSelector(state => state.forms);
   const { 
     // selections, 
     // setSelections,
     type,
+    category,
     options, 
     question, 
     defaultOutput, 
@@ -48,6 +49,7 @@ const FormPage = (props) => {
         options={options} 
         canChooseMultiple={canChooseMultiple}
         type={type}
+        category={category}
         // selections={selections}
         // setSelections={setSelections}
         ></OptionsContainer>
@@ -57,13 +59,21 @@ const FormPage = (props) => {
         defaultOutput={defaultOutput} 
         canChooseMultiple={canChooseMultiple}
         type={type}
+        category={category}
         // selections={selections}
         // setSelections={setSelections}
         ></Output>
       </div>
       <div id="form-navigation-container">
         {previous ? <button className="button"></button> : <span></span>}
-        {type === 'nav' && form ? <NavLink to={`/${form}`}>Next</NavLink>: <span></span>}
+
+        {type === 'nav' && form 
+        ? <NavLink to={`/${form}`}>Next</NavLink>
+        : <span></span>}
+
+        {type === 'selections' && selections[category].length > 0
+         ? <button className="button">Next</button> 
+         : <span></span>}
         {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>
     </div>

@@ -9,34 +9,43 @@ import { useSelector } from "react-redux";
 //GRID your formpage for sure, for pixel perfection
 
 const Output = (props) => {
-  const { form } = useSelector(state => state.forms) 
-  const { defaultOutput, type} = props;
-
+  const { form, selections } = useSelector(state => state.forms) 
+  const { defaultOutput, type, category} = props;
+  
   const [output, setOutput] = useState('')
-
+  
   useEffect(() => {
-    console.log('change output')
+    console.log('effect')
+    if (form === undefined || selections === undefined) return;
     if (type === 'nav') {
       if (!form) {
         setOutput(`${defaultOutput}...`)
       } else {
         setOutput(`${defaultOutput} ${form}`)
       }
+      return;
     }
     
-    // if (selections.length === 0) {
-    //   setOutput(`${defaultOutput}...`)
-    // } else {
-    //   if (selections.length === 1) {
-    //     setOutput(`${defaultOutput} ${selections[0]}.`)
-    //   } else if (selections.length === 2) {
-    //     setOutput(`${defaultOutput} ${selections[0]} or ${selections[1]}.`)
-    //   } else {
-    //     setOutput(`${defaultOutput} ${multipleSelectionsOutput(selections)}`)
-    //   }
-    // }
+    //not entering on update...
+    if (type === 'selections') {
+      const chosen = selections[category]; 
+      console.log('chosen', chosen)
+      
+      if (chosen.length === 0) {
+        setOutput(`${defaultOutput}...`)
+      } else {
+        if (chosen.length === 1) {
+          setOutput(`${defaultOutput} ${chosen[0]}.`)
+        } else if (chosen.length === 2) {
+          setOutput(`${defaultOutput} ${chosen[0]} or ${chosen[1]}.`)
+        } else {
+          setOutput(`${defaultOutput} ${multipleSelectionsOutput(chosen)}`)
+        }
+      }
 
-  }, [form])
+    }
+
+  }, [form,selections])
 
   return (
     <div className="output-container">
