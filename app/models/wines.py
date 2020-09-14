@@ -4,9 +4,10 @@ class Wine(db.Model):
   __tablename__ = 'wines'
 
   id = db.Column(db.Integer, primary_key = True)
-  name = db.Column(db.String(40))
+  url=db.Column(db.String(200))
   wine_type= db.Column(db.String(40))
   avg_price = db.Column(db.Integer)
+  name = db.Column(db.String(40))
   vintage = db.Column(db.Integer)
   color = db.Column(db.String(20))
   verietal = db.Column(db.String(50))
@@ -28,6 +29,7 @@ class Wine(db.Model):
   def to_dict(self):
     return {
       "id": self.id,
+      "url": self.url,
       "name": self.name,
       "url": self.url,
       "wine_type": self.wine_type,

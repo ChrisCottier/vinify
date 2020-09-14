@@ -24,6 +24,7 @@ Flask-Migrate = "*"
 bcrypt = "*"
 PyJWT = "*"
 varname = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
