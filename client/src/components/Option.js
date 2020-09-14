@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {SET_FORM, SET_SELECTION} from '../actions/forms'
@@ -18,6 +18,10 @@ const Option = (props) => {
   const {form, selections} = useSelector(state => state.forms)
   
   const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    if (selections === null) return
+  }, [selections])
 
     if (!form === undefined || !selections === undefined) {
       return null;
@@ -45,19 +49,15 @@ const Option = (props) => {
     }
 
     if (type === 'selections') {
-      const newSelections = selections[category];
       if (isSelected) {
         setIsSelected(false);
-        const valueIndex = newSelections.indexOf(value)
-        newSelections.splice(valueIndex, 1)
-        dispatch({type: SET_SELECTION, value: newSelections, category})
+        dispatch({type: SET_SELECTION, value, category})
       } else {
-        if (!canChooseMultiple && newSelections.length > 0) {
+        if (!canChooseMultiple && selections[category].length > 0) {
           return;
         }
         setIsSelected(true);
-        newSelections.push(value);
-        dispatch({type: SET_SELECTION, value: newSelections, category})
+        dispatch({type: SET_SELECTION, value, category})
       }
     }
 
@@ -80,33 +80,61 @@ const Option = (props) => {
 
 export default Option;
 
-// const Option = (props) => {
-
-
+// /const Option = (props) => {
+//   const dispatch = useDispatch();
+//   const {form, selections} = useSelector(state => state.forms)
+  
 //   const [isSelected, setIsSelected] = useState(false);
-//   const { option, numOptions, num, canChooseMultiple, type} = props;
-//   const { optionText,optionPic, optionValue } = option;
+
+//   useEffect(() => {
+//     if (selections === null) return
+//   }, [selections])
+
+//     if (!form === undefined || !selections === undefined) {
+//       return null;
+//     }
+
+//   const { option, numOptions, num, canChooseMultiple, type, category} = props;
+//   const { optionText, optionPic, optionValue } = option;
+
 
 
 //   const toggleSelection = (event) => {
 //     event.stopPropagation();
-//     console.log('toggle')
 //     const value = event.currentTarget.getAttribute('data-value')
-//     const newSelections = selections;
-//     if (isSelected) {
-//       setIsSelected(false);
-//       const valueIndex = newSelections.indexOf(value)
-//       newSelections.splice(valueIndex, 1)
-//       setSelections(newSelections);
-//     } else {
-//       if (!canChooseMultiple && selections.length > 0) {
+
+//     if (type === 'nav') {
+//       if (!form) {
+//         setIsSelected(true)
+//         dispatch({type: SET_FORM, value})
 //         return;
+//       } else if(form && form === value) {
+//         setIsSelected(false)
+//         dispatch({type: SET_FORM, value: ''})
 //       }
-//       setIsSelected(true);
-//       newSelections.push(value);
-//       setSelections(newSelections)
+//       return;
 //     }
+
+//     if (type === 'selections') {
+//       let newSelections = selections[category];
+//       if (isSelected) {
+//         setIsSelected(false);
+//         const valueIndex = newSelections.indexOf(value)
+//         newSelections.splice(valueIndex, 1)
+//         dispatch({type: SET_SELECTION, value: newSelections, category})
+//       } else {
+//         if (!canChooseMultiple && newSelections.length > 0) {
+//           return;
+//         }
+//         setIsSelected(true);
+//         newSelections = [...newSelections, value]
+//         console.log('fsdafsdfaf',value, newSelections, selections)
+//         dispatch({type: SET_SELECTION, value: newSelections, category})
+//       }
+//     }
+
 //   }
+//   //
 
 
 //   return (

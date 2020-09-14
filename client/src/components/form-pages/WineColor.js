@@ -3,9 +3,7 @@ import {Redirect} from 'react-router-dom'
 
 import FormPage from "../FormPage";
 
-const WineColor = (props) => {
-  const {selections, setSelections} = props;
-  console.log('wine color', selections)
+const WineColor = () => {
 
 
   return (
@@ -20,8 +18,6 @@ const WineColor = (props) => {
         defaultOutput={"I'm looking for a"}
         canChooseMultiple={false}
         type='nav'
-        // selections={selections}
-        // setSelections={setSelections}
         previous={null}
         next='redirect'
       ></FormPage>

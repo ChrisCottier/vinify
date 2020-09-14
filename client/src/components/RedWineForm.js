@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {NEW_FORM} from '../actions/forms'
 import FormPage from "./FormPage";
 import WineCountryOrigin from "./form-pages/WineCountryOrigin";
+import WinePrice from "./form-pages/WinePrice"
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
 
@@ -25,6 +26,9 @@ const RedWineForm = () => {
     <main>
       <section style={{display: pageNum === 1 ? 'block' : 'none'}}>
         <WineCountryOrigin></WineCountryOrigin>
+      </section>
+      <section style={{display: pageNum === 2 ? 'block' : 'none'}}>
+        <WinePrice></WinePrice>
       </section>
     </main>
   );

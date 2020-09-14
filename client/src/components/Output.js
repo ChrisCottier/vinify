@@ -24,12 +24,10 @@ const Output = (props) => {
       }
       return;
     }
-    console.log('selections', selections)
     
     //not entering on update...
     if (type === 'selections') {
       const chosen = selections[category]; 
-      console.log('chosen', chosen)
       
       if (chosen.length === 0) {
         setOutput(`${defaultOutput}...`)
@@ -74,9 +72,7 @@ export default Output;
         
         //   const [output, setOutput] = useState('')
         
-        //   console.log('output component', selections)
         //   useEffect(() => {
-        //     console.log('change output')
         //     if (selections.length === 0) {
         //       setOutput(`${defaultOutput}...`)
         //     } else {

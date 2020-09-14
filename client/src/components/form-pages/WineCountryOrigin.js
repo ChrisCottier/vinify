@@ -3,9 +3,7 @@ import {Redirect} from 'react-router-dom'
 
 import FormPage from "../FormPage";
 
-const WineCountryOrigin = (props) => {
-  const {selections, setSelections} = props;
-  console.log('wine color', selections)
+const WineCountryOrigin = () => {
 
 
   return (
@@ -13,18 +11,16 @@ const WineCountryOrigin = (props) => {
       <FormPage
         category='country'
         options={[
-          { optionText: "United States", optionValue: 'usa', optionPic: <img src='https://img.icons8.com/ios/100/000000/usa-map.png' /> },
-          { optionText: "France", optionValue: 'france', optionPic: <img src="https://img.icons8.com/ios/100/000000/france-map.png"/>},
-          { optionText: "Spain", optionValue: 'spain', optionPic: <img src="https://img.icons8.com/ios/100/000000/spain-map.png"/> },
+          { optionText: "United States", optionValue: 'USA', optionPic: <img src='https://img.icons8.com/ios/100/000000/usa-map.png' /> },
+          { optionText: "France", optionValue: 'France', optionPic: <img src="https://img.icons8.com/ios/100/000000/france-map.png"/>},
+          { optionText: "Spain", optionValue: 'Spain', optionPic: <img src="https://img.icons8.com/ios/100/000000/spain-map.png"/> },
         ]}
         question={"Do you care where the wine is from?"}
         defaultOutput={"I'm looking for a wine from"}
         canChooseMultiple={true}
         type='selections'
-        // selections={selections}
-        // setSelections={setSelections}
-        previous={null}
-        next='redirect'
+        // previous={null}
+        // next='redirect'
       ></FormPage>
     </>
   );
