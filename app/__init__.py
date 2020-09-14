@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 
 from app.models import db
 from app.models.users import User
+from app.models.wines import Wine
 
 from app.api.user_routes import user_routes
 from app.api.auth_routes import auth_routes
