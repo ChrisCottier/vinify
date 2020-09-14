@@ -15,7 +15,6 @@ const Output = (props) => {
   const [output, setOutput] = useState('')
   
   useEffect(() => {
-    console.log('effect')
     if (form === undefined || selections === undefined) return;
     if (type === 'nav') {
       if (!form) {
@@ -25,6 +24,7 @@ const Output = (props) => {
       }
       return;
     }
+    console.log('selections', selections)
     
     //not entering on update...
     if (type === 'selections') {

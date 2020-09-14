@@ -4,7 +4,7 @@ const defaultState = {
     form: null,
     pageNum:1,
     selections: {
-        country: []
+        country: [],
     }
 };
 
@@ -22,7 +22,7 @@ const forms = (state = defaultState, action) => {
         newSelections[action.category] = action.value;
         return {
             ...state,
-            selections: newSelections
+            selections: {...newSelections}
         }
     }
 
