@@ -3,3 +3,4 @@ __pycache__/
 *.py[cod]
 style-ref/
 .venv/
+seed/bulk_seed.py

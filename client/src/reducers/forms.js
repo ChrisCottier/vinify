@@ -28,27 +28,29 @@ const forms = (state = defaultState, action) => {
     // }
 
       case SET_SELECTION: {
-
-        let newSelections = state.selections
+        // const newCountry = [...state.selections.country];
+        // newCountry.push(action.value)
+        // return Object.assign({}, state, {selections: {
+        //   country: [...newCountry],
+        //   price: [] 
+        // }})
+        let newSelections = Object.assign({}, state.selections);
         const {category, value} = action
+        // debugger;
         let array = newSelections[category];
-        // console.log('what im adding to', array)
         const indexOfValue = array.indexOf(value);
-        // console.log('index of val in array', indexOfValue)
+
         if (indexOfValue === -1) {
           array = [...array, value]
-          // console.log('array after insert', array)
-        } else {
-          // console.log('splice')
-          array.splice(indexOfValue, 1)
+
         }
+        //  else {
 
-        // console.log('array outside of block',array)
+        //   array.splice(indexOfValue, 1)
+        // }
 
-        // console.log(`newSelections before reassign of ${category}`, newSelections)
         newSelections[category] = array
-        // console.log('newSelections after reassign', newSelections)
-        // console.log(action)
+        // debugger;
 
 
         return {
