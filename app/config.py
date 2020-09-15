@@ -6,3 +6,4 @@ class Config:
   SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
   SQLALCHEMY_ECHO=True
   JWT_SECRET=os.environ.get('JWT_SECRET')
+  SEED_DATABASE_URL=os.environ.get('SEED_DATABASE_URL')

@@ -35,7 +35,6 @@ const LogIn = () => {
   };
 
   if (!logInDisplay) return null;
-  console.log(logInDisplay);
   return (
     <div className="modal" style={{ display: logInDisplay }}>
       <div className="modal-background" onClick={modalOff}></div>

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
+import {CHANGE_PAGE} from '../actions/forms'
 import Question from "./Question";
 import OptionsContainer from "./OptionsContainer";
 import Output from "./Output";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 
 //it's job is to maintain state and display each question in turn,
@@ -13,8 +14,9 @@ import { NavLink, Redirect } from "react-router-dom";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
+  const dispatch = useDispatch()
   // const [redirect, setRedirect] = useState(false);
-  const { form, selections } = useSelector(state => state.forms);
+  const { form, selections, pageNum } = useSelector(state => state.forms);
   const { 
     // selections, 
     // setSelections,
@@ -30,11 +32,15 @@ const FormPage = (props) => {
     // setPage
    } = props;
 
-  //  const progress = () => {
-  //   if (next === 'redirect') {
-  //     setRedirect(true)
-  //   }
-  //  }
+  const changePage = (event) => {
+    event.stopPropagation()
+    const classes = event.target.classList
+    if (classes.contains('previous-page')) {
+      dispatch({type: CHANGE_PAGE, value: pageNum - 1 })
+    } else if (classes.contains('next-page')) {
+      dispatch({type: CHANGE_PAGE, value: pageNum + 1 })
+    }
+  }
 
 
 
@@ -65,14 +71,16 @@ const FormPage = (props) => {
         ></Output>
       </div>
       <div id="form-navigation-container">
-        {previous ? <button className="button"></button> : <span></span>}
 
         {type === 'nav' && form 
         ? <NavLink to={`/${form}`}>Next</NavLink>
         : <span></span>}
 
+        {type === 'selections' && pageNum > 1
+        ? <button className="button previous-page" onClick={changePage}>Previous</button> 
+        : <span></span>}
         {type === 'selections' && selections[category].length > 0
-         ? <button className="button">Next</button> 
+         ? <button className="button next-page" onClick={changePage}>Next</button> 
          : <span></span>}
         {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>

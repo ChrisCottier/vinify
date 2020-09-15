@@ -18,6 +18,11 @@ import Home from "./components/Home";
 import WineColorForm from "./components/WineColorForm";
 import RedWineForm from "./components/RedWineForm";
 
+
+//forms
+//white, red, rose
+//cooking, personality, random
+
 function App() {
   const dispatch = useDispatch();
   const { loggedOut } = useSelector((state) => state.auth);
