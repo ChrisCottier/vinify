@@ -1,15 +1,21 @@
-import {SET_FORM, SET_SELECTION, NEW_FORM, CHANGE_PAGE} from '../actions/forms'
+import {
+  SET_FORM,
+  SET_SELECTION,
+  NEW_FORM,
+  CHANGE_PAGE,
+} from "../actions/forms";
 
 const defaultState = {
-    form: null,
-    pageNum:1,
-    selections: {
-        country: [],
-        price: [],
-        redWineVerietal: [],
-        wineRating: [],
-        wineNotes: []
-    }
+  form: null,
+  pageNum: 1,
+  country: [],
+  selections: {
+    country: [],
+    price: [],
+    redWineVerietal: [],
+    wineRating: [],
+    wineNotes: [],
+  },
 };
 
 const forms = (state = defaultState, action) => {
@@ -30,54 +36,55 @@ const forms = (state = defaultState, action) => {
     //     }
     // }
 
-      case SET_SELECTION: {
-        // const newCountry = [...state.selections.country];
-        // newCountry.push(action.value)
-        // return Object.assign({}, state, {selections: {
-        //   country: [...newCountry],
-        //   price: [] 
-        // }})
-        let newSelections = Object.assign({}, state.selections);
-        const {category, value} = action
-        // debugger;
-        let array = newSelections[category];
-        const indexOfValue = array.indexOf(value);
+    case SET_SELECTION: {
+      const { category, value } = action;
+      // debugger;
+      let array = state.selections[category];
+      array = [...array];
+      const indexOfValue = array.indexOf(value);
 
-        if (indexOfValue === -1) {
-          array = [...array, value]
+      if (indexOfValue === -1) {
+        array = array.concat(value);
+        //  = [...array, value];
+      } else {
+        debugger;
+        array.splice(indexOfValue, 1);
+      }
 
-        }
-        //  else {
+      const retVal2 = Object.assign({}, state, {
+        selections: {
+          ...state.selections,
+          [category]: array,
+        },
+      });
+      debugger;
+      return retVal2;
+      // const retVal = {
+      //   ...state,
+      //   country: state.country.concat(value),
+      //   selections: {
+      //     ...state.selections,
+      //     [category]: state.country.concat(value),
+      //   },
+      // };
+      // // debugger;
+      // return retVal;
+    }
 
-        //   array.splice(indexOfValue, 1)
-        // }
-
-        newSelections[category] = array
-        // debugger;
-
-
-        return {
-            ...state,
-            selections: {...newSelections},
-            }
-        }
-    
-
-    
     case NEW_FORM: {
-        return {
-            ...state,
-            form: action.formUrl,
-            pageNum: 1,
-            selections: defaultState.selections
-        }
+      return {
+        ...state,
+        form: action.formUrl,
+        pageNum: 1,
+        selections: defaultState.selections,
+      };
     }
 
     case CHANGE_PAGE: {
       return {
         ...state,
-        pageNum: action.value
-      }
+        pageNum: action.value,
+      };
     }
 
     default:
@@ -86,3 +93,32 @@ const forms = (state = defaultState, action) => {
 };
 
 export default forms;
+
+// case SET_SELECTION: {
+//   // const newCountry = [...state.selections.country];
+//   // newCountry.push(action.value)
+//   // return Object.assign({}, state, {selections: {
+//   //   country: [...newCountry],
+//   //   price: []
+//   // }})
+//   let newSelections = Object.assign({}, state.selections);
+//   const { category, value } = action;
+//   // debugger;
+//   let array = newSelections[category];
+//   array = [...array];
+//   const indexOfValue = array.indexOf(value);
+
+//   if (indexOfValue === -1) {
+//     array = [...array, value];
+//   } else {
+//     array.splice(indexOfValue, 1);
+//   }
+
+//   newSelections[category] = array;
+//   // debugger;
+
+//   return {
+//     ...state,
+//     selections: { ...newSelections },
+//   };
+// }
