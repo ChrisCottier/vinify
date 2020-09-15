@@ -44,31 +44,23 @@ const forms = (state = defaultState, action) => {
       const indexOfValue = array.indexOf(value);
 
       if (indexOfValue === -1) {
-        array = array.concat(value);
+        array = state.selections[category].concat(value);
         //  = [...array, value];
       } else {
-        debugger;
+        // debugger;
         array.splice(indexOfValue, 1);
       }
 
-      const retVal2 = Object.assign({}, state, {
+      // debugger;
+      const retVal = {
+        ...state,
         selections: {
           ...state.selections,
           [category]: array,
         },
-      });
-      debugger;
-      return retVal2;
-      // const retVal = {
-      //   ...state,
-      //   country: state.country.concat(value),
-      //   selections: {
-      //     ...state.selections,
-      //     [category]: state.country.concat(value),
-      //   },
-      // };
-      // // debugger;
-      // return retVal;
+      };
+      // debugger;
+      return retVal;
     }
 
     case NEW_FORM: {
