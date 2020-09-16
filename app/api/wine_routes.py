@@ -13,6 +13,8 @@ def matches():
     data = request.json
     form = data['form']
     selections = data['selections']
+
+    # Try to make this through sqlalchemy
     sql_query = red_wine_form_sql(selections)
 
-    return jsonify('hi')
+    return jsonify()
