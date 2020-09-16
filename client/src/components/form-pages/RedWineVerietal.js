@@ -8,7 +8,7 @@ const RedWineVerietal = () => {
   return (
     <>
       <FormPage
-        category="redWineVerietal"
+        category="verietal"
         options={[
           {
             optionText: "Cabernet Sauvignon",

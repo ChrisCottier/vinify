@@ -12,7 +12,7 @@ const defaultState = {
   selections: {
     country: [],
     price: [],
-    redWineVerietal: [],
+    verietal: [],
     wineRating: [],
     wineNotes: [],
   },

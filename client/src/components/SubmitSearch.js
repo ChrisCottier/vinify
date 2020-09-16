@@ -33,7 +33,9 @@ const SubmitSearch = (props) => {
         <Question question={"Submit Search?"}></Question>
       </div>
       <div id="options-container" className="">
-        <button className="button">Submit Search</button>
+        <button className="button" onClick={submitSelections}>
+          Submit Search
+        </button>
       </div>
       <div id="form-navigation-container">
         <button className="button previous-page" onClick={changePage}>

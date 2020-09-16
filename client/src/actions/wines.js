@@ -12,5 +12,7 @@ export const searchWines = (data) => async (dispatch) => {
   });
 
   if (res.ok) {
+    const matches = await res.json();
+    console.log(matches);
   }
 };
