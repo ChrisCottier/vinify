@@ -3,7 +3,7 @@ from sqlalchemy import text
 
 from app.models import db
 from app.models.wines import Wine
-from .utils import red_wine_form_sql, matches_dict
+from .utils import red_wine_form_sql, matches_dict, choose_random
 
 wine_routes = Blueprint('wines', __name__)
 
@@ -25,5 +25,6 @@ def matches():
     result = db.engine.execute(sql)
 
     matches = matches_dict(result)
+    chosen = choose_random(matches, 10)
 
-    return jsonify(matches)
+    return jsonify(chosen)

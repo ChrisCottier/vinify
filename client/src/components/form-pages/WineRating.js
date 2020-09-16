@@ -8,7 +8,7 @@ const WineRating = () => {
   return (
     <>
       <FormPage
-        category="wineRating"
+        category="rating"
         options={[
           {
             optionText: "Who cares! Wine ratings are totes subjective.",

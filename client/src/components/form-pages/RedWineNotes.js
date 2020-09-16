@@ -16,11 +16,60 @@ const RedWineNotes = () => {
   return (
     <>
       <FormPage
-        category="wineNotes"
+        category="notes"
         options={[
           {
             optionText: "Earthy",
             optionValue: "earth",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Oaky",
+            optionValue: "oak",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Red berries, fruits",
+            optionValue: "bright fruit",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Dark berries, fruits",
+            optionValue: "dark fruit",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Herbs",
+            optionValue: "herbs",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Spices",
+            optionValue: "spices",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "Chocolate",
+            optionValue: "chocolate",
+            optionPic: (
+              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+            ),
+          },
+          {
+            optionText: "I'm open to whatever",
+            optionValue: "any",
             optionPic: (
               <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
             ),

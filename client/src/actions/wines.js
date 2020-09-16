@@ -1,6 +1,7 @@
 import { apiUrl } from "../config";
-
+import { NEW_FORM } from "./forms";
 export const SEARCH_WINES = "SEARCH_WINES";
+export const MATCHING_WINES = "MATCHING_WINES";
 
 export const searchWines = (data) => async (dispatch) => {
   const res = await fetch(`${apiUrl}/wines/matches`, {
@@ -12,7 +13,9 @@ export const searchWines = (data) => async (dispatch) => {
   });
 
   if (res.ok) {
+    const { form } = data;
     const matches = await res.json();
-    console.log(matches);
+    dispatch({ type: MATCHING_WINES, matches });
+    dispatch({ type: NEW_FORM, formUrl: form });
   }
 };

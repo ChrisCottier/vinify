@@ -13,8 +13,8 @@ const defaultState = {
     country: [],
     price: [],
     verietal: [],
-    wineRating: [],
-    wineNotes: [],
+    rating: [],
+    notes: [],
   },
 };
 

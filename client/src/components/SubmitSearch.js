@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_PAGE } from "../actions/forms";
 import Question from "./Question";
 import { SEARCH_WINES, searchWines } from "../actions/wines";
+import { NavLink } from "react-router-dom";
 
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -33,9 +34,9 @@ const SubmitSearch = (props) => {
         <Question question={"Submit Search?"}></Question>
       </div>
       <div id="options-container" className="">
-        <button className="button" onClick={submitSelections}>
+        <NavLink to="/matches" className="button" onClick={submitSelections}>
           Submit Search
-        </button>
+        </NavLink>
       </div>
       <div id="form-navigation-container">
         <button className="button previous-page" onClick={changePage}>
