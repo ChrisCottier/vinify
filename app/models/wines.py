@@ -26,8 +26,6 @@ class Wine(db.Model):
                            server_default=func.now())
     update_at = db.Column(db.DateTime(timezone=True),
                           onupdate=func.now())
-    Index('wine_indeces', 'wine_type', 'avg_price', 'name', 'color',
-          'verietal', 'country', 'community_rank', 'pairings')
 
     def to_dict(self):
         return {
@@ -51,3 +49,7 @@ class Wine(db.Model):
             "created_at": self.created_at,
             "update_at": self.update_at
         }
+
+
+db.Index('wine_indeces', Wine.wine_type, Wine.avg_price, Wine.name, Wine.color,
+         Wine.verietal, Wine.country, Wine.community_rank, Wine.pairings)

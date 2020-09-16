@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, request
+
 from app.models.wines import Wine
+from .utils import red_wine_form_sql
 
 wine_routes = Blueprint('wines', __name__)
 
@@ -11,14 +13,6 @@ def matches():
     data = request.json
     form = data['form']
     selections = data['selections']
+    sql_query = red_wine_form_sql(selections)
 
     return jsonify('hi')
-
-
-def red_wine_form_sql(selections):
-    query = 'WHERE wines.color = red'
-    countries = countries_sql(selections['country'])
-
-
-def countries_sql(countries):
-    init = f'AND wines.country'
