@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import SignUp from "./SignUp";
@@ -12,7 +12,6 @@ const NavbarLoggedOut = () => {
 
   const showSignUp = () => dispatch({ type: SIGN_UP_MODAL, display: "block" });
   const showLogIn = () => dispatch({ type: LOG_IN_MODAL, display: "block" });
-
   return (
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">

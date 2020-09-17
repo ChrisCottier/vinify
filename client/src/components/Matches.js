@@ -3,13 +3,11 @@ import { useSelector } from "react-redux";
 
 const MatchCard = ({ match }) => {
   return (
-    <div>
-      <div>
-        <figure className="image is-3by5">
-          <img src={match.primary_image} />
-        </figure>
-        <div>{match.name}</div>
-      </div>
+    <div className="match-container">
+      <figure className="image is-3by5">
+        <img src={match.primary_image} />
+      </figure>
+      <div>{match.name}</div>
     </div>
   );
 };
@@ -32,7 +30,7 @@ const Matches = () => {
   } else {
     return (
       <main>
-        <div className="container is-widescreen form-container">
+        <div className="container is-widescreen">
           <div className="horizontal-scroll-wrapper">
             {matches.map((match) => {
               return <MatchCard match={match} key={match.id}></MatchCard>;

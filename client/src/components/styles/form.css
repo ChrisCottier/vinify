@@ -1,8 +1,8 @@
 div.form-container {
-  background-color: #111111;
+  background-color: black;
   display: grid;
   min-height: 90vh;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 100px 3fr 100px;
   grid-template-columns: 1fr;
 }
 

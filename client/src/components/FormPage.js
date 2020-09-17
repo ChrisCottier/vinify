@@ -66,7 +66,7 @@ const FormPage = (props) => {
         {type === "nav" && form ? (
           <>
             <span></span>
-            <NavLink className="button" to={`/${form}`}>
+            <NavLink className="button wine-color background" to={`/${form}`}>
               Next
             </NavLink>
           </>
@@ -84,14 +84,20 @@ const FormPage = (props) => {
         )}
 
         {type === "selections" && pageNum > 1 ? (
-          <button className="button previous-page" onClick={changePage}>
+          <button
+            className="button previous-page wine-color background"
+            onClick={changePage}
+          >
             Previous
           </button>
         ) : (
           <></>
         )}
         {type === "selections" && selections[category].length > 0 ? (
-          <button className="button next-page" onClick={changePage}>
+          <button
+            className="button next-page wine-color background"
+            onClick={changePage}
+          >
             Next
           </button>
         ) : (

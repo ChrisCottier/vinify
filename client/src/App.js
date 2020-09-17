@@ -9,6 +9,7 @@ import "./components/styles/form.css";
 import "./components/styles/question.css";
 import "./components/styles/options.css";
 import "./components/styles/matches.css";
+import "./components/styles/output.css";
 
 import { hasAccessToken } from "./actions/auth";
 
@@ -19,6 +20,7 @@ import Home from "./components/Home";
 import WineColorForm from "./components/WineColorForm";
 import RedWineForm from "./components/RedWineForm";
 import Matches from "./components/Matches";
+import Footer from "./components/Footer";
 
 //forms
 //white, red, rose
@@ -46,6 +48,7 @@ function App() {
         <Route path="/red" component={RedWineForm}></Route>
         <Route path="/matches" component={Matches}></Route>
       </Switch>
+      <Footer component={Footer}></Footer>
     </BrowserRouter>
   );
 }

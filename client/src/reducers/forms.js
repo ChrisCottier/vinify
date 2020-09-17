@@ -39,20 +39,16 @@ const forms = (state = defaultState, action) => {
 
     case SET_SELECTION: {
       const { category, value } = action;
-      // debugger;
       let array = state.selections[category];
       array = [...array];
       const indexOfValue = array.indexOf(value);
 
       if (indexOfValue === -1) {
         array = state.selections[category].concat(value);
-        //  = [...array, value];
       } else {
-        // debugger;
         array.splice(indexOfValue, 1);
       }
 
-      // debugger;
       const retVal = {
         ...state,
         selections: {
@@ -60,7 +56,6 @@ const forms = (state = defaultState, action) => {
           [category]: array,
         },
       };
-      // debugger;
       return retVal;
     }
 
@@ -95,32 +90,3 @@ const forms = (state = defaultState, action) => {
 };
 
 export default forms;
-
-// case SET_SELECTION: {
-//   // const newCountry = [...state.selections.country];
-//   // newCountry.push(action.value)
-//   // return Object.assign({}, state, {selections: {
-//   //   country: [...newCountry],
-//   //   price: []
-//   // }})
-//   let newSelections = Object.assign({}, state.selections);
-//   const { category, value } = action;
-//   // debugger;
-//   let array = newSelections[category];
-//   array = [...array];
-//   const indexOfValue = array.indexOf(value);
-
-//   if (indexOfValue === -1) {
-//     array = [...array, value];
-//   } else {
-//     array.splice(indexOfValue, 1);
-//   }
-
-//   newSelections[category] = array;
-//   // debugger;
-
-//   return {
-//     ...state,
-//     selections: { ...newSelections },
-//   };
-// }

@@ -1,9 +1,11 @@
 #question-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100px;
+  padding: 0;
 }
 
 #question {
-    font-size: 50px;
+  font-size: 50px;
 }

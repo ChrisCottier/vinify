@@ -6,15 +6,11 @@ import { LOG_OUT, ACCESS_TOKEN } from "../actions/auth";
 
 const NavbarLoggedIn = () => {
   const dispatch = useDispatch();
-  const {loggedOut} = useSelector(state => state.auth)
 
   const logOut = () => {
-      
-    document.cookie= `${ACCESS_TOKEN}= ;`;
-    dispatch({ type: LOG_OUT })
-};
-
-  if (loggedOut) return <Redirect to="/"></Redirect>
+    document.cookie = `${ACCESS_TOKEN}= ;`;
+    dispatch({ type: LOG_OUT });
+  };
   return (
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">
@@ -22,16 +18,14 @@ const NavbarLoggedIn = () => {
           {"wine".toUpperCase()}
         </NavLink>
         <div className="navbar-menu">
-          <div className="navbar-start">
+          <div className="navbar-start"></div>
+          <div className="navbar-end">
             <div className="navbar-item ">
-              <a>hi</a>
+              <NavLink to="/choose-wine-color">Find wine</NavLink>
             </div>
             <div className="navbar-item">
-              <a>sample</a>
+              <NavLink to="/matches">Matches</NavLink>
             </div>
-          </div>
-
-          <div className="navbar-end">
             <div className="navbar-item">
               <a onClick={logOut}>Log Out</a>
             </div>

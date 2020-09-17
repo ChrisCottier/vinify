@@ -6,8 +6,8 @@
 }
 
 .horizontal-scroll-wrapper {
-  width: 800px;
-  height: 400pxpx;
+  width: 300px;
+  height: 900px;
   overflow-y: auto;
   overflow-x: hidden;
   transform: rotate(-90deg);
@@ -15,9 +15,10 @@
   transform: rotate(-90deg) translateY(-100px);
 }
 
-.horizontal-scroll-wrapper > div {
+.horizontal-scroll-wrapper div.match-container {
   width: 300px;
   height: 300px;
+  margin-right: 20px;
   transform: rotate(90deg);
   transform-origin: right top;
 }
