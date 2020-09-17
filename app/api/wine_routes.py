@@ -28,3 +28,11 @@ def matches():
     chosen = choose_random(matches, 10)
 
     return jsonify(chosen)
+
+
+@wine_routes.route('/<id>')
+def wine_details(id):
+    wine = Wine.query.get(id)
+    if not wine:
+        pass
+    return jsonify(wine)

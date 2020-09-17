@@ -21,6 +21,7 @@ import WineColorForm from "./components/WineColorForm";
 import RedWineForm from "./components/RedWineForm";
 import Matches from "./components/Matches";
 import Footer from "./components/Footer";
+import WinePage from "./components/WinePage";
 
 //forms
 //white, red, rose
@@ -47,6 +48,7 @@ function App() {
         <Route path="/choose-wine-color" component={WineColorForm}></Route>
         <Route path="/red" component={RedWineForm}></Route>
         <Route path="/matches" component={Matches}></Route>
+        <Route path="/wines/:id" component={WinePage}></Route>
       </Switch>
       <Footer component={Footer}></Footer>
     </BrowserRouter>

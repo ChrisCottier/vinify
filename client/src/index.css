@@ -10,9 +10,10 @@ main {
   margin-top: 50px;
   height: 100%;
   width: auto;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: black;
   color: white;
+  /* z-index: -20; */
 }
 
 * {
