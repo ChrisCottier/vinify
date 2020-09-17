@@ -50,13 +50,13 @@ const Output = (props) => {
   );
 };
 
-function multipleSelectionsOutput(selections) {
-  const selectionsCopy = [...selections];
-  const first = selectionsCopy.shift();
-  const last = selectionsCopy.pop();
+function multipleSelectionsOutput(chosen) {
+  const chosenCopy = [...chosen];
+  const first = chosenCopy.shift();
+  const last = chosenCopy.pop();
 
   let middle = "";
-  for (let selection of selectionsCopy) {
+  for (let selection of chosenCopy) {
     middle += `${selection}, `;
   }
 

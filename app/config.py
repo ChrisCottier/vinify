@@ -1,9 +1,11 @@
 import os
 
+
 class Config:
-  SECRET_KEY=os.environ.get('SECRET_KEY')
-  SQLALCHEMY_TRACK_MODIFICATIONS=False
-  SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
-  SQLALCHEMY_ECHO=True
-  JWT_SECRET=os.environ.get('JWT_SECRET')
-  SEED_DATABASE_URL=os.environ.get('SEED_DATABASE_URL')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_ECHO = True
+    JWT_SECRET = os.environ.get('JWT_SECRET')
+    SEED_DATABASE_URL = os.environ.get('SEED_DATABASE_URL')
+    SQLALCHEMY_ENGINE_OPTIONS = {"pool_pre_ping": True}

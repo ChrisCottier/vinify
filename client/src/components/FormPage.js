@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import {CHANGE_PAGE} from '../actions/forms'
+import { CHANGE_PAGE } from "../actions/forms";
 import Question from "./Question";
 import OptionsContainer from "./OptionsContainer";
 import Output from "./Output";
@@ -14,36 +14,28 @@ import { NavLink, Redirect } from "react-router-dom";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 const FormPage = (props) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const [redirect, setRedirect] = useState(false);
-  const { form, selections, pageNum } = useSelector(state => state.forms);
-  const { 
-    // selections, 
-    // setSelections,
+  const { form, selections, pageNum } = useSelector((state) => state.forms);
+  const {
     type,
     category,
-    options, 
-    question, 
-    defaultOutput, 
+    options,
+    question,
+    defaultOutput,
     canChooseMultiple,
     previous,
-    // next,
-    // page,
-    // setPage
-   } = props;
+  } = props;
 
   const changePage = (event) => {
-    event.stopPropagation()
-    const classes = event.target.classList
-    if (classes.contains('previous-page')) {
-      dispatch({type: CHANGE_PAGE, value: pageNum - 1 })
-    } else if (classes.contains('next-page')) {
-      dispatch({type: CHANGE_PAGE, value: pageNum + 1 })
+    event.stopPropagation();
+    const classes = event.target.classList;
+    if (classes.contains("previous-page")) {
+      dispatch({ type: CHANGE_PAGE, value: pageNum - 1 });
+    } else if (classes.contains("next-page")) {
+      dispatch({ type: CHANGE_PAGE, value: pageNum + 1 });
     }
-  }
-
-
-
+  };
 
   return (
     <div className="container is-widescreen form-container">
@@ -51,37 +43,60 @@ const FormPage = (props) => {
         <Question question={question}></Question>
       </div>
       <div id="options-container" className="">
-        <OptionsContainer 
-        options={options} 
-        canChooseMultiple={canChooseMultiple}
-        type={type}
-        category={category}
-        // selections={selections}
-        // setSelections={setSelections}
+        <OptionsContainer
+          options={options}
+          canChooseMultiple={canChooseMultiple}
+          type={type}
+          category={category}
+          // selections={selections}
+          // setSelections={setSelections}
         ></OptionsContainer>
       </div>
       <div id="output-container" className="">
-        <Output 
-        defaultOutput={defaultOutput} 
-        canChooseMultiple={canChooseMultiple}
-        type={type}
-        category={category}
-        // selections={selections}
-        // setSelections={setSelections}
+        <Output
+          defaultOutput={defaultOutput}
+          canChooseMultiple={canChooseMultiple}
+          type={type}
+          category={category}
+          // selections={selections}
+          // setSelections={setSelections}
         ></Output>
       </div>
       <div id="form-navigation-container">
+        {type === "nav" && form ? (
+          <>
+            <span></span>
+            <NavLink className="button" to={`/${form}`}>
+              Next
+            </NavLink>
+          </>
+        ) : (
+          <></>
+        )}
 
-        {type === 'nav' && form 
-        ? <NavLink to={`/${form}`}>Next</NavLink>
-        : <span></span>}
+        {type === "nav" && !form ? (
+          <>
+            <span></span>
+            <span></span>
+          </>
+        ) : (
+          <></>
+        )}
 
-        {type === 'selections' && pageNum > 1
-        ? <button className="button previous-page" onClick={changePage}>Previous</button> 
-        : <span></span>}
-        {type === 'selections' && selections[category].length > 0
-         ? <button className="button next-page" onClick={changePage}>Next</button> 
-         : <span></span>}
+        {type === "selections" && pageNum > 1 ? (
+          <button className="button previous-page" onClick={changePage}>
+            Previous
+          </button>
+        ) : (
+          <></>
+        )}
+        {type === "selections" && selections[category].length > 0 ? (
+          <button className="button next-page" onClick={changePage}>
+            Next
+          </button>
+        ) : (
+          <></>
+        )}
         {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>
     </div>
