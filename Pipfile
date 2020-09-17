@@ -20,11 +20,11 @@ Werkzeug = "==1.0.1"
 WTForms = "==2.3.3"
 Flask-JWT-Extended = "==3.24.1"
 psycopg2-binary = "*"
-Flask-Migrate = "*"
 bcrypt = "*"
 PyJWT = "*"
 varname = "*"
 psycopg2 = "*"
+flask-migrate = "*"
 
 [dev-packages]
 

@@ -15,6 +15,6 @@ export const searchWines = (data) => async (dispatch) => {
   if (res.ok) {
     const { form } = data;
     const matches = await res.json();
-    dispatch({ type: MATCHING_WINES, matches });
+    dispatch({ type: MATCHING_WINES, matches, form });
   }
 };

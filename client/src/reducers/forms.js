@@ -4,6 +4,7 @@ import {
   NEW_FORM,
   CHANGE_PAGE,
 } from "../actions/forms";
+import { MATCHING_WINES } from "../actions/wines";
 
 const defaultState = {
   form: null,
@@ -76,6 +77,15 @@ const forms = (state = defaultState, action) => {
       return {
         ...state,
         pageNum: action.value,
+      };
+    }
+
+    case MATCHING_WINES: {
+      return {
+        ...state,
+        selections: defaultState.selections,
+        pageNum: defaultState.pageNum,
+        form: action.form,
       };
     }
 
