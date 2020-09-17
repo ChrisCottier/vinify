@@ -73,7 +73,7 @@ const Option = (props) => {
         <span className={`option-text title is-${numOptions}`}>
           {optionText}
         </span>
-        <figure class="image is-96x96">{optionPic}</figure>
+        <figure className="image is-96x96">{optionPic}</figure>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import "./components/styles/navbar.css";
 import "./components/styles/form.css";
 import "./components/styles/question.css";
 import "./components/styles/options.css";
+import "./components/styles/matches.css";
 
 import { hasAccessToken } from "./actions/auth";
 
