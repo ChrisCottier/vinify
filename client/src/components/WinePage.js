@@ -6,6 +6,25 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { wineDetails, followWine } from "../actions/wines";
 
+const AboutSection = ({ title, content }) => {
+  return (
+    <div className="about-section">
+      <span className="title is-7">{title}</span>
+      <span className="wine-content">{content}</span>
+    </div>
+  );
+};
+const WineAbout = ({ wine }) => {
+  return (
+    <>
+      <h1 className="title is-1">{wine.name}</h1>
+      <h3 className="subtitle is-5">{wine.winery}</h3>
+      <header className="about-header">About</header>
+      <AboutSection title={"Vintage"} content={wine.vintage}></AboutSection>
+    </>
+  );
+};
+
 const WinePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -56,7 +75,7 @@ const WinePage = () => {
             </div>
           </div>
           <div id="wine-details-container" className="column is-half">
-            <div>details</div>
+            <WineAbout wine={wine}></WineAbout>
           </div>
         </div>
       </div>
