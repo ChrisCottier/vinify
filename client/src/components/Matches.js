@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 const MatchCard = ({ match }) => {
   const [backgroundColor, setBackroundColor] = useState("rgba(85, 0, 30, 0.8)");
@@ -36,6 +36,7 @@ const MatchCard = ({ match }) => {
 
 const Matches = () => {
   const { matches } = useSelector((state) => state.wines);
+  const { form } = useSelector((state) => state.forms);
 
   const handleScroll = (event) => {
     console.log("scroll");
@@ -48,7 +49,8 @@ const Matches = () => {
     }
   };
 
-  if (matches === undefined) return null;
+  if (!matches) return null;
+  if (!form) return <Redirect to="/choose-wine-color"></Redirect>;
   if (matches.length === 0) {
     return (
       <main>

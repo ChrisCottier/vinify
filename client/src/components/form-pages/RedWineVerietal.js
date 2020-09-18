@@ -14,56 +14,56 @@ const RedWineVerietal = () => {
             optionText: "Cabernet Sauvignon",
             optionValue: "Cabernet Sauvignon",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Syrah",
             optionValue: "Syrah",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/france-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Merlot",
             optionValue: "Merlot",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/spain-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Pinot Noir",
             optionValue: "Pinot Noir",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Sangiovese",
             optionValue: "Sangiovese",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/france-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Grenache",
             optionValue: "Grenache",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/spain-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Something Else!",
             optionValue: "niche",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
           {
             optionText: "Anything",
             optionValue: "all",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/france-map.png" />
+              <img src="https://img.icons8.com/color/96/000000/shrug-emoticon.png" />
             ),
           },
         ]}
@@ -79,9 +79,8 @@ const RedWineVerietal = () => {
 };
 
 {
-  /* <a href="https://icons8.com/icon/45746/usa-map">USA Map icon by Icons8</a>
-<a href="https://icons8.com/icon/58460/france-map">France Map icon by Icons8</a>
-<a href="https://icons8.com/icon/58505/spain-map">Spain Map icon by Icons8</a> */
+  /* <a href="https://icons8.com/icon/69651/grape">Grape icon by Icons8</a>
+  <a href="https://icons8.com/icon/JeeucYjaoLz8/shrug-emoticon">Shrug Emoticon icon by Icons8</a>*/
 }
 
 export default RedWineVerietal;

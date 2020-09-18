@@ -48,13 +48,15 @@ def red_wine_form_sql(selections):
     countries = countries_sql(selections['country'])
     prices = avg_price_sql(selections['price'])
     verietal = verietal_sql(selections['verietal'])
-    rating = wine_ratings_sql(selections['rating'])
+    # rating = wine_ratings_sql(selections['rating'])
     notes = wine_notes_sql(selections['notes'])
 
-    return f'{query} {countries} {prices} {verietal} {rating} {notes}'
+    return f'{query} {countries} {prices} {verietal} {notes}'
 
 
 def countries_sql(countries):
+    if 'anywhere' in countries:
+        return ''
     initial = f"AND (lower(country) LIKE lower('%{countries[0]}%')"
     for i in range(1, len(countries)):
         initial += f" OR lower(country) LIKE lower('%{countries[i]}%')"

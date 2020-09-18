@@ -2,27 +2,24 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { NEW_FORM } from "../actions/forms";
-import FormPage from "./FormPage";
 import WineCountryOrigin from "./form-pages/WineCountryOrigin";
 import WinePrice from "./form-pages/WinePrice";
-import RedWineVerital from "./form-pages/RedWineVerietal";
-import WineRating from "./form-pages/WineRating";
-import RedWineNotes from "./form-pages/RedWineNotes";
 import SubmitSearch from "./SubmitSearch";
+import WhiteWineVerietal from "./form-pages/WhiteWineVerietal";
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
 
 //each part of the Form will have a FormPage, which will have a Question, Option(s), Response
 //components that render
-const RedWineForm = () => {
+const WhiteWineForm = () => {
   const dispatch = useDispatch();
 
   const { form, pageNum } = useSelector((state) => state.forms);
 
   useState(() => {
     if (form === undefined) return;
-    if (form !== "red") {
-      dispatch({ type: NEW_FORM, formUrl: "red" });
+    if (form !== "white") {
+      dispatch({ type: NEW_FORM, formUrl: "white" });
     }
   });
 
@@ -35,19 +32,13 @@ const RedWineForm = () => {
         <WinePrice></WinePrice>
       </section>
       <section style={{ display: pageNum === 3 ? "block" : "none" }}>
-        <RedWineVerital></RedWineVerital>
+        <WhiteWineVerietal></WhiteWineVerietal>
       </section>
-      {/* <section style={{ display: pageNum === 4 ? "block" : "none" }}>
-        <WineRating></WineRating>
-      </section> */}
       <section style={{ display: pageNum === 4 ? "block" : "none" }}>
-        <RedWineNotes></RedWineNotes>
-      </section>
-      <section style={{ display: pageNum === 5 ? "block" : "none" }}>
         <SubmitSearch></SubmitSearch>
       </section>
     </main>
   );
 };
 
-export default RedWineForm;
+export default WhiteWineForm;

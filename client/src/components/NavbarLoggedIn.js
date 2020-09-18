@@ -21,7 +21,9 @@ const NavbarLoggedIn = () => {
           <div className="navbar-start"></div>
           <div className="navbar-end">
             <div className="navbar-item ">
-              <NavLink to="/choose-wine-color">Find wine</NavLink>
+              <NavLink className="" to="/choose-wine-color">
+                Find wine
+              </NavLink>
             </div>
             <div className="navbar-item">
               <NavLink to="/matches">Matches</NavLink>

@@ -9,7 +9,7 @@ import { wineDetails, followWine } from "../actions/wines";
 const AboutSection = ({ title, content }) => {
   return (
     <div className="about-section">
-      <span className="title is-7">{title}</span>
+      <span className="wine-content-title">{title}</span>
       <span className="wine-content">{content}</span>
     </div>
   );
@@ -17,10 +17,46 @@ const AboutSection = ({ title, content }) => {
 const WineAbout = ({ wine }) => {
   return (
     <>
-      <h1 className="title is-1">{wine.name}</h1>
+      <h1 className="title is-2 wine-page-title">{wine.name}</h1>
       <h3 className="subtitle is-5">{wine.winery}</h3>
-      <header className="about-header">About</header>
-      <AboutSection title={"Vintage"} content={wine.vintage}></AboutSection>
+      <header className="about-header  title is-3">About</header>
+      <AboutSection title="Vintage" content={wine.vintage}></AboutSection>
+      <AboutSection title="Verietal" content={wine.verietal}></AboutSection>
+      <AboutSection title="Country" content={wine.country}></AboutSection>
+      {wine.state_province ? (
+        <AboutSection
+          title="State / Province"
+          content={wine.state_province}
+        ></AboutSection>
+      ) : (
+        <></>
+      )}
+      {wine.region ? (
+        <AboutSection title="Region" content={wine.region}></AboutSection>
+      ) : (
+        <></>
+      )}
+      {wine.community_rank ? (
+        <AboutSection
+          title="Snooth Community Ranking"
+          content={wine.community_rank}
+        ></AboutSection>
+      ) : (
+        <></>
+      )}
+      {wine.description ? (
+        <AboutSection title="Details" content={wine.description}></AboutSection>
+      ) : (
+        <></>
+      )}
+      {wine.pairings ? (
+        <AboutSection
+          title="Food Pairings"
+          content={wine.pairings}
+        ></AboutSection>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
@@ -54,8 +90,14 @@ const WinePage = () => {
     <main>
       <div className="container is-widescreen">
         <div id="wine-page-buttons" className="buttons">
-          <NavLink to="/matches" className="button">{`< Matches`}</NavLink>
-          <button className="button is-focused" onClick={toggleFollow}>
+          <NavLink
+            to="/matches"
+            className="button wine-color background"
+          >{`< Matches`}</NavLink>
+          <button
+            className="button wine-color background"
+            onClick={toggleFollow}
+          >
             {wine.user_follows ? (
               <i className="fas fa-heart follow-heart"></i>
             ) : (
@@ -64,7 +106,7 @@ const WinePage = () => {
             <span>{wine.user_follows ? "Following" : "Follow"}</span>
           </button>
         </div>
-        <div className="columns">
+        <div className="columns is-gapless">
           <div id="wine-pictures-container" className="column is-half">
             <div id="carousel-container">
               <Carousel>

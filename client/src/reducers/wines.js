@@ -1,6 +1,10 @@
 import { MATCHING_WINES, WINE_DETAILS, TOGGLE_FOLLOW } from "../actions/wines";
 
-const wines = (state = {}, action) => {
+const defaultState = {
+  matches: null,
+};
+
+const wines = (state = defaultState, action) => {
   switch (action.type) {
     case MATCHING_WINES: {
       return {

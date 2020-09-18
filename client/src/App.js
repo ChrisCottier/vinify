@@ -21,6 +21,7 @@ import NavbarLoggedIn from "./components/NavbarLoggedIn";
 import Home from "./components/Home";
 import WineColorForm from "./components/WineColorForm";
 import RedWineForm from "./components/RedWineForm";
+import WhiteWineForm from "./components/WhiteWineForm";
 import Matches from "./components/Matches";
 import Footer from "./components/Footer";
 import WinePage from "./components/WinePage";
@@ -50,6 +51,7 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route path="/choose-wine-color" component={WineColorForm}></Route>
         <Route path="/red" component={RedWineForm}></Route>
+        <Route path="/white" component={WhiteWineForm}></Route>
         <Route path="/matches" component={Matches}></Route>
         <Route path="/wines/:id" component={WinePage}></Route>
         <Route path="/favorites" component={Following}></Route>
