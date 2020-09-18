@@ -4,22 +4,22 @@ from random import seed, randint
 def matches_dict(rows):
     matches = [{
         "id": row[0],
-        "url": row[1],
+        # "url": row[1],
         "wine_type": row[2],
         "avg_price": row[3],
         "name": row[4],
         "vintage": row[5],
         "color": row[6],
         "verietal": row[7],
-        "description": row[8],
+        # "description": row[8],
         "primary_image": row[9],
         "country": row[10],
         "state_province": row[11],
         "region": row[12],
         "winery": row[13],
-        "community_rank": str(row[14]),
-        "parings": row[15],
-        "photos": row[16],
+        # "community_rank": str(row[14]),
+        # "pairings": row[15],
+        # "photos": row[16],
         "created_at": row[17],
         "update_at": row[18],
     }
@@ -28,16 +28,18 @@ def matches_dict(rows):
 
 
 def choose_random(array, num_chosen):
+    if len(array) < num_chosen:
+        num_chosen = len(array)
     chosen_indeces = []
-    seed(1)
-    i = 0
-    while i < len(array) and i < num_chosen:
-        value = randint(0, len(array) - 1)
-        while value in chosen_indeces:
-            value = randint(0, len(array) - 1)
-        chosen_indeces.append(value)
-        i += 1
-    return [array[index] for index in chosen_indeces]
+    while num_chosen > 0:
+        if len(array) > 1:
+            index = randint(0, len(array) - 1)
+        else:
+            index = 0
+        popped = array.pop(index)
+        chosen_indeces.append(popped)
+        num_chosen -= 1
+    return chosen_indeces
 
 
 def red_wine_form_sql(selections):

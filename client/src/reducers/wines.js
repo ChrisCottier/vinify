@@ -1,4 +1,4 @@
-import { MATCHING_WINES } from "../actions/wines";
+import { MATCHING_WINES, WINE_DETAILS } from "../actions/wines";
 
 const wines = (state = {}, action) => {
   switch (action.type) {
@@ -6,6 +6,13 @@ const wines = (state = {}, action) => {
       return {
         ...state,
         matches: action.matches,
+      };
+    }
+
+    case WINE_DETAILS: {
+      return {
+        ...state,
+        wine: action.wine,
       };
     }
 

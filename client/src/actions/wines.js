@@ -24,6 +24,8 @@ export const wineDetails = (id) => async (dispatch) => {
   const res = await fetch(`${apiUrl}/wines/${id}`);
 
   if (res.ok) {
-    const wine = res.json();
+    let wine = await res.json();
+    if (typeof wine !== "object") return;
+    dispatch({ type: WINE_DETAILS, wine });
   }
 };

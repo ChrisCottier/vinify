@@ -27,6 +27,9 @@ const NavbarLoggedIn = () => {
               <NavLink to="/matches">Matches</NavLink>
             </div>
             <div className="navbar-item">
+              <NavLink to="/favorites">Favorites</NavLink>
+            </div>
+            <div className="navbar-item">
               <a onClick={logOut}>Log Out</a>
             </div>
           </div>

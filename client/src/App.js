@@ -10,6 +10,7 @@ import "./components/styles/question.css";
 import "./components/styles/options.css";
 import "./components/styles/matches.css";
 import "./components/styles/output.css";
+import "./components/styles/wine-page.css";
 
 import { hasAccessToken } from "./actions/auth";
 
