@@ -3,7 +3,9 @@ from sqlalchemy import text
 
 from app.models import db
 from app.models.wines import Wine
+from app.models.follows import Follow
 from .utils import red_wine_form_sql, matches_dict, choose_random
+from app.auth import validate_jwt
 
 wine_routes = Blueprint('wines', __name__)
 
@@ -35,4 +37,20 @@ def wine_details(id):
     wine = Wine.query.get(id).to_dict()
     if not wine:
         pass
+
+    # Next part is to see if the user follows the wine
+    validated = validate_jwt(request)
+    user_id = validated['user']['id']
+    user_follows = None
+    follow = Follow.query.filter(
+        Follow.user_id == user_id, Follow.wine_id == wine['id']).first()
+    if follow:
+        print(follow)
+        user_follows = True
+    else:
+        user_follows = False
+    print(user_follows)
+
+    wine['user_follows'] = user_follows
+
     return jsonify(wine)

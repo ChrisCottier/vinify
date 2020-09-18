@@ -1,0 +1,36 @@
+.follow-wine-container {
+  border-top: 1px solid lightgray;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+.follow-wine-pic {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 15px;
+}
+.follow-wine-details {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: ; */
+}
+
+.follow-wine-country {
+  color: gray;
+  font-size: 16px;
+}
+
+.follow-wine-title {
+  margin-bottom: 5px;
+}
+
+.follow-wine-title:hover {
+  color: #e51075;
+}
+
+.follow-wine-winery {
+  margin-top: 10px;
+}

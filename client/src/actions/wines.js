@@ -3,6 +3,7 @@ import { NEW_FORM } from "./forms";
 export const SEARCH_WINES = "SEARCH_WINES";
 export const MATCHING_WINES = "MATCHING_WINES";
 export const WINE_DETAILS = "WINE_DETAILS";
+export const TOGGLE_FOLLOW = "TOGGLE_FOLLOW";
 
 export const searchWines = (data) => async (dispatch) => {
   const res = await fetch(`${apiUrl}/wines/matches`, {
@@ -20,12 +21,33 @@ export const searchWines = (data) => async (dispatch) => {
   }
 };
 
-export const wineDetails = (id) => async (dispatch) => {
-  const res = await fetch(`${apiUrl}/wines/${id}`);
+export const wineDetails = (token, wineId) => async (dispatch) => {
+  const res = await fetch(`${apiUrl}/wines/${wineId}`, {
+    method: "get",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 
   if (res.ok) {
     let wine = await res.json();
     if (typeof wine !== "object") return;
     dispatch({ type: WINE_DETAILS, wine });
+  }
+};
+
+export const followWine = (token, wineId) => async (dispatch) => {
+  const res = await fetch(`${apiUrl}/follows`, {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify(wineId),
+  });
+
+  if (res.ok) {
+    let following = await res.json();
+    dispatch({ type: TOGGLE_FOLLOW, following });
   }
 };

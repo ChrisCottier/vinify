@@ -1,4 +1,4 @@
-import { MATCHING_WINES, WINE_DETAILS } from "../actions/wines";
+import { MATCHING_WINES, WINE_DETAILS, TOGGLE_FOLLOW } from "../actions/wines";
 
 const wines = (state = {}, action) => {
   switch (action.type) {
@@ -13,6 +13,16 @@ const wines = (state = {}, action) => {
       return {
         ...state,
         wine: action.wine,
+      };
+    }
+
+    case TOGGLE_FOLLOW: {
+      return {
+        ...state,
+        wine: {
+          ...state.wine,
+          user_follows: action.following,
+        },
       };
     }
 

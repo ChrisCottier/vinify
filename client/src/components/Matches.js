@@ -18,7 +18,7 @@ const MatchCard = ({ match }) => {
       <div className="match-content-container">
         <div className="match-content-left">
           {/* TODO DROP SHADOW */}
-          <span>{match.name}</span>
+          <span className="match-name">{match.name}</span>
           <span>{match.vintage ? `${match.vintage}` : ""}</span>
           <span>
             {match.avg_price ? `$${match.avg_price}` : "Price Unavailable"}
