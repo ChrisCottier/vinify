@@ -33,8 +33,12 @@ const SubmitSearch = (props) => {
       <div id="question-container" className="">
         <Question question={"Submit Search?"}></Question>
       </div>
-      <div id="options-container" className="">
-        <NavLink to="/matches" className="button" onClick={submitSelections}>
+      <div id="submit-search-container" className="">
+        <NavLink
+          to="/matches"
+          className="button is-large background wine-color"
+          onClick={submitSelections}
+        >
           Submit Search
         </NavLink>
       </div>

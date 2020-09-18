@@ -6,6 +6,8 @@ import WineCountryOrigin from "./form-pages/WineCountryOrigin";
 import WinePrice from "./form-pages/WinePrice";
 import SubmitSearch from "./SubmitSearch";
 import WhiteWineVerietal from "./form-pages/WhiteWineVerietal";
+import WhiteWineNotes from "./form-pages/WhiteWineNotes";
+import WineBubbles from "./form-pages/WineBubbles";
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
 
@@ -26,15 +28,21 @@ const WhiteWineForm = () => {
   return (
     <main>
       <section style={{ display: pageNum === 1 ? "block" : "none" }}>
-        <WineCountryOrigin></WineCountryOrigin>
+        <WineBubbles></WineBubbles>
       </section>
       <section style={{ display: pageNum === 2 ? "block" : "none" }}>
-        <WinePrice></WinePrice>
+        <WineCountryOrigin></WineCountryOrigin>
       </section>
       <section style={{ display: pageNum === 3 ? "block" : "none" }}>
-        <WhiteWineVerietal></WhiteWineVerietal>
+        <WinePrice></WinePrice>
       </section>
       <section style={{ display: pageNum === 4 ? "block" : "none" }}>
+        <WhiteWineVerietal></WhiteWineVerietal>
+      </section>
+      <section style={{ display: pageNum === 5 ? "block" : "none" }}>
+        <WhiteWineNotes></WhiteWineNotes>
+      </section>
+      <section style={{ display: pageNum === 6 ? "block" : "none" }}>
         <SubmitSearch></SubmitSearch>
       </section>
     </main>

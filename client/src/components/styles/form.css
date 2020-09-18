@@ -20,3 +20,17 @@ div.form-container > div {
   justify-self: flex-end;
   margin-left: auto;
 }
+
+#submit-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no-matches-container {
+  padding-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
