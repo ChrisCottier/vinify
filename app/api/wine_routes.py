@@ -25,6 +25,14 @@ def matches():
     result = db.engine.execute(sql)
 
     matches = matches_dict(result)
-    chosen = choose_random(matches, 10)
+    chosen = choose_random(matches, 40)
 
     return jsonify(chosen)
+
+
+@wine_routes.route('/<id>')
+def wine_details(id):
+    wine = Wine.query.get(id).to_dict()
+    if not wine:
+        pass
+    return jsonify(wine)

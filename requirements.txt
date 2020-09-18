@@ -14,3 +14,7 @@ Werkzeug==1.0.1
 WTForms==2.3.3
 psycopg2==2.8.5
 flask-jwt-extended==3.24.1
+flask-migrate==2.5.3
+bcrypt==3.2.0
+pyjwt==1.7.1
+varname==0.4.0

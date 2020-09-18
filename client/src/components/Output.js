@@ -45,7 +45,7 @@ const Output = (props) => {
 
   return (
     <div className="output-container">
-      <div className="">{output}</div>
+      <div className="output-text">{output}</div>
     </div>
   );
 };

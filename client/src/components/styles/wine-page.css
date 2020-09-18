@@ -1,0 +1,12 @@
+#wine-details-container {
+  background-color: white;
+}
+
+/* #wine-pictures-container {
+
+} */
+
+.wine-page-image {
+  max-height: 50%;
+  max-width: 80%;
+}

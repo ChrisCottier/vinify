@@ -36,7 +36,7 @@ class Wine(db.Model):
             "avg_price": self.avg_price,
             "vintage": self.vintage,
             "color": self.color,
-            "verietal": self.verital,
+            "verietal": self.verietal,
             "description": self.description,
             "primary_image": self.primary_image,
             "country": self.country,

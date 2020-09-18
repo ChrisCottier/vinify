@@ -1,21 +1,31 @@
 /* TODO Add site wide styles */
 
 /* dark theme
-darkest: #111111 
+darkest: #111111
 dark gray: #303030
 lighter gray: #595959
 wine color accent: #55001e; */
-
-
 
 main {
   margin-top: 50px;
   height: 100%;
   width: auto;
-  min-height: 100vh;
+  min-height: 90vh;
+  background-color: black;
+  color: white;
+  /* z-index: -20; */
+}
+
+* {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.wine-color.background {
   background-color: #55001e;
   color: white;
 }
 
-* {
+.wine-color.background :hover {
+  background-color: rgba(133, 3, 15, 1);
+  color: white;
 }

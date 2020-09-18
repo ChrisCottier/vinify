@@ -1,3 +1,8 @@
+.choose-one {
+  text-align: center;
+  color: #303030;
+}
+
 .option {
   align-items: center;
   display: flex;
@@ -20,6 +25,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #111111;
+  height: 200px;
+  width: 200px;
+}
+
+.option-text {
+  color: white;
+  padding-bottom: 20px;
+  font-size: 20px;
 }
 
 .option-content-3 {
@@ -60,7 +74,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: repeat(2, 1fr);
-  min-height: 300px;
+  min-height: 500px;
   height: 100%;
 }
 
@@ -91,7 +105,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: repeat(5, 1fr);
-  min-height: 300px;
+  min-height: 500px;
   height: 100%;
 }
 
@@ -124,7 +138,7 @@
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  min-height: 300px;
+  min-height: 500px;
   height: 100%;
 }
 
@@ -160,7 +174,7 @@
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(5, 1fr);
-  min-height: 300px;
+  min-height: 750px;
   height: 100%;
 }
 
@@ -199,7 +213,7 @@
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(5, 1fr);
-  min-height: 300px;
+  min-height: 750px;
   height: 100%;
 }
 
