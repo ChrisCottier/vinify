@@ -52,13 +52,13 @@ const RedWineVerietal = () => {
               <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
             ),
           },
-          {
-            optionText: "Something Else!",
-            optionValue: "niche",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
-            ),
-          },
+          // {
+          //   optionText: "Something Else!",
+          //   optionValue: "niche",
+          //   optionPic: (
+          //     <img src="https://img.icons8.com/cotton/64/000000/grape.png" />
+          //   ),
+          // },
           {
             optionText: "Anything",
             optionValue: "all",

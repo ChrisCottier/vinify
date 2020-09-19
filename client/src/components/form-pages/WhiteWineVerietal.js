@@ -37,13 +37,13 @@ const WhiteWineVerietal = () => {
               <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
             ),
           },
-          {
-            optionText: "Something Else!",
-            optionValue: "niche",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
-            ),
-          },
+          // {
+          //   optionText: "Something Else!",
+          //   optionValue: "niche",
+          //   optionPic: (
+          //     <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
+          //   ),
+          // },
           {
             optionText: "Anything",
             optionValue: "all",

@@ -49,8 +49,9 @@ const Matches = () => {
     }
   };
 
-  if (!form) return <Redirect to="/choose-wine-color"></Redirect>;
+  // if (matches === undefined) return null;
   if (!matches) return null;
+  // if (form === null) return <Redirect to="/choose-wine-color"></Redirect>;
   if (matches.length === 0) {
     return (
       <main>

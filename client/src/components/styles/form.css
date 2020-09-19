@@ -34,3 +34,11 @@ div.form-container > div {
   justify-content: center;
   align-items: center;
 }
+
+#search-logo {
+  max-height: 400px;
+}
+
+#search-logo:hover {
+  cursor: pointer;
+}
