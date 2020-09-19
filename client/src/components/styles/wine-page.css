@@ -1,12 +1,71 @@
 #wine-details-container {
-  background-color: white;
+  background-color: #303030;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  /* height: 80vh; */
+  /* background-color: #595959; */
 }
 
-/* #wine-pictures-container {
+#wine-pictures-container,
+#wine-details-container {
+  height: 80vh;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
 
-} */
+#wine-pictures-container::-webkit-scrollbar,
+#wine-details-container::-webkit-scrollbar {
+  width: 0;
+  height: 0; /* Safari and Chrome */
+}
+
+#wine-details-container div,
+#wine-details-container span,
+#wine-details-container h3,
+#wine-details-container h1,
+#wine-details-container header {
+  color: #e4a853;
+  padding-left: 10px;
+}
 
 .wine-page-image {
-  max-height: 50%;
-  max-width: 80%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.about-section {
+  border-bottom: 1px solid #595959;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-section {
+  border-bottom: 1px solid #595959;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.wine-content-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.about-header {
+  padding-top: 40px;
+}
+
+h1.wine-page-title.title {
+  padding-top: 10px;
+  margin-bottom: 40px;
+}
+
+#wine-page-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 0%;
+  padding: 0%;
 }

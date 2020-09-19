@@ -6,3 +6,15 @@ nav.navbar {
 nav.navbar a {
   color: white;
 }
+
+nav.navbar a:hover {
+  color: #e4a853;
+}
+
+#vinify-logo {
+  max-height: 50px;
+}
+
+/* #main-nav .navbar-link {
+  color: #e4a853;
+} */

@@ -55,7 +55,7 @@
 .match-content-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   font-weight: 600;
   width: 150px;
 }
@@ -78,4 +78,9 @@
 
 .match-content-container span {
   color: #f9f9f9;
+}
+
+.match-name {
+  /* max-width: 120px; */
+  text-align: right;
 }

@@ -14,14 +14,16 @@ const NavbarLoggedIn = () => {
   return (
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">
-        <NavLink to="/form" className="logo navbar-brand">
-          {"wine".toUpperCase()}
+        <NavLink to="/choose-wine-color" className="logo navbar-brand">
+          <img id="vinify-logo" src="static/2vinify_logo_1356x745.png" />
         </NavLink>
         <div className="navbar-menu">
           <div className="navbar-start"></div>
           <div className="navbar-end">
             <div className="navbar-item ">
-              <NavLink to="/choose-wine-color">Find wine</NavLink>
+              <NavLink className="" to="/choose-wine-color">
+                Find wine
+              </NavLink>
             </div>
             <div className="navbar-item">
               <NavLink to="/matches">Matches</NavLink>

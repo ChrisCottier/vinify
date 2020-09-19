@@ -25,7 +25,6 @@ main {
   color: white;
 }
 
-.wine-color.background :hover {
-  background-color: rgba(133, 3, 15, 1);
-  color: white;
+.wine-color.background:hover {
+  color: #e4a853;
 }

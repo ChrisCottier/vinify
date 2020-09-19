@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 const MatchCard = ({ match }) => {
   const [backgroundColor, setBackroundColor] = useState("rgba(85, 0, 30, 0.8)");
   return (
     <NavLink
       className="match-container"
-      onMouseEnter={() => setBackroundColor("rgba(133, 3, 15, 1)")}
+      onMouseEnter={() => setBackroundColor("rgba(224, 157, 61, 1)")}
       onMouseLeave={() => setBackroundColor("rgba(85, 0, 30, 0.8)")}
       to={`/wines/${match.id}`}
     >
@@ -18,7 +18,7 @@ const MatchCard = ({ match }) => {
       <div className="match-content-container">
         <div className="match-content-left">
           {/* TODO DROP SHADOW */}
-          <span>{match.name}</span>
+          <span className="match-name">{match.name}</span>
           <span>{match.vintage ? `${match.vintage}` : ""}</span>
           <span>
             {match.avg_price ? `$${match.avg_price}` : "Price Unavailable"}
@@ -36,6 +36,7 @@ const MatchCard = ({ match }) => {
 
 const Matches = () => {
   const { matches } = useSelector((state) => state.wines);
+  const { form } = useSelector((state) => state.forms);
 
   const handleScroll = (event) => {
     console.log("scroll");
@@ -48,11 +49,32 @@ const Matches = () => {
     }
   };
 
-  if (matches === undefined) return null;
+  // if (matches === undefined) return null;
+  if (!matches) return null;
+  // if (form === null) return <Redirect to="/choose-wine-color"></Redirect>;
   if (matches.length === 0) {
     return (
       <main>
-        <div>no matches</div>
+        <div className="container is-widescreen">
+          <div id="no-matches-container">
+            <span>
+              We couldn't find any matching wines! Try to narrow your search.
+            </span>
+            <iframe
+              src="https://giphy.com/embed/3o7aTskHEUdgCQAXde"
+              width="480"
+              height="204"
+              frameBorder="0"
+              class="giphy-embed"
+              allowFullScreen
+            ></iframe>
+            <p>
+              <a href="https://giphy.com/gifs/quentin-tarantino-pulp-fiction-vincent-vega-3o7aTskHEUdgCQAXde">
+                via GIPHY
+              </a>
+            </p>
+          </div>
+        </div>
       </main>
     );
   } else {

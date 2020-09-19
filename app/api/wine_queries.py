@@ -48,13 +48,26 @@ def red_wine_form_sql(selections):
     countries = countries_sql(selections['country'])
     prices = avg_price_sql(selections['price'])
     verietal = verietal_sql(selections['verietal'])
-    rating = wine_ratings_sql(selections['rating'])
+    # rating = wine_ratings_sql(selections['rating'])
     notes = wine_notes_sql(selections['notes'])
 
-    return f'{query} {countries} {prices} {verietal} {rating} {notes}'
+    return f'{query} {countries} {prices} {verietal} {notes}'
+
+
+def white_wine_form_sql(selections):
+    query = "SELECT * FROM wines WHERE lower(color) LIKE lower('white')"
+    countries = countries_sql(selections['country'])
+    bubbles = wine_bubbles_sql(selections['bubbles'])
+    prices = avg_price_sql(selections['price'])
+    verietal = verietal_sql(selections['verietal'])
+    notes = wine_notes_sql(selections['notes'])
+
+    return f'{query} {bubbles} {countries} {prices} {verietal} {notes}'
 
 
 def countries_sql(countries):
+    if 'anywhere' in countries:
+        return ''
     initial = f"AND (lower(country) LIKE lower('%{countries[0]}%')"
     for i in range(1, len(countries)):
         initial += f" OR lower(country) LIKE lower('%{countries[i]}%')"
@@ -101,13 +114,21 @@ def wine_notes_sql(notes):
     if ('any' in notes):
         return ''
     statements = []
+
+    # The arrays below add these wine buzzwords to the search query, expanding the net
     dark_fruits = ['plum', 'blackberry',
                    'currant', 'blueberry', 'fig', 'prune']
     bright_fruits = ['cherry', 'raspberry', 'strawberry',
                      'cranberry', 'candied', 'pomegranate']
+
+    citrus = ['lemon', 'orange', 'lime']
+    stone_fruits = ['apricot', 'peach', 'lychee']
+    tropical_fruits = ['mango', 'passion', 'papaya', 'pineapple', 'coconut']
+
     for note in notes:
         statements.append(
             f"lower(description) LIKE lower('%{note}%')")
+
         if (note == 'dark fruit'):
             for fruit in dark_fruits:
                 statements.append(
@@ -116,5 +137,30 @@ def wine_notes_sql(notes):
             for fruit in bright_fruits:
                 statements.append(
                     f"lower(description) LIKE lower('%{fruit}%')")
+
+        if (note == 'citrus'):
+            for fruit in citrus:
+                statements.append(
+                    f"lower(description) LIKE lower('%{fruit}%')")
+        if (note == 'stone fruit'):
+            for fruit in stone_fruits:
+                statements.append(
+                    f"lower(description) LIKE lower('%{fruit}%')")
+        if (note == 'tropical fruit'):
+            for fruit in tropical_fruits:
+                statements.append(
+                    f"lower(description) LIKE lower('%{fruit}%')")
+
+    sql_formatted = ' OR '.join(statements)
+    return f'AND ({sql_formatted})'
+
+
+def wine_bubbles_sql(bubbles):
+    if ('no bubbles' in bubbles):
+        return f"AND NOT (lower(name) LIKE lower('%sparkling%') OR lower(name) LIKE lower('%cava%') OR lower(name) LIKE lower('%champagne%') OR lower(state_province) LIKE lower('%champagne%') OR lower(name) LIKE lower('%prosecco%'))"
+    statements = []
+    for bubble in bubbles:
+        statements.append(
+            f"(lower(name) LIKE lower('%{bubble}%') OR lower(state_province) LIKE lower('%{bubble}%'))")
     sql_formatted = ' OR '.join(statements)
     return f'AND ({sql_formatted})'

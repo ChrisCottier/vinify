@@ -11,6 +11,7 @@ import "./components/styles/options.css";
 import "./components/styles/matches.css";
 import "./components/styles/output.css";
 import "./components/styles/wine-page.css";
+import "./components/styles/follows.css";
 
 import { hasAccessToken } from "./actions/auth";
 
@@ -20,9 +21,11 @@ import NavbarLoggedIn from "./components/NavbarLoggedIn";
 import Home from "./components/Home";
 import WineColorForm from "./components/WineColorForm";
 import RedWineForm from "./components/RedWineForm";
+import WhiteWineForm from "./components/WhiteWineForm";
 import Matches from "./components/Matches";
 import Footer from "./components/Footer";
 import WinePage from "./components/WinePage";
+import Following from "./components/Following";
 
 //forms
 //white, red, rose
@@ -48,8 +51,10 @@ function App() {
         <Route exact path="/" component={Home}></Route>
         <Route path="/choose-wine-color" component={WineColorForm}></Route>
         <Route path="/red" component={RedWineForm}></Route>
+        <Route path="/white" component={WhiteWineForm}></Route>
         <Route path="/matches" component={Matches}></Route>
         <Route path="/wines/:id" component={WinePage}></Route>
+        <Route path="/favorites" component={Following}></Route>
       </Switch>
       <Footer component={Footer}></Footer>
     </BrowserRouter>

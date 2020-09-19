@@ -1,6 +1,10 @@
-import { MATCHING_WINES, WINE_DETAILS } from "../actions/wines";
+import { MATCHING_WINES, WINE_DETAILS, TOGGLE_FOLLOW } from "../actions/wines";
 
-const wines = (state = {}, action) => {
+const defaultState = {
+  matches: null,
+};
+
+const wines = (state = defaultState, action) => {
   switch (action.type) {
     case MATCHING_WINES: {
       return {
@@ -13,6 +17,16 @@ const wines = (state = {}, action) => {
       return {
         ...state,
         wine: action.wine,
+      };
+    }
+
+    case TOGGLE_FOLLOW: {
+      return {
+        ...state,
+        wine: {
+          ...state.wine,
+          user_follows: action.following,
+        },
       };
     }
 

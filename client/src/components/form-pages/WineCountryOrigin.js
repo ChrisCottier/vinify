@@ -13,28 +13,35 @@ const WineCountryOrigin = () => {
             optionText: "United States",
             optionValue: "USA",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/usa-map.png" />
+              <img src="https://img.icons8.com/plasticine/100/000000/usa.png" />
             ),
           },
           {
             optionText: "France",
             optionValue: "France",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/france-map.png" />
+              <img src="https://img.icons8.com/officel/96/000000/france.png" />
             ),
           },
           {
             optionText: "Spain",
             optionValue: "Spain",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/spain-map.png" />
+              <img src="https://img.icons8.com/plasticine/100/000000/spain.png" />
             ),
           },
           {
-            optionText: "Canada",
-            optionValue: "Canada",
+            optionText: "Italy",
+            optionValue: "Italy",
             optionPic: (
-              <img src="https://img.icons8.com/ios/100/000000/spain-map.png" />
+              <img src="https://img.icons8.com/officel/96/000000/italy.png" />
+            ),
+          },
+          {
+            optionText: "Anywhere",
+            optionValue: "anywhere",
+            optionPic: (
+              <img src="https://img.icons8.com/color/96/000000/globe--v1.png" />
             ),
           },
         ]}
@@ -50,9 +57,16 @@ const WineCountryOrigin = () => {
 };
 
 {
-  /* <a href="https://icons8.com/icon/45746/usa-map">USA Map icon by Icons8</a>
-<a href="https://icons8.com/icon/58460/france-map">France Map icon by Icons8</a>
-<a href="https://icons8.com/icon/58505/spain-map">Spain Map icon by Icons8</a> */
+  /* <a href="https://icons8.com/icon/bMuMH6-iock_/usa">USA icon by Icons8</a> */
 }
-
+{
+  /* <a href="https://icons8.com/icon/zFwXFzSkitKP/italy">Italy icon by Icons8</a> */
+}
+{
+  /* <a href="https://icons8.com/icon/2ws6me7PWfkO/france">France icon by Icons8</a>
+<a href="https://icons8.com/icon/fpymAzUxfdCy/spain">Spain icon by Icons8</a> */
+}
+{
+  /* <a href="https://icons8.com/icon/63766/globe">Globe icon by Icons8</a> */
+}
 export default WineCountryOrigin;

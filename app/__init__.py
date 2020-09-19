@@ -8,10 +8,12 @@ from flask_migrate import Migrate
 from app.models import db
 from app.models.users import User
 from app.models.wines import Wine
+from app.models.follows import Follow
 
 from app.api.user_routes import user_routes
 from app.api.auth_routes import auth_routes
 from app.api.wine_routes import wine_routes
+from app.api.follow_routes import follow_routes
 
 from app.config import Config
 
@@ -22,6 +24,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(wine_routes, url_prefix='/api/wines')
+app.register_blueprint(follow_routes, url_prefix='/api/follows')
 
 db.init_app(app)
 migrate = Migrate(app, db)
