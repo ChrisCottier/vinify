@@ -42,7 +42,11 @@ const SignUp = () => {
 
   if (!signUpDisplay || !errors) return null;
   return (
-    <div className="modal" style={{ display: signUpDisplay }}>
+    <div
+      id="sign-up-modal"
+      className="modal"
+      style={{ display: signUpDisplay }}
+    >
       <div className="modal-background" onClick={modalOff}></div>
       <div className="modal-card">
         <header className="modal-card-head">
@@ -99,8 +103,8 @@ const SignUp = () => {
             </div>
             <div className="field">
               <div className="control">
-                <button className="button is-link" type="submit">
-                  Sign Up
+                <button className="button wine-color background" type="submit">
+                  Register
                 </button>
               </div>
             </div>

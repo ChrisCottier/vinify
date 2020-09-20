@@ -5,20 +5,18 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
 }
 
 .home-text-display {
-  /* border-right: solid 3px rgba(0, 255, 0, 0.75); */
-  white-space: nowrap;
-  overflow: hidden;
-  /* font-family: 'Source Code Pro', monospace;   */
-  font-size: 64px;
-  /* color: rgba(255,255,255,.70); */
+  position: absolute;
+  top: 25%;
+  font-size: 100px;
 }
 
 .char {
-  font-size: 40px;
-  height: 40px;
+  font-size: 64px;
+  height: 64px;
   animation: an 1s ease-out 1 both;
   display: inline-block;
 }
@@ -33,4 +31,12 @@
     opacity: 1;
     transform: perspective(500px) translate3d(0, 0, 0);
   }
+}
+
+#splash-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
 }

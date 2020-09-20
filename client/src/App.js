@@ -13,6 +13,8 @@ import "./components/styles/output.css";
 import "./components/styles/wine-page.css";
 import "./components/styles/follows.css";
 import "./components/styles/home.css";
+import "./components/styles/modals.css";
+import "./components/styles/footer.css";
 
 import { hasAccessToken } from "./actions/auth";
 
@@ -41,6 +43,8 @@ function App() {
     dispatch(hasAccessToken());
   });
 
+  console.log("location", window.location);
+
   return (
     <BrowserRouter>
       {loggedOut ? (
@@ -57,7 +61,11 @@ function App() {
         <Route path="/wines/:id" component={WinePage}></Route>
         <Route path="/favorites" component={Following}></Route>
       </Switch>
-      <Footer component={Footer}></Footer>
+      {window.location.pathname !== "/matches" ? (
+        <Footer component={Footer}></Footer>
+      ) : (
+        <></>
+      )}
     </BrowserRouter>
   );
 }

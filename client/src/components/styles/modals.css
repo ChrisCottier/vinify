@@ -1,0 +1,24 @@
+#sign-up-modal .modal-card-body,
+#log-in-modal .modal-card-body {
+  background-color: #b7b7b7;
+}
+
+#sign-up-modal .modal-card-head,
+#log-in-modal .modal-card-head {
+  background-color: #595959;
+}
+
+#sign-up-modal p,
+#log-in-modal p {
+  color: white;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .login-buttons button {
+  display: flex;
+  justify-content: space-between;
+} */
