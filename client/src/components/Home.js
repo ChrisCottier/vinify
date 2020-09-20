@@ -40,17 +40,19 @@ const Home = () => {
 
   useEffect(() => {
     if (!text || currentFrame > 1) return;
+    // console.log("after check");
+    // debugger;
     const changeFrame = setInterval(() => {
-      console.log("use ef frame", currentFrame);
+      // console.log("what");
       if (n < 7) {
         let next = currentFrame + n;
-        // console.log(next, "next");
+        console.log(next);
         setCurrentFrame(next);
         n++;
         // currentFrame++;
       }
     }, 4000);
-
+    // debugger;
     return clearInterval(changeFrame);
   }, [text]);
 
@@ -58,10 +60,9 @@ const Home = () => {
     dispatch({ type: SIGN_UP_MODAL, display: "block" });
   };
 
-  if (loggedOut === undefined) return null;
+  // if (loggedOut === undefined) return null;
   if (loggedOut === false) return <Redirect to="/choose-wine-color"></Redirect>;
 
-  console.log("frame", currentFrame);
   return (
     <main>
       <div id="home-page-container">
@@ -150,12 +151,7 @@ const Home = () => {
         ) : (
           <></>
         )}
-
-        {/* <span className="home-text-display">
-          We've got an easier way to find wine
-        </span> */}
       </div>
-      HOME PAGE
     </main>
   );
 };

@@ -29,6 +29,16 @@ const WhiteWineVerietal = () => {
             optionValue: "pinot grigio",
             optionPic: <img src="static/white-grapes.png" />,
           },
+          {
+            optionText: "Viognier",
+            optionValue: "viogner",
+            optionPic: <img src="static/white-grapes.png" />,
+          },
+          {
+            optionText: "Chenin Blanc",
+            optionValue: "chenin blanc",
+            optionPic: <img src="static/white-grapes.png" />,
+          },
           // {
           //   optionText: "Something Else!",
           //   optionValue: "niche",

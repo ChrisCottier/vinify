@@ -45,8 +45,6 @@ const Matches = () => {
   const { form } = useSelector((state) => state.forms);
 
   const handleScroll = (event) => {
-    console.log("scroll");
-    console.log(event);
     event.preventDefault();
     if (event.deltaY > 0) {
       event.currentTarget.scrollLeft += 100;

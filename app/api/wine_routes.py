@@ -4,7 +4,7 @@ from sqlalchemy import text
 from app.models import db
 from app.models.wines import Wine
 from app.models.follows import Follow
-from .wine_queries import white_wine_form_sql, red_wine_form_sql, matches_dict, choose_random
+from .wine_queries import rose_wine_form_sql, white_wine_form_sql, red_wine_form_sql, matches_dict, choose_random
 from app.auth import validate_jwt
 
 wine_routes = Blueprint('wines', __name__)
@@ -17,7 +17,6 @@ def matches():
     data = request.json
     form = data['form']
     selections = data['selections']
-    print('selection', selections)
 
     sql_query = ''
     # Red wine search
@@ -25,6 +24,8 @@ def matches():
         sql_query = red_wine_form_sql(selections)
     elif form == 'white':
         sql_query = white_wine_form_sql(selections)
+    elif form == 'rose':
+        sql_query = rose_wine_form_sql(selections)
 
     sql = text(f'{sql_query} LIMIT 100;')
     result = db.engine.execute(sql)
@@ -48,11 +49,9 @@ def wine_details(id):
     follow = Follow.query.filter(
         Follow.user_id == user_id, Follow.wine_id == wine['id']).first()
     if follow:
-        print(follow)
         user_follows = True
     else:
         user_follows = False
-    print(user_follows)
 
     wine['user_follows'] = user_follows
 
