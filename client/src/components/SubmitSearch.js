@@ -41,7 +41,7 @@ const SubmitSearch = (props) => {
         >
           Submit Search
         </NavLink> */}
-        <NavLink to="/match">
+        <NavLink to="/matches">
           <img
             id="search-logo"
             src="static/2vinify_logo_1356x745.png"

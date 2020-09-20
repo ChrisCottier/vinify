@@ -12,30 +12,22 @@ const WhiteWineVerietal = () => {
           {
             optionText: "Chardonnay",
             optionValue: "chardonnay",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
-            ),
+            optionPic: <img src="static/white-grapes.png" />,
           },
           {
             optionText: "Riesling",
             optionValue: "riesling",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
-            ),
+            optionPic: <img src="static/white-grapes.png" />,
           },
           {
             optionText: "Sauvignon Blanc",
             optionValue: "sauvignon blanc",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
-            ),
+            optionPic: <img src="static/white-grapes.png" />,
           },
           {
             optionText: "Pinot Grigio",
             optionValue: "pinot grigio",
-            optionPic: (
-              <img src="https://img.icons8.com/cotton/64/000000/wine-bottle--v2.png" />
-            ),
+            optionPic: <img src="static/white-grapes.png" />,
           },
           // {
           //   optionText: "Something Else!",
@@ -46,10 +38,8 @@ const WhiteWineVerietal = () => {
           // },
           {
             optionText: "Anything",
-            optionValue: "all",
-            optionPic: (
-              <img src="https://img.icons8.com/color/96/000000/shrug-emoticon.png" />
-            ),
+            optionValue: "anything",
+            optionPic: <img src="static/white-grapes.png" />,
           },
         ]}
         question={"What grape strikes your fancy?"}

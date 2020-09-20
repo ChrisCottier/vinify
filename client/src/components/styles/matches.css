@@ -25,7 +25,7 @@
   position: absolute;
   width: 100%;
   height: 60%;
-  background-color: rgba(85, 0, 30, 0.8);
+  background-color: #111111;
   border-radius: 70%;
   z-index: 3;
 }
@@ -55,7 +55,7 @@
 .match-content-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   font-weight: 600;
   width: 150px;
 }
@@ -82,5 +82,18 @@
 
 .match-name {
   /* max-width: 120px; */
-  text-align: right;
+  text-align: center;
+}
+
+.match-price {
+  font-size: 24px;
+}
+
+.match-vintage {
+  font-style: italic;
+}
+
+.match-verietal {
+  font-style: italic;
+  text-align: center;
 }

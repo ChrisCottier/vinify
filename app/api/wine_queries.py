@@ -92,7 +92,7 @@ def avg_price_sql(prices):
 
 
 def verietal_sql(verietals):
-    if ('all' in verietals):
+    if ('anything' in verietals):
         return ''
     statements = []
     for verietal in verietals:

@@ -12,6 +12,7 @@ import "./components/styles/matches.css";
 import "./components/styles/output.css";
 import "./components/styles/wine-page.css";
 import "./components/styles/follows.css";
+import "./components/styles/home.css";
 
 import { hasAccessToken } from "./actions/auth";
 
