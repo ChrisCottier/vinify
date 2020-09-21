@@ -47,7 +47,7 @@ const Home = () => {
       }
     }, 4000);
 
-    return clearInterval(changeFrame);
+    return () => clearInterval(changeFrame);
   }, [text]);
 
   const signUp = () => {
