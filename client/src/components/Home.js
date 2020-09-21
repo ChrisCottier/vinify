@@ -12,9 +12,7 @@ const Home = () => {
   const text = useRef(null);
   const [currentFrame, setCurrentFrame] = useState(1);
   let n = 1;
-  // let currentFrame = 1;
 
-  // let text;
   useEffect(() => {
     if (!text) return;
 
@@ -40,19 +38,15 @@ const Home = () => {
 
   useEffect(() => {
     if (!text || currentFrame > 1) return;
-    console.log("after check");
-    // debugger;
+
     const changeFrame = setInterval(() => {
-      // console.log("what");
       if (n < 7) {
         let next = currentFrame + n;
-        console.log(next);
         setCurrentFrame(next);
         n++;
-        // currentFrame++;
       }
     }, 4000);
-    // debugger;
+
     return clearInterval(changeFrame);
   }, [text]);
 
@@ -60,7 +54,6 @@ const Home = () => {
     dispatch({ type: SIGN_UP_MODAL, display: "block" });
   };
 
-  // if (loggedOut === undefined) return null;
   if (loggedOut === false) return <Redirect to="/choose-wine-color"></Redirect>;
 
   return (
