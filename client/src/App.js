@@ -61,11 +61,7 @@ function App() {
         <Route path="/wines/:id" component={WinePage}></Route>
         <Route path="/favorites" component={Following}></Route>
       </Switch>
-      {window.location.pathname !== "/matches" ? (
-        <Footer component={Footer}></Footer>
-      ) : (
-        <></>
-      )}
+      <Footer component={Footer}></Footer>
     </BrowserRouter>
   );
 }

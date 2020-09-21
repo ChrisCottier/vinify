@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { getFollows } from "../actions/follows";
+import Loading from "./Loading";
 
 const FollowTile = ({ wine }) => {
   return (
@@ -41,7 +42,7 @@ const Following = () => {
     setGotFavorites(true);
   });
 
-  if (!follows) return null;
+  if (!follows) return <Loading></Loading>;
 
   return (
     <main>

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
+
+import Loading from "./Loading";
+import { FOOTER_DISPLAY } from "../actions/modals";
 
 const MatchCard = ({ match }) => {
   const [backgroundColor, setBackroundColor] = useState("#111111");
@@ -41,20 +44,29 @@ const MatchCard = ({ match }) => {
 };
 
 const Matches = () => {
+  const dispatch = useDispatch();
   const { matches } = useSelector((state) => state.wines);
   const { form } = useSelector((state) => state.forms);
+  const [footerOff, setFooterOff] = useState(false);
+
+  //Footer interferes with sideways scrolling of matches, so it will be disabled
+  useEffect(() => {
+    if (footerOff) return;
+    dispatch({ type: FOOTER_DISPLAY, display: "none" });
+    setFooterOff(true);
+  });
 
   const handleScroll = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
+    event.stopPropagation();
     if (event.deltaY > 0) {
       event.currentTarget.scrollLeft += 100;
     } else {
       event.currentTarget.scrollLeft -= 100;
     }
   };
-  if (form === null) return <Redirect to="/choose-wine-color"></Redirect>;
-  if (!matches) return null;
-  // if (!matches) return null;
+  if (!form) return <Redirect to="/choose-wine-color"></Redirect>;
+  if (!matches) return <Loading></Loading>;
   if (matches.length === 0) {
     return (
       <main>

@@ -28,3 +28,9 @@ main {
 .wine-color.background:hover {
   color: #e4a853;
 }
+
+#loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
