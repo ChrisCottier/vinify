@@ -40,7 +40,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!text || currentFrame > 1) return;
-    // console.log("after check");
+    console.log("after check");
     // debugger;
     const changeFrame = setInterval(() => {
       // console.log("what");
