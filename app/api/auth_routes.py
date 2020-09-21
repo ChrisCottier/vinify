@@ -15,7 +15,6 @@ auth_routes = Blueprint('auth', __name__)
 def sign_up():
     data = request.json
     errors = validate_sign_up(data)
-    print(errors)
     if (len(errors) > 0):
         return jsonify({'validated': False, 'errors': errors})
 
@@ -57,9 +56,7 @@ def log_in():
 
 @auth_routes.route('/restore')
 def restore():
-    # auth_header= request.headers['Authorization']
-    # print(auth_header)
-    # print(auth_header[7:])
+
     validated = validate_jwt(request)
     if (validated):
         return validated

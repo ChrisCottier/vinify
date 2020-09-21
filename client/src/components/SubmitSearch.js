@@ -41,7 +41,7 @@ const SubmitSearch = (props) => {
         >
           Submit Search
         </NavLink> */}
-        <NavLink to="/match">
+        <NavLink to="/matches">
           <img
             id="search-logo"
             src="static/2vinify_logo_1356x745.png"
@@ -50,7 +50,10 @@ const SubmitSearch = (props) => {
         </NavLink>
       </div>
       <div id="form-navigation-container">
-        <button className="button previous-page" onClick={changePage}>
+        <button
+          className="button previous-page background wine-color"
+          onClick={changePage}
+        >
           Previous
         </button>
         <span></span>

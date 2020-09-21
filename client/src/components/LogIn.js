@@ -42,7 +42,7 @@ const LogIn = () => {
 
   if (!logInDisplay) return null;
   return (
-    <div className="modal" style={{ display: logInDisplay }}>
+    <div id="log-in-modal" className="modal" style={{ display: logInDisplay }}>
       <div className="modal-background" onClick={modalOff}></div>
       <div className="modal-card">
         <header className="modal-card-head">
@@ -78,11 +78,14 @@ const LogIn = () => {
               ></SimpleInput>
             </div>
             <div className="field">
-              <div className="control">
-                <button className="button is-link" type="submit">
+              <div className="control login-buttons">
+                <button className="button background wine-color" type="submit">
                   Log In
                 </button>
-                <button className="button is-link" onClick={demoUser}>
+                <button
+                  className="button background wine-color"
+                  onClick={demoUser}
+                >
                   Demo User
                 </button>
               </div>

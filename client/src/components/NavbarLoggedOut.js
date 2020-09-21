@@ -16,17 +16,10 @@ const NavbarLoggedOut = () => {
     <>
       <nav id="main-nav" className="navbar is-fixed-top is-transparent">
         <NavLink to="/" className="logo navbar-brand">
-          {"wine".toUpperCase()}
+          <img id="vinify-logo" src="static/2vinify_logo_1356x745.png" />
         </NavLink>
         <div className="navbar-menu">
-          <div className="navbar-start">
-            <div className="navbar-item ">
-              <a>hi</a>
-            </div>
-            <div className="navbar-item">
-              <a>sample</a>
-            </div>
-          </div>
+          <div className="navbar-start"></div>
 
           <div className="navbar-end">
             <div className="navbar-item">

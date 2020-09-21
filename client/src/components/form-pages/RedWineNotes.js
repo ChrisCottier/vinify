@@ -61,10 +61,10 @@ const RedWineNotes = () => {
             ),
           },
           {
-            optionText: "Chocolate",
-            optionValue: "chocolate",
+            optionText: "Savory",
+            optionValue: "savory",
             optionPic: (
-              <img src="https://img.icons8.com/plasticine/100/000000/chocolate-bar.png" />
+              <img src="https://img.icons8.com/dusk/64/000000/rack-of-lamb.png" />
             ),
           },
           {

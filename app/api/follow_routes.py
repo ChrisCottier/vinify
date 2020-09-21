@@ -39,7 +39,6 @@ def toggle_follow():
 # Route to get all wines user follows
 @follow_routes.route('/user/<user_id>')
 def user_follows(user_id):
-    print('here')
     validated = validate_jwt(request)
     jwt_user_id = validated['user']['id']
     if (jwt_user_id != int(user_id)):

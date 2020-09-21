@@ -37,6 +37,7 @@ div.form-container > div {
 
 #search-logo {
   max-height: 400px;
+  /* box-shadow: 2px 2px 2px gray; */
 }
 
 #search-logo:hover {
