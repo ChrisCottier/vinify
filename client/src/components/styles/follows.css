@@ -1,3 +1,7 @@
+#favorites-title {
+  font-size: 40px;
+}
+
 .follow-wine-container {
   border-top: 1px solid lightgray;
   padding-top: 20px;
@@ -23,14 +27,22 @@
   font-size: 16px;
 }
 
-.follow-wine-title {
+a.follow-wine-title {
   margin-bottom: 5px;
 }
 
 .follow-wine-title:hover {
-  color: #e51075;
+  color: #e4a853;
 }
 
-.follow-wine-winery {
+a.follow-wine-winery {
   margin-top: 10px;
+}
+
+a.winery-name {
+  color: #595959;
+}
+
+a.winery-name:hover {
+  color: #e4a853;
 }

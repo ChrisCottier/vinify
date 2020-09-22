@@ -22,7 +22,9 @@ const FollowTile = ({ wine }) => {
         </NavLink>
         <h2 className="subtitle is-5 follow-wine-winery">
           <span>By </span>
-          <NavLink to={`/wines/${wine.id}`}>{wine.winery}</NavLink>
+          <NavLink className="winery-name" to={`/wines/${wine.id}`}>
+            {wine.winery}
+          </NavLink>
         </h2>
         <div className="follow-wine-country">{wine.country}</div>
       </div>
@@ -47,7 +49,7 @@ const Following = () => {
   return (
     <main>
       <div className="container is-widescreen">
-        <h1 className="title is-1">My Favorites</h1>
+        <h1 id="favorites-title">My Favorites</h1>
         <div id="user-follows-container">
           {follows.map((wine) => {
             return <FollowTile wine={wine}></FollowTile>;

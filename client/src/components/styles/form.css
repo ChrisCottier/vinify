@@ -1,5 +1,5 @@
 div.form-container {
-  background-color: black;
+  /* background-color: black; */
   display: grid;
   min-height: 90vh;
   grid-template-rows: 100px 3fr 100px;

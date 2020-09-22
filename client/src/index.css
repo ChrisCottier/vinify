@@ -6,6 +6,16 @@ dark gray: #303030
 lighter gray: #595959
 wine color accent: #55001e; */
 
+/* main {
+  margin-top: 50px;
+  height: 100%;
+  width: auto;
+  min-height: 95vh;
+  background-image: url("https://indiegogo-clone.s3.us-east-2.amazonaws.com/barrel-room.jpg");
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+} */
+
 main {
   margin-top: 50px;
   height: 100%;
@@ -13,7 +23,6 @@ main {
   min-height: 95vh;
   background-color: black;
   color: white;
-  /* z-index: -20; */
 }
 
 * {
@@ -33,4 +42,5 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
