@@ -70,6 +70,7 @@ const Matches = () => {
   if (matches.length === 0) {
     return (
       <main>
+        <div id="shadow"></div>
         <div className="container is-widescreen">
           <div id="no-matches-container">
             <span>

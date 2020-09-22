@@ -48,6 +48,7 @@ const Following = () => {
 
   return (
     <main>
+      <div id="shadow"></div>
       <div className="container is-widescreen">
         <h1 id="favorites-title">My Favorites</h1>
         <div id="user-follows-container">

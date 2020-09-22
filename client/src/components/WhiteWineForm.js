@@ -27,6 +27,7 @@ const WhiteWineForm = () => {
 
   return (
     <main>
+      <div id="shadow"></div>
       <section style={{ display: pageNum === 1 ? "block" : "none" }}>
         <WineBubbles></WineBubbles>
       </section>

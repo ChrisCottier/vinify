@@ -88,6 +88,7 @@ const WinePage = () => {
   }
   return (
     <main>
+      <div id="shadow"></div>
       <div className="container is-widescreen">
         <div id="wine-page-buttons" className="buttons">
           <NavLink

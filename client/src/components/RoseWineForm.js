@@ -20,6 +20,7 @@ const RoseWineForm = () => {
 
   return (
     <main>
+      <div id="shadow"></div>
       <section style={{ display: pageNum === 1 ? "block" : "none" }}>
         <RoseWineNotes></RoseWineNotes>
       </section>
