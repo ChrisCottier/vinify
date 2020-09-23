@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import TextTransition, { presets } from "react-text-transition";
 
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -45,7 +46,12 @@ const Output = (props) => {
 
   return (
     <div className="output-container">
-      <div className="output-text">{output}</div>
+      {/* <div className="output-text">{output}</div> */}
+      <TextTransition
+        text={output}
+        springConfig={presets.molasses}
+        id="output-text"
+      ></TextTransition>
     </div>
   );
 };

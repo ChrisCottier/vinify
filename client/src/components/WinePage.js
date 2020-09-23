@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { wineDetails, followWine } from "../actions/wines";
+import Loading from "./Loading";
 
 const AboutSection = ({ title, content }) => {
   return (
@@ -81,7 +82,7 @@ const WinePage = () => {
     dispatch(followWine(token, wine.id));
   };
 
-  if (!wine) return null;
+  if (!wine) return <Loading></Loading>;
   let photosArr = [wine.primary_image];
   if (wine.photos) {
     photosArr = [...photosArr, ...wine.photos.split(",")];
