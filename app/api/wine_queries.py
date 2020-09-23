@@ -49,7 +49,7 @@ def red_wine_form_sql(selections):
     prices = avg_price_sql(selections['price'])
     verietal = verietal_sql(selections['verietal'])
     # rating = wine_ratings_sql(selections['rating'])
-    notes = wine_notes_sql(selections['notes'])
+    notes = wine_notes_sql(selections['notes'], selections['notesAreAnd'])
 
     return f'{query} {countries} {prices} {verietal} {notes}'
 
@@ -146,69 +146,74 @@ def wine_ratings_sql(rating):
     return f'AND community_rank > {minimum}'
 
 
-def wine_notes_sql(notes):
+def wine_notes_sql(notes, notes_are_and):
     if ('any' in notes):
         return ''
     statements = []
 
     # The arrays below add these wine buzzwords to the search query, expanding the net
     # red
-    dark_fruits = ['plum', 'blackberry',
+    dark_fruits = ['dark fruit', 'plum', 'blackberry',
                    'currant', 'blueberry', 'fig', 'prune']
-    bright_fruits = ['cherry', 'raspberry', 'strawberry',
+    bright_fruits = ['bright fruit', 'cherry', 'raspberry', 'strawberry',
                      'cranberry', 'pomegranate']
-    savory = ['pork', 'lamb', 'beef', 'full bod', 'pepper']
+    savory = ['savor', 'savour', 'pork', 'lamb', 'beef', 'full bod', 'pepper']
 
     # white
-    citrus = ['lemon', 'orange', 'lime']
-    stone_fruits = ['apricot', 'peach', 'lychee']
-    tropical_fruits = ['mango', 'passion', 'papaya', 'pineapple', 'coconut']
+    citrus = ['citrus', 'lemon', 'orange', 'lime']
+    stone_fruits = ['stone fruit', 'apricot', 'peach', 'lychee']
+    tropical_fruits = ['tropical', 'mango',
+                       'passion', 'papaya', 'pineapple', 'coconut']
 
     # rose
-    sweets = ['candy', 'sugar']
-    florals = ['flowers', 'lavender', 'rose', 'magnolia', 'lillies']
+    sweets = ['sweet', 'candy', 'sugar']
+    florals = ['floral', 'flowers', 'lavender', 'rose', 'magnolia', 'lillies']
 
     for note in notes:
-        statements.append(
-            f"lower(description) LIKE lower('%{note}%')")
-
         if (note == 'dark fruit'):
-            for fruit in dark_fruits:
-                statements.append(
-                    f"lower(description) LIKE lower('%{fruit}%')")
-        if (note == 'bright fruit' or note == 'fruity' or note == 'berries'):
-            for fruit in bright_fruits:
-                statements.append(
-                    f"lower(description) LIKE lower('%{fruit}%')")
-        if (note == 'savory'):
-            for savor in savory:
-                statements.append(
-                    f"lower(description) LIKE lower('%{savor}%')")
+            # THIS Section could be made more DRY
+            # addition = []
+            # for fruit in dark_fruits:
+            #     addition.append(f"lower(description) LIKE lower('%{fruit}%')")
+            # joined_additions = ' OR '.join(addition)
+            # statements.append(f'({joined_additions})'
+            statements.append(note_matching_terms(dark_fruits))
+        elif (note == 'bright fruit' or note == 'fruity' or note == 'berries'):
+            statements.append(note_matching_terms(bright_fruits))
+        elif (note == 'savory'):
+            statements.append(note_matching_terms(savory))
 
-        if (note == 'citrus' or note == 'zesty'):
-            for fruit in citrus:
-                statements.append(
-                    f"lower(description) LIKE lower('%{fruit}%')")
-        if (note == 'stone fruit'):
-            for fruit in stone_fruits:
-                statements.append(
-                    f"lower(description) LIKE lower('%{fruit}%')")
-        if (note == 'tropical fruit'):
-            for fruit in tropical_fruits:
-                statements.append(
-                    f"lower(description) LIKE lower('%{fruit}%')")
-        if (note == 'floral'):
-            for floral in florals:
-                statements.append(
-                    f"lower(description) LIKE lower('%{floral}%')")
+        elif (note == 'citrus' or note == 'zesty'):
+            statements.append(note_matching_terms(citrus))
+        elif (note == 'stone fruit'):
+            statements.append(note_matching_terms(stone_fruits))
+        elif (note == 'tropical fruit'):
+            statements.append(note_matching_terms(tropical_fruits))
+        elif (note == 'floral'):
+            statements.append(note_matching_terms(florals))
+        elif (note == 'sweet'):
+            statements.append(note_matching_terms(sweets))
+        else:
+            statements.append(
+                f"lower(description) LIKE lower('%{note}%')")
 
-        if (note == 'sweet'):
-            for sweet in sweets:
-                statements.append(
-                    f"lower(description) LIKE lower('%{sweet}%')")
+    sql_formatted = ''
+    # This turnary takes into account if the user is querying and or or for notes
+    if (notes_are_and):
+        sql_formatted = ' AND '.join(statements)
+    else:
+        sql_formatted = ' OR '.join(statements)
 
-    sql_formatted = ' OR '.join(statements)
     return f'AND ({sql_formatted})'
+
+
+def note_matching_terms(array):
+    addition = []
+    for ele in array:
+        addition.append(f"lower(description) LIKE lower('%{ele}%')")
+    joined_additions = ' OR '.join(addition)
+    # statements.append(f'({joined_additions})')
+    return f'({joined_additions})'
 
 
 def wine_bubbles_sql(bubbles):

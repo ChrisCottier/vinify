@@ -39,7 +39,7 @@ const WineAbout = ({ wine }) => {
       )}
       {wine.community_rank ? (
         <AboutSection
-          title="Snooth Community Ranking"
+          title="Snooth Community Ranking (out of 5)"
           content={wine.community_rank}
         ></AboutSection>
       ) : (
