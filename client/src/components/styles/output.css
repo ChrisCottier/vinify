@@ -1,7 +1,9 @@
 #output-container {
+  margin-top: 10px;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 /* #output-text {
@@ -11,4 +13,13 @@
 #output-container span,
 #output-container div {
   font-size: 40px;
+}
+
+#toggle-and-option {
+  /* text-align: center; */
+  background-color: rgba(17, 17, 17, 0.3);
+  padding: 0px;
+  width: 60px;
+  font-size: 20px;
+  color: white;
 }

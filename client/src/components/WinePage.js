@@ -37,9 +37,9 @@ const WineAbout = ({ wine }) => {
       ) : (
         <></>
       )}
-      {wine.community_rank ? (
+      {wine.community_rank && wine.community_rank !== "None" ? (
         <AboutSection
-          title="Snooth Community Ranking"
+          title="Snooth Community Ranking (out of 5)"
           content={wine.community_rank}
         ></AboutSection>
       ) : (
@@ -53,7 +53,12 @@ const WineAbout = ({ wine }) => {
       {wine.pairings ? (
         <AboutSection
           title="Food Pairings"
-          content={wine.pairings}
+          content={wine.pairings.split(",").map((pairing) => (
+            <>
+              <span>- {pairing}</span>
+              <br></br>
+            </>
+          ))}
         ></AboutSection>
       ) : (
         <></>
@@ -82,7 +87,7 @@ const WinePage = () => {
     dispatch(followWine(token, wine.id));
   };
 
-  if (!wine) return <Loading></Loading>;
+  if (!wine || !fetchedDetails) return <Loading></Loading>;
   let photosArr = [wine.primary_image];
   if (wine.photos) {
     photosArr = [...photosArr, ...wine.photos.split(",")];

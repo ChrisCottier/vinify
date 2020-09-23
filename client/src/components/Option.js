@@ -9,17 +9,15 @@ import { SET_FORM, SET_SELECTION } from "../actions/forms";
 //components that render
 //GRID your formpage for sure, for pixel perfection
 
-// *********NOW I am working on the border and state management when an option is clicked!
-
 const Option = (props) => {
   const dispatch = useDispatch();
   const { form, selections } = useSelector((state) => state.forms);
 
   const [isSelected, setIsSelected] = useState(false);
 
-  useEffect(() => {
-    if (selections === null) return;
-  }, [selections]);
+  // useEffect(() => {
+  //   if (selections === null) return;
+  // }, [selections]);
 
   if (!form === undefined || !selections === undefined) {
     return null;

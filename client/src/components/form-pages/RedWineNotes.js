@@ -20,7 +20,7 @@ const RedWineNotes = () => {
         options={[
           {
             optionText: "Earthy",
-            optionValue: "earth",
+            optionValue: "earthy",
             optionPic: (
               <img src="https://img.icons8.com/dusk/64/000000/sprout.png" />
             ),
@@ -48,7 +48,7 @@ const RedWineNotes = () => {
           },
           {
             optionText: "Herbs",
-            optionValue: "herbs",
+            optionValue: "herbaceous",
             optionPic: (
               <img src="https://img.icons8.com/color/96/000000/parsley.png" />
             ),
@@ -79,6 +79,7 @@ const RedWineNotes = () => {
         defaultOutput={"When I think tasty, I think"}
         canChooseMultiple={true}
         type="selections"
+        notesAndOption={true}
         // previous={null}
         // next='redirect'
       ></FormPage>

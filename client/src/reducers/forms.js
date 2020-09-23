@@ -3,6 +3,7 @@ import {
   SET_SELECTION,
   NEW_FORM,
   CHANGE_PAGE,
+  TOGGLE_NOTES_AND_OR,
 } from "../actions/forms";
 import { MATCHING_WINES } from "../actions/wines";
 
@@ -16,7 +17,10 @@ const defaultState = {
     verietal: [],
     rating: [],
     notes: [],
+    notesAreAnd: false,
     bubbles: [],
+    pairingCategory: [],
+    pairings: [],
   },
 };
 
@@ -82,6 +86,16 @@ const forms = (state = defaultState, action) => {
         selections: defaultState.selections,
         pageNum: defaultState.pageNum,
         form: action.form,
+      };
+    }
+
+    case TOGGLE_NOTES_AND_OR: {
+      return {
+        ...state,
+        selections: {
+          ...state.selections,
+          notesAreAnd: action.value,
+        },
       };
     }
 

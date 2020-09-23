@@ -70,6 +70,7 @@ const WhiteWineNotes = () => {
         defaultOutput={"When I think tasty, I think"}
         canChooseMultiple={true}
         type="selections"
+        notesAndOption={true}
         // previous={null}
         // next='redirect'
       ></FormPage>

@@ -1,4 +1,9 @@
-import { MATCHING_WINES, WINE_DETAILS, TOGGLE_FOLLOW } from "../actions/wines";
+import {
+  MATCHING_WINES,
+  WINE_DETAILS,
+  TOGGLE_FOLLOW,
+  WINE_RESET,
+} from "../actions/wines";
 
 const defaultState = {
   matches: null,
@@ -28,6 +33,10 @@ const wines = (state = defaultState, action) => {
           user_follows: action.following,
         },
       };
+    }
+
+    case WINE_RESET: {
+      return defaultState;
     }
 
     default:

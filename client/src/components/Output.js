@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TextTransition, { presets } from "react-text-transition";
+
+import { TOGGLE_NOTES_AND_OR } from "../actions/forms";
 
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -10,13 +12,21 @@ import TextTransition, { presets } from "react-text-transition";
 //GRID your formpage for sure, for pixel perfection
 
 const Output = (props) => {
+  const dispatch = useDispatch();
   const { form, selections } = useSelector((state) => state.forms);
-  const { defaultOutput, type, category } = props;
+  const { notesAreAnd } = useSelector((state) => state.forms.selections);
+  const { defaultOutput, type, category, notesAndOption } = props;
 
   const [output, setOutput] = useState("");
+  const [andSelected, setAndSelected] = useState(false);
 
   useEffect(() => {
-    if (form === undefined || selections === undefined) return;
+    if (
+      form === undefined ||
+      selections === undefined ||
+      notesAreAnd === undefined
+    )
+      return;
     if (type === "nav") {
       if (!form) {
         setOutput(`${defaultOutput}...`);
@@ -26,7 +36,6 @@ const Output = (props) => {
       return;
     }
 
-    //not entering on update...
     if (type === "selections") {
       const chosen = selections[category];
 
@@ -36,27 +45,54 @@ const Output = (props) => {
         if (chosen.length === 1) {
           setOutput(`${defaultOutput} ${chosen[0]}.`);
         } else if (chosen.length === 2) {
-          setOutput(`${defaultOutput} ${chosen[0]} or ${chosen[1]}.`);
+          setOutput(
+            `${defaultOutput} ${chosen[0]} ${notesAreAnd ? "and" : "or"} ${
+              chosen[1]
+            }.`
+          );
         } else {
-          setOutput(`${defaultOutput} ${multipleSelectionsOutput(chosen)}`);
+          setOutput(
+            `${defaultOutput} ${multipleSelectionsOutput(chosen, notesAreAnd)}`
+          );
         }
       }
     }
-  }, [form, selections]);
+  }, [form, selections, notesAndOption]);
+
+  const toggleAndSelected = () => {
+    if (!andSelected) {
+      setAndSelected(true);
+      dispatch({ type: TOGGLE_NOTES_AND_OR, value: true });
+    } else {
+      setAndSelected(false);
+      dispatch({ type: TOGGLE_NOTES_AND_OR, value: false });
+    }
+  };
 
   return (
-    <div className="output-container">
+    <>
       {/* <div className="output-text">{output}</div> */}
       <TextTransition
         text={output}
         springConfig={presets.molasses}
         id="output-text"
       ></TextTransition>
-    </div>
+      {notesAndOption ? (
+        <a
+          id="toggle-and-option"
+          className={andSelected ? "option-selected" : "option-unselected"}
+          onClick={toggleAndSelected}
+        >
+          AND
+        </a>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
-function multipleSelectionsOutput(chosen) {
+function multipleSelectionsOutput(chosen, notesAreAnd) {
   const chosenCopy = [...chosen];
   const first = chosenCopy.shift();
   const last = chosenCopy.pop();
@@ -66,7 +102,7 @@ function multipleSelectionsOutput(chosen) {
     middle += `${selection}, `;
   }
 
-  return `${first}, ${middle}or ${last}.`;
+  return `${first}, ${middle}${notesAreAnd ? "and" : "or"} ${last}.`;
 }
 export default Output;
 
