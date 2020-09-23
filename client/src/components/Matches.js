@@ -6,12 +6,12 @@ import Loading from "./Loading";
 import { FOOTER_DISPLAY } from "../actions/modals";
 
 const MatchCard = ({ match }) => {
-  const [backgroundColor, setBackroundColor] = useState("#111111");
+  const [backgroundColor, setBackroundColor] = useState("rgba(17,17,17,0.3)");
   return (
     <NavLink
       className="match-container"
       onMouseEnter={() => setBackroundColor("rgba(224, 157, 61, 1)")}
-      onMouseLeave={() => setBackroundColor("#111111")}
+      onMouseLeave={() => setBackroundColor("rgba(17,17,17,0.3)")}
       to={`/wines/${match.id}`}
     >
       <div

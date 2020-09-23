@@ -44,7 +44,7 @@ class Wine(db.Model):
             "region": self.region,
             "winery": self.winery,
             "community_rank": str(self.community_rank),
-            "parings": self.pairings,
+            "pairings": self.pairings,
             "photos": self.photos,
             "created_at": self.created_at,
             "update_at": self.update_at

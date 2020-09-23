@@ -7,7 +7,7 @@ const CheesePairing = () => {
   return (
     <>
       <FormPage
-        category="pairing"
+        category="pairings"
         options={[
           {
             optionText: "Cheddar",

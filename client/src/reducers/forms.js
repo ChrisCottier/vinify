@@ -18,7 +18,7 @@ const defaultState = {
     notes: [],
     bubbles: [],
     pairingCategory: [],
-    pairing: [],
+    pairings: [],
   },
 };
 

@@ -72,6 +72,24 @@ def rose_wine_form_sql(selections):
     return f'{query} {notes}'
 
 
+def pairing_wine_form_sql(selections):
+    query = f"SELECT * FROM wines WHERE"
+    pairing = wine_pairing_sql(selections['pairings'])
+
+    return f'{query} {pairing}'
+
+
+def wine_pairing_sql(pairings):
+  # if ('no bubbles' in bubbles):
+  #       return f"AND NOT (lower(name) LIKE lower('%sparkling%') OR lower(name) LIKE lower('%cava%') OR lower(name) LIKE lower('%champagne%') OR lower(state_province) LIKE lower('%champagne%') OR lower(name) LIKE lower('%prosecco%'))"
+    statements = []
+    for pairing in pairings:
+        statements.append(
+            f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
+    sql_formatted = ' OR '.join(statements)
+    return f'({sql_formatted})'
+
+
 def countries_sql(countries):
     if 'anywhere' in countries:
         return ''
