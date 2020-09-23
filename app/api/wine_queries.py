@@ -83,9 +83,21 @@ def wine_pairing_sql(pairings):
   # if ('no bubbles' in bubbles):
   #       return f"AND NOT (lower(name) LIKE lower('%sparkling%') OR lower(name) LIKE lower('%cava%') OR lower(name) LIKE lower('%champagne%') OR lower(state_province) LIKE lower('%champagne%') OR lower(name) LIKE lower('%prosecco%'))"
     statements = []
+    beef = ['steak']
+    white_fish = ['cod', 'halibut', 'snapper', 'bass', 'pollock']
     for pairing in pairings:
         statements.append(
             f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
+
+        # also adding related keywords to query
+        if pairing == 'beef':
+            for pairing in beef:
+                statements.append(
+                    f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
+        if pairing == 'white fish':
+            for pairing in white_fish:
+                statements.append(
+                    f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
     sql_formatted = ' OR '.join(statements)
     return f'({sql_formatted})'
 

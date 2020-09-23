@@ -11,7 +11,7 @@ import TextTransition, { presets } from "react-text-transition";
 
 const Output = (props) => {
   const { form, selections } = useSelector((state) => state.forms);
-  const { defaultOutput, type, category } = props;
+  const { defaultOutput, type, category, notesAndOption } = props;
 
   const [output, setOutput] = useState("");
 
@@ -26,7 +26,6 @@ const Output = (props) => {
       return;
     }
 
-    //not entering on update...
     if (type === "selections") {
       const chosen = selections[category];
 
@@ -47,6 +46,13 @@ const Output = (props) => {
   return (
     <div className="output-container">
       {/* <div className="output-text">{output}</div> */}
+      {notesAndOption ? (
+        <div id="toggle-and-option" className>
+          AND
+        </div>
+      ) : (
+        <></>
+      )}
       <TextTransition
         text={output}
         springConfig={presets.molasses}

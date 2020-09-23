@@ -37,6 +37,22 @@
   text-align: center;
 }
 
+.options-grid-2 {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 300px;
+  height: 100%;
+}
+
+.options-2-num-1 {
+  grid-area: 1/ 1 / span 1 / span 1;
+}
+
+.options-2-num-2 {
+  grid-area: 1/ 2 / span 1 / span 1;
+}
+
 .option-content-3 {
   padding-left: 10%;
   padding-right: 10%;

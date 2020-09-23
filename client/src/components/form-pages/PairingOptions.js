@@ -27,7 +27,7 @@ const PairingOptions = () => {
             optionText: "Seafoods",
             optionValue: "seafood",
             optionPic: (
-              <img src="https://img.icons8.com/officel/80/000000/dressed-fish.png" />
+              <img src="https://img.icons8.com/plasticine/100/000000/whole-fish.png" />
             ),
           },
           {

@@ -25,6 +25,7 @@ const FormPage = (props) => {
     defaultOutput,
     canChooseMultiple,
     previous,
+    notesAndOption,
   } = props;
 
   const changePage = (event) => {
@@ -56,6 +57,7 @@ const FormPage = (props) => {
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
+          notesAndOption={notesAndOption}
         ></Output>
       </div>
       <div id="form-navigation-container">

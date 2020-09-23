@@ -16,6 +16,7 @@ const defaultState = {
     verietal: [],
     rating: [],
     notes: [],
+    notesAreAnd: false,
     bubbles: [],
     pairingCategory: [],
     pairings: [],

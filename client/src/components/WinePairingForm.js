@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NEW_FORM } from "../actions/forms";
 import PairingOptions from "./form-pages/PairingOptions";
 import CheesePairing from "./form-pages/CheesePairing";
+import SeafoodPairing from "./form-pages/SeafoodPairing";
 import MeatPairing from "./form-pages/MeatPairing";
 import SubmitSearch from "./SubmitSearch";
 //it's job is to maintain state and display each question in turn,
@@ -40,6 +41,26 @@ const WinePairingForm = () => {
           <></>
         )}
         {pairingCategory.includes("meat") ? <MeatPairing></MeatPairing> : <></>}
+        {pairingCategory.includes("seafood") ? (
+          <SeafoodPairing></SeafoodPairing>
+        ) : (
+          <></>
+        )}
+        {pairingCategory.includes("dessert") ? (
+          <MeatPairing></MeatPairing>
+        ) : (
+          <></>
+        )}
+        {pairingCategory.includes("ethnic") ? (
+          <MeatPairing></MeatPairing>
+        ) : (
+          <></>
+        )}
+        {pairingCategory.includes("classic") ? (
+          <MeatPairing></MeatPairing>
+        ) : (
+          <></>
+        )}
       </section>
       <section style={{ display: pageNum === 3 ? "block" : "none" }}>
         {/* submit form */}
