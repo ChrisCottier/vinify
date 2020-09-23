@@ -23,6 +23,7 @@ const WineColorForm = () => {
 
   return (
     <main>
+      <div id="shadow"></div>
       <WineColor></WineColor>
     </main>
   );

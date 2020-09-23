@@ -1,15 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+import { FOOTER_DISPLAY } from "../actions/modals";
+import { wineDetails } from "../actions/wines";
+
 const Footer = () => {
+  const dispatch = useDispatch();
   const { loggedOut } = useSelector((state) => state.auth);
+  const { footerDisplay } = useSelector((state) => state.modals);
+
+  useEffect(() => {
+    if (footerDisplay === "none" && window.location.pathname !== "/matches") {
+      dispatch({ type: FOOTER_DISPLAY, display: "block" });
+    }
+  }, [window.location.pathname]);
   if (loggedOut) {
     return <Redirect to="/"></Redirect>;
   }
 
+  if (!footerDisplay) return null;
   return (
-    <footer className="footer custom-footer">
+    <footer className="footer custom-footer" style={{ display: footerDisplay }}>
       <div className="container">
         <div className="columns footer-columns">
           <div className="column is-two-fifths">

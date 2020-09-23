@@ -1,4 +1,14 @@
-.output-text {
+#output-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* #output-text {
   font-size: 30px;
-  text-align: center;
+} */
+
+#output-container span,
+#output-container div {
+  font-size: 40px;
 }

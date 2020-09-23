@@ -7,14 +7,30 @@ lighter gray: #595959
 wine color accent: #55001e; */
 
 main {
+  position: relative;
+  margin-top: 50px;
+  height: 100%;
+  width: auto;
+  min-height: 95vh;
+  background-image: url("https://indiegogo-clone.s3.us-east-2.amazonaws.com/barrel-room.jpg");
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+#shadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+/* main {
   margin-top: 50px;
   height: 100%;
   width: auto;
   min-height: 95vh;
   background-color: black;
   color: white;
-  /* z-index: -20; */
-}
+} */
 
 * {
   font-family: "Josefin Sans", sans-serif;
@@ -27,4 +43,11 @@ main {
 
 .wine-color.background:hover {
   color: #e4a853;
+}
+
+#loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }

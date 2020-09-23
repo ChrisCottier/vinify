@@ -1,8 +1,9 @@
-import { SIGN_UP_MODAL, LOG_IN_MODAL } from "../actions/modals";
+import { SIGN_UP_MODAL, LOG_IN_MODAL, FOOTER_DISPLAY } from "../actions/modals";
 
 const defaultState = {
   signUpDisplay: "none",
   logInDisplay: "none",
+  footerDisplay: "block",
 };
 
 const modals = (state = defaultState, action) => {
@@ -18,6 +19,13 @@ const modals = (state = defaultState, action) => {
       return {
         ...state,
         logInDisplay: action.display,
+      };
+    }
+
+    case FOOTER_DISPLAY: {
+      return {
+        ...state,
+        footerDisplay: action.display,
       };
     }
 
