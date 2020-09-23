@@ -4,6 +4,7 @@ export const SEARCH_WINES = "SEARCH_WINES";
 export const MATCHING_WINES = "MATCHING_WINES";
 export const WINE_DETAILS = "WINE_DETAILS";
 export const TOGGLE_FOLLOW = "TOGGLE_FOLLOW";
+export const WINE_RESET = "WINE_RESET";
 
 export const searchWines = (data) => async (dispatch) => {
   const res = await fetch(`${apiUrl}/wines/matches`, {

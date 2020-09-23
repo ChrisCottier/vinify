@@ -37,7 +37,7 @@ const WineAbout = ({ wine }) => {
       ) : (
         <></>
       )}
-      {wine.community_rank ? (
+      {wine.community_rank && wine.community_rank !== "None" ? (
         <AboutSection
           title="Snooth Community Ranking (out of 5)"
           content={wine.community_rank}
@@ -87,7 +87,7 @@ const WinePage = () => {
     dispatch(followWine(token, wine.id));
   };
 
-  if (!wine) return <Loading></Loading>;
+  if (!wine || !fetchedDetails) return <Loading></Loading>;
   let photosArr = [wine.primary_image];
   if (wine.photos) {
     photosArr = [...photosArr, ...wine.photos.split(",")];

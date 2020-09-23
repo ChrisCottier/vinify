@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import Loading from "./Loading";
-const Random = () => {
-  // const dispatch = useDispatch();
-  // const { wine } = useSelector((state) => state.wines);
+import { NEW_FORM } from "../actions/forms";
 
-  // const [gotRandom, setGotRandom] = useState(false);
-  // useEffect(() => {
-  //   if (gotRandom) return;
-  //   dispatch(getRandomWine)
-  // });
+const Random = () => {
+  const dispatch = useDispatch();
+
+  const [resetForm, setResetForm] = useState(false);
+  useEffect(() => {
+    if (resetForm) return;
+    dispatch({ type: NEW_FORM, formUrl: null });
+    setResetForm(true);
+  });
 
   // if (!gotRandom || !wine) return <Loading></Loading>;
   const randomId = Math.floor(Math.random() * 81580);
