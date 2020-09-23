@@ -22,6 +22,13 @@ const FindWine = () => {
               <img src="https://img.icons8.com/plasticine/100/000000/food-and-wine.png" />
             ),
           },
+          {
+            optionText: "Random",
+            optionValue: "random",
+            optionPic: (
+              <img src="https://img.icons8.com/color/96/000000/dice.png" />
+            ),
+          },
         ]}
         question={"How do you want to find your wine?"}
         defaultOutput={"I'm want to find my wine by"}
@@ -36,6 +43,9 @@ const FindWine = () => {
 
 // {
 // <a href="https://icons8.com/icon/XjErzyLMflsr/food-and-wine">Food And Wine icon by Icons8</a>
+{
+  /* <a href="https://icons8.com/icon/16426/dice">Dice icon by Icons8</a> */
+}
 // <a href="https://icons8.com/icon/118879/wine-and-grapes">Wine and Grapes icon by Icons8</a> */
 // }
 

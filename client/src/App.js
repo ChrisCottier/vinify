@@ -32,6 +32,7 @@ import Following from "./components/Following";
 import RoseWineForm from "./components/RoseWineForm";
 import FindWineForm from "./components/FindWineForm";
 import WinePairingForm from "./components/WinePairingForm";
+import Random from "./components/Random";
 
 //forms
 //white, red, rose
@@ -64,6 +65,7 @@ function App() {
         <Route path="/matches" component={Matches}></Route>
         <Route path="/wines/:id" component={WinePage}></Route>
         <Route path="/favorites" component={Following}></Route>
+        <Route path="/random" component={Random}></Route>
       </Switch>
       <Footer component={Footer}></Footer>
     </BrowserRouter>
