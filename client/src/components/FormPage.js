@@ -48,8 +48,6 @@ const FormPage = (props) => {
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
-          // selections={selections}
-          // setSelections={setSelections}
         ></OptionsContainer>
       </div>
       <div id="output-container" className="">
@@ -58,8 +56,6 @@ const FormPage = (props) => {
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
-          // selections={selections}
-          // setSelections={setSelections}
         ></Output>
       </div>
       <div id="form-navigation-container">

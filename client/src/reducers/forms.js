@@ -17,6 +17,8 @@ const defaultState = {
     rating: [],
     notes: [],
     bubbles: [],
+    pairingCategory: [],
+    pairing: [],
   },
 };
 

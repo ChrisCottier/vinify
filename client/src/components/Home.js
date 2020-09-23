@@ -54,7 +54,7 @@ const Home = () => {
     dispatch({ type: SIGN_UP_MODAL, display: "block" });
   };
 
-  if (loggedOut === false) return <Redirect to="/choose-wine-color"></Redirect>;
+  if (loggedOut === false) return <Redirect to="/find"></Redirect>;
 
   return (
     <main>

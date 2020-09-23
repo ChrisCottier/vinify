@@ -65,7 +65,7 @@ const Matches = () => {
       event.currentTarget.scrollLeft -= 100;
     }
   };
-  if (!form) return <Redirect to="/choose-wine-color"></Redirect>;
+  if (!form) return <Redirect to="/find"></Redirect>;
   if (!matches) return <Loading></Loading>;
   if (matches.length === 0) {
     return (
