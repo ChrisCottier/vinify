@@ -58,10 +58,10 @@ const Home = () => {
 
   return (
     <main>
+      <video autoPlay muted id="splash-video">
+        <source src="static/splash-video.mp4" type="video/mp4"></source>
+      </video>
       <div id="home-page-container">
-        <video autoPlay muted id="splash-video">
-          <source src="static/splash-video.mp4" type="video/mp4"></source>
-        </video>
         {currentFrame === 1 ? (
           <span
             ref={text}
