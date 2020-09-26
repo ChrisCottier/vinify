@@ -83,23 +83,37 @@ def wine_pairing_sql(pairings):
   # if ('no bubbles' in bubbles):
   #       return f"AND NOT (lower(name) LIKE lower('%sparkling%') OR lower(name) LIKE lower('%cava%') OR lower(name) LIKE lower('%champagne%') OR lower(state_province) LIKE lower('%champagne%') OR lower(name) LIKE lower('%prosecco%'))"
     statements = []
-    beef = ['steak']
-    white_fish = ['cod', 'halibut', 'snapper', 'bass', 'pollock']
+    beef = ['beef', 'steak']
+    white_fish = ['white fish', 'cod', 'halibut', 'snapper', 'bass', 'pollock']
+    fruit_pie = ['apple pie', 'peach pie', 'cherry pie',
+                 'fruit pie', 'cobbler', 'straberry short']
+    cookies = ['cookie']
+    sweet_cake = ['chocolate cake', 'angel food cake', 'pound cake']
+    # TODOOOO finish pairings
     for pairing in pairings:
-        statements.append(
-            f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
-
         # also adding related keywords to query
         if pairing == 'beef':
-            for pairing in beef:
-                statements.append(
-                    f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
-        if pairing == 'white fish':
-            for pairing in white_fish:
-                statements.append(
-                    f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
+            statements.append(pairing_matching_terms(beef))
+        elif pairing == 'white fish':
+            statements.append(pairing_matching_terms(white_fish))
+        elif pairing == 'fruit pie':
+            statements.append(pairing_matching_terms(fruit_pie))
+        else:
+            statements.append(
+                f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
+
     sql_formatted = ' OR '.join(statements)
     return f'({sql_formatted})'
+
+
+def pairing_matching_terms(array):
+    addition = []
+    for ele in array:
+        addition.append(
+            f"(lower(pairings) LIKE lower('%{ele}%') OR lower(description) LIKE lower('%{ele}%'))")
+    joined_additions = ' OR '.join(addition)
+    # statements.append(f'({joined_additions})')
+    return f'({joined_additions})'
 
 
 def countries_sql(countries):

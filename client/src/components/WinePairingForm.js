@@ -6,6 +6,7 @@ import PairingOptions from "./form-pages/PairingOptions";
 import CheesePairing from "./form-pages/CheesePairing";
 import SeafoodPairing from "./form-pages/SeafoodPairing";
 import MeatPairing from "./form-pages/MeatPairing";
+import DessertPairing from "./form-pages/DessertPairing";
 import SubmitSearch from "./SubmitSearch";
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -47,7 +48,7 @@ const WinePairingForm = () => {
           <></>
         )}
         {pairingCategory.includes("dessert") ? (
-          <MeatPairing></MeatPairing>
+          <DessertPairing></DessertPairing>
         ) : (
           <></>
         )}
