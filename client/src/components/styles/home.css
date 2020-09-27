@@ -16,8 +16,8 @@
 }
 
 .char {
-  font-size: 64px;
-  height: 64px;
+  font-size: 4vw;
+  height: 80px;
   animation: an 1s ease-out 1 both;
   display: inline-block;
 }

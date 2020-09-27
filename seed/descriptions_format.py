@@ -1,7 +1,6 @@
 
 f = open("descriptions.txt", "a")
 for description in descriptions:
-    # print(rating)
     new_rating = f'{description} \n'
     if (len(new_rating) > 2600):
         new_rating = new_rating[:2600] + '\n'
