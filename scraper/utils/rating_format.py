@@ -1,7 +1,6 @@
 
 f = open("ratings.txt", "a")
 for rating in ratings:
-    # print(rating)
     new_rating = '\n'
     if (not rating == 'Not rated yet'):
         i = 0

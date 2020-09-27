@@ -38,15 +38,15 @@ const PairingOptions = () => {
             ),
           },
           {
-            optionText: "Ethnic dishes",
-            optionValue: "ethnic",
+            optionText: "Ethnic cuisines",
+            optionValue: "ethnic cuisines",
             optionPic: (
               <img src="https://img.icons8.com/plasticine/100/000000/chinese-noodle.png" />
             ),
           },
           {
-            optionText: "Classic dishes",
-            optionValue: "classic",
+            optionText: "Classic foods",
+            optionValue: "classic foods",
             optionPic: (
               <img src="https://img.icons8.com/plasticine/100/000000/pizza.png" />
             ),
