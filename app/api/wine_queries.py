@@ -89,6 +89,7 @@ def wine_pairing_sql(pairings):
                  'fruit pie', 'cobbler', 'straberry short']
     cookies = ['cookie']
     sweet_cake = ['chocolate cake', 'angel food cake', 'pound cake']
+    fruit_sorbet = ['sorbet', 'strawberries', 'raspberries']
     # TODOOOO finish pairings
     for pairing in pairings:
         # also adding related keywords to query
@@ -98,6 +99,12 @@ def wine_pairing_sql(pairings):
             statements.append(pairing_matching_terms(white_fish))
         elif pairing == 'fruit pie':
             statements.append(pairing_matching_terms(fruit_pie))
+        elif pairing == 'cookies':
+            statements.append(pairing_matching_terms(cookies))
+        elif pairing == 'sweet cake':
+            statements.append(pairing_matching_terms(sweet_cake))
+        elif pairing == 'fruit':
+            statements.append(pairing_matching_terms(fruit_sorbet))
         else:
             statements.append(
                 f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")
