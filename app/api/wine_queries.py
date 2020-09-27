@@ -90,6 +90,10 @@ def wine_pairing_sql(pairings):
     cookies = ['cookie']
     sweet_cake = ['chocolate cake', 'angel food cake', 'pound cake']
     fruit_sorbet = ['sorbet', 'strawberries', 'raspberries']
+    mexican = ['mexican', 'taco', 'burrito']
+    italian = ['italian', 'pasta', 'risotto', 'lasagne',
+               'polenta', 'spaghetti', 'ravioli', 'pesto']
+    BBQ = ['BBQ', 'barbeque']
     # TODOOOO finish pairings
     for pairing in pairings:
         # also adding related keywords to query
@@ -105,6 +109,12 @@ def wine_pairing_sql(pairings):
             statements.append(pairing_matching_terms(sweet_cake))
         elif pairing == 'fruit':
             statements.append(pairing_matching_terms(fruit_sorbet))
+        elif pairing == 'Mexican':
+            statements.append(pairing_matching_terms(mexican))
+        elif pairing == 'Italian':
+            statements.append(pairing_matching_terms(italian))
+        elif pairing == 'BBQ':
+            statements.append(pairing_matching_terms(BBQ))
         else:
             statements.append(
                 f"(lower(pairings) LIKE lower('%{pairing}%') OR lower(description) LIKE lower('%{pairing}%'))")

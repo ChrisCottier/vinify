@@ -7,6 +7,8 @@ import CheesePairing from "./form-pages/CheesePairing";
 import SeafoodPairing from "./form-pages/SeafoodPairing";
 import MeatPairing from "./form-pages/MeatPairing";
 import DessertPairing from "./form-pages/DessertPairing";
+import EthnicCuisinesPairing from "./form-pages/EthnicCuisines";
+import ClassicFoodsPairing from "./form-pages/ClassicFoods";
 import SubmitSearch from "./SubmitSearch";
 //it's job is to maintain state and display each question in turn,
 //allow smooth navigation between each with nice styling
@@ -52,13 +54,13 @@ const WinePairingForm = () => {
         ) : (
           <></>
         )}
-        {pairingCategory.includes("ethnic") ? (
-          <MeatPairing></MeatPairing>
+        {pairingCategory.includes("ethnic cuisines") ? (
+          <EthnicCuisinesPairing></EthnicCuisinesPairing>
         ) : (
           <></>
         )}
-        {pairingCategory.includes("classic") ? (
-          <MeatPairing></MeatPairing>
+        {pairingCategory.includes("classic foods") ? (
+          <ClassicFoodsPairing></ClassicFoodsPairing>
         ) : (
           <></>
         )}

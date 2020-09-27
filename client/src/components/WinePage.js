@@ -53,12 +53,17 @@ const WineAbout = ({ wine }) => {
       {wine.pairings ? (
         <AboutSection
           title="Food Pairings"
-          content={wine.pairings.split(",").map((pairing) => (
-            <>
-              <span>- {pairing}</span>
-              <br></br>
-            </>
-          ))}
+          content={wine.pairings.split(",").map((pairing) => {
+            if (pairing.endsWith("Recipe")) {
+              pairing = pairing.slice(0, pairing.length - 8);
+            }
+            return (
+              <>
+                <span>- {pairing}</span>
+                <br></br>
+              </>
+            );
+          })}
         ></AboutSection>
       ) : (
         <></>
