@@ -7,6 +7,8 @@ import { LOG_OUT, ACCESS_TOKEN } from "../actions/auth";
 const NavbarLoggedIn = () => {
   const dispatch = useDispatch();
 
+  const { matches } = useSelector((state) => state.wines);
+
   const logOut = () => {
     document.cookie = `${ACCESS_TOKEN}= ;`;
     dispatch({ type: LOG_OUT });
@@ -25,9 +27,14 @@ const NavbarLoggedIn = () => {
                 Find wine
               </NavLink>
             </div>
-            <div className="navbar-item">
-              <NavLink to="/matches">Matches</NavLink>
-            </div>
+            {matches ? (
+              <div className="navbar-item">
+                <NavLink to="/matches">Matches</NavLink>
+              </div>
+            ) : (
+              <></>
+            )}
+
             <div className="navbar-item">
               <NavLink to="/favorites">Favorites</NavLink>
             </div>

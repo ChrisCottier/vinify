@@ -20,6 +20,11 @@ const WineAbout = ({ wine }) => {
     <>
       <h1 className="title is-2 wine-page-title">{wine.name}</h1>
       <h3 className="subtitle is-5">{wine.winery}</h3>
+      {wine.avg_price ? (
+        <h3 className="subtitle is-5">{`$${wine.avg_price}`}</h3>
+      ) : (
+        <></>
+      )}
       <header className="about-header  title is-3">About</header>
       <AboutSection title="Vintage" content={wine.vintage}></AboutSection>
       <AboutSection title="Verietal" content={wine.verietal}></AboutSection>
@@ -55,7 +60,7 @@ const WineAbout = ({ wine }) => {
           title="Food Pairings"
           content={wine.pairings.split(",").map((pairing) => {
             if (pairing.endsWith("Recipe")) {
-              pairing = pairing.slice(0, pairing.length - 8);
+              pairing = pairing.slice(0, pairing.length - 7);
             }
             return (
               <>

@@ -1,13 +1,23 @@
-.custom-footer {
+#custom-footer {
   /* margin-top: 100px; */
   /* background-color: #e51073; */
   background-color: #303030;
   color: white;
-  /* height: 300px; */
+  height: 275px;
 }
 
-.custom-footer a {
+#custom-footer a {
   color: white;
+}
+
+#footer-credits {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#footer-credits a {
+  color: #e4a853;
 }
 
 div.personal-links {
@@ -16,6 +26,6 @@ div.personal-links {
   align-items: center;
 }
 
-.custom-footer div.column.personal-links:hover a {
+#custom-footer div.column.personal-links:hover a {
   color: #e4a853;
 }
