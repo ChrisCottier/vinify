@@ -76,10 +76,8 @@ def wine_finder(id):
     soup = BeautifulSoup(data, 'html.parser')
 
     # grab name
-    # print(soup.select('td.wfc > b'))
     item_name_arr = soup.select('td.wfc > b')[3:]
     names = [name.get_text() for name in item_name_arr]
-    # print(names)
 
     # grab shop name
     shop_name_arr = soup.select('td > a.wf_content_link')[3:]
@@ -91,16 +89,20 @@ def wine_finder(id):
                       for shop_location in shop_location_arr][:-1]
     shop_locations_parsed = [
         location[location.index('|') + 1:] for location in shop_locations]
-    # print('shop loc', shop_locations_parsed)
 
     # grab buy link
     buy_link_arr = soup.select('td[class="retail"] > a[rel="nofollow"]')
     buy_links = [buy_link['href'] for buy_link in buy_link_arr]
     buy_links_parsed = [
         f'https://www.winefetch.com{buy_link}' for buy_link in buy_links]
-    print('buy', buy_links_parsed)
 
-    # print(shop_names)
+    # make dictionry ciontaining data for each location
+    wine_shops = {}
+    for i in range(len(shop_names)):
+        shop_name = shop_names[i]
+        wine_shops[shop_name] = {
+            'name': names[i], 'location': shop_locations_parsed[i], 'buy_link': buy_links_parsed[i]}
 
-    # print(soup.select('td.wfc > b'))
-    return jsonify(wine)
+    print('shops dict', wine_shops)
+
+    return jsonify(wine_shops)
