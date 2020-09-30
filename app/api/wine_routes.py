@@ -97,12 +97,12 @@ def wine_finder(id):
         f'https://www.winefetch.com{buy_link}' for buy_link in buy_links]
 
     # make dictionry ciontaining data for each location
-    wine_shops = {}
+    wine_shops = []
     for i in range(len(shop_names)):
-        shop_name = shop_names[i]
-        wine_shops[shop_name] = {
-            'name': names[i], 'location': shop_locations_parsed[i], 'buy_link': buy_links_parsed[i]}
-
+        city_state = shop_locations_parsed[i].split(', ')
+        wine_shop = {
+            'wine_shop': shop_names[i], 'name': names[i], 'city': city_state[0], 'state': city_state[1], 'buy_link': buy_links_parsed[i]}
+        wine_shops.append(wine_shop)
     print('shops dict', wine_shops)
 
     return jsonify(wine_shops)
