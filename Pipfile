@@ -24,7 +24,8 @@ bcrypt = "*"
 PyJWT = "*"
 varname = "*"
 psycopg2 = "*"
-flask-migrate = "*"
+Flask-Migrate = "*"
+bs4 = "*"
 
 [dev-packages]
 
