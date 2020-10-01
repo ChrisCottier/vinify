@@ -64,12 +64,7 @@ const WineAbout = ({ wine }) => {
             if (pairing.endsWith("Recipe")) {
               pairing = pairing.slice(0, pairing.length - 7);
             }
-            return (
-              <>
-                <span>- {pairing}</span>
-                <br></br>
-              </>
-            );
+            return <p key={ind}>- {pairing}</p>;
           })}
         ></AboutSection>
       ) : (

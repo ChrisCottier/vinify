@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { CHANGE_PAGE } from "../actions/forms";
 import Question from "./Question";
-import { SEARCH_WINES, searchWines } from "../actions/wines";
+import { searchWines } from "../actions/wines";
 import { NavLink } from "react-router-dom";
 
 //it's job is to maintain state and display each question in turn,

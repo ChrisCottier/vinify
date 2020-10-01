@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { FIND_WINE_MODAL } from "../actions/modals";
-import { findStores } from "../actions/wines";
 import Loading from "./Loading";
-
-//FAICON {tag, type, size}
 
 const FindStoreModal = ({ id }) => {
   const dispatch = useDispatch();
   const { findWineDisplay } = useSelector((state) => state.modals);
   const { stores, wineStoresId } = useSelector((state) => state.wines);
-
-  const [locationsUpdated, setLocationsUpdated] = useState(false);
 
   const modalOff = () => {
     dispatch({ type: FIND_WINE_MODAL, display: "none" });
@@ -50,6 +45,7 @@ const FindStoreModal = ({ id }) => {
                     key={ind}
                     className="wine-store"
                     href={store.buy_link}
+                    rel="noopener noreferrer"
                     target="_blank"
                   >
                     <div>
