@@ -82,3 +82,15 @@ h1.wine-page-title.title {
   flex-direction: column;
   border-bottom: 1px solid #595959;
 }
+
+.wine-store:hover {
+  background-color: #595959;
+}
+
+.wine-store-details {
+  color: #303030;
+}
+
+.wine-store-buy {
+  color: #e4a853;
+}

@@ -62,7 +62,11 @@ const FindStoreModal = ({ id }) => {
                     <span className="wine-store-details">City:</span>{" "}
                     {store.city}
                   </div>
-                  <a href={store.buy_link} target="_blank">
+                  <a
+                    className="wine-store-buy"
+                    href={store.buy_link}
+                    target="_blank"
+                  >
                     Buy now
                   </a>
                 </div>
