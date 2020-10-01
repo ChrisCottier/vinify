@@ -44,6 +44,13 @@ const WinePrice = () => {
               <img src="https://img.icons8.com/office/80/000000/gold-bars.png" />
             ),
           },
+          {
+            optionText: "I'm open to any wine. (many more options)",
+            optionValue: "any price",
+            optionPic: (
+              <img src="https://img.icons8.com/officel/80/000000/checked.png" />
+            ),
+          },
         ]}
         question={"What's your budget?"}
         defaultOutput={"I'm looking for that's"}

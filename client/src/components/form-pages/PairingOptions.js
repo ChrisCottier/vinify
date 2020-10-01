@@ -51,13 +51,6 @@ const PairingOptions = () => {
               <img src="https://img.icons8.com/plasticine/100/000000/pizza.png" />
             ),
           },
-          // {
-          //   optionText: "I'm open to whatever",
-          //   optionValue: "any",
-          //   optionPic: (
-          //     <img src="https://img.icons8.com/color/96/000000/shrug-emoticon.png" />
-          //   ),
-          // },
         ]}
         question={"What are you trying to pair your wine with?"}
         defaultOutput={"I'm trying to pair with"}

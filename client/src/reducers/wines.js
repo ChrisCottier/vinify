@@ -4,6 +4,7 @@ import {
   TOGGLE_FOLLOW,
   WINE_RESET,
   WINE_STORES,
+  REMOVE_WINE_DATA,
 } from "../actions/wines";
 
 const defaultState = {
@@ -46,6 +47,13 @@ const wines = (state = defaultState, action) => {
         ...state,
         stores: action.stores,
         wineStoresId: action.wineId,
+      };
+    }
+
+    case REMOVE_WINE_DATA: {
+      return {
+        ...state,
+        wine: null,
       };
     }
 

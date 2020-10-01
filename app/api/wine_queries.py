@@ -149,6 +149,8 @@ def countries_sql(countries):
 
 
 def avg_price_sql(prices):
+    if "any price" in prices:
+        return ''
     statements = []
     for price in prices:
         if (price == 'under $20'):

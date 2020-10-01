@@ -4,7 +4,12 @@ import { NavLink, useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { wineDetails, followWine, findStores } from "../actions/wines";
+import {
+  wineDetails,
+  followWine,
+  findStores,
+  REMOVE_WINE_DATA,
+} from "../actions/wines";
 import Loading from "./Loading";
 import FindStoreModal from "./FindStoreModal";
 import { FIND_WINE_MODAL } from "../actions/modals";
@@ -86,6 +91,7 @@ const WinePage = () => {
     if (fetchedDetails || !token) return;
     dispatch(wineDetails(token, id));
     setFetchedDetails(true);
+    return () => dispatch({ type: REMOVE_WINE_DATA });
   });
 
   const toggleFollow = (event) => {
