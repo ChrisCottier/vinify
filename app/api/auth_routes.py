@@ -14,6 +14,8 @@ auth_routes = Blueprint('auth', __name__)
 @auth_routes.route('', methods=['post'])
 def sign_up():
     data = request.json
+
+    # function to check sign-up and handle errors
     errors = validate_sign_up(data)
     if (len(errors) > 0):
         return jsonify({'validated': False, 'errors': errors})
@@ -31,20 +33,20 @@ def sign_up():
     db.session.add(new_user)
     db.session.commit()
 
-    # get user and create jwt to return
-    # user=User.query.filter(User.email == data['email']).first().to_dict()
-
+    # create jwt to return
     jwt = create_jwt(new_user.to_dict())
 
     return jsonify({'validated': True, "user": new_user.to_dict(), "token": str(jwt)})
 
+# Log in route
+
 
 @auth_routes.route('/login', methods=['post'])
 def log_in():
-    # function to check login and handle errors
 
     data = request.json
 
+    # function to check login and handle errors
     errors = validate_log_in(data)
     if len(errors) > 0:
         return jsonify({'validated': False, 'errors': errors})
@@ -52,6 +54,8 @@ def log_in():
     user = User.query.filter(User.email == data['email']).first().to_dict()
     jwt = create_jwt(user)
     return jsonify({'validated': True, "user": user, "token": str(jwt)})
+
+# On page refresh, this route checks if the user has jwt and if yes, restores session
 
 
 @auth_routes.route('/restore')

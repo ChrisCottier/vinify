@@ -7,6 +7,8 @@ from app.auth import validate_jwt
 
 follow_routes = Blueprint('follows', __name__)
 
+# This route creates a follow, or deletes it depending on if the user follows or not
+
 
 @follow_routes.route('', methods=['post'])
 def toggle_follow():
@@ -30,9 +32,6 @@ def toggle_follow():
         following = False
     db.session.commit()
 
-    # user_follows = Follow.query.filter(Follow.user_id == user_id)
-    # follow_ids = [user_follows.to_dict()['wine_id'] for follow in user_follows]
-
     return jsonify(following)
 
 
@@ -45,5 +44,5 @@ def user_follows(user_id):
         return jsonify(False)
     follows = Follow.query.filter(Follow.user_id == int(user_id)).all()
     follows_dict = [follow.wine.to_dict() for follow in follows]
-    # follows_dict = [follow['wine'].to_dict() for follow in follows_dict]
+
     return jsonify(follows_dict)

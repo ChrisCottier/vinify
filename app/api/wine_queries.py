@@ -1,5 +1,9 @@
 from random import seed, randint
 
+# This page contains all the functions used for the wine matching route
+
+# Because the data is from a raw SQL query, it has to be converted to a useful struecture
+
 
 def matches_dict(rows):
     matches = [{
@@ -26,6 +30,8 @@ def matches_dict(rows):
         for row in rows]
     return matches
 
+# Chooses random indeces from an array
+
 
 def choose_random(array, num_chosen):
     if len(array) < num_chosen:
@@ -48,7 +54,7 @@ def red_wine_form_sql(selections):
     countries = countries_sql(selections['country'])
     prices = avg_price_sql(selections['price'])
     verietal = verietal_sql(selections['verietal'])
-    # rating = wine_ratings_sql(selections['rating'])
+    # rating = wine_ratings_sql(selections['rating']) rating is bad for matching purposes, very few wines have ratings
     notes = wine_notes_sql(selections['notes'], selections['notesAreAnd'])
 
     return f'{query} {countries} {prices} {verietal} {notes}'
@@ -80,9 +86,10 @@ def pairing_wine_form_sql(selections):
 
 
 def wine_pairing_sql(pairings):
-  # if ('no bubbles' in bubbles):
-  #       return f"AND NOT (lower(name) LIKE lower('%sparkling%') OR lower(name) LIKE lower('%cava%') OR lower(name) LIKE lower('%champagne%') OR lower(state_province) LIKE lower('%champagne%') OR lower(name) LIKE lower('%prosecco%'))"
+
     statements = []
+
+    # these arrays provide additional catch-all terms for pairings
     beef = ['beef', 'steak']
     white_fish = ['white fish', 'cod', 'halibut', 'snapper', 'bass', 'pollock']
     fruit_pie = ['apple pie', 'peach pie', 'cherry pie',
@@ -94,7 +101,7 @@ def wine_pairing_sql(pairings):
     italian = ['italian', 'pasta', 'risotto', 'lasagne',
                'polenta', 'spaghetti', 'ravioli', 'pesto']
     BBQ = ['BBQ', 'barbeque']
-    # TODOOOO finish pairings
+
     for pairing in pairings:
         # also adding related keywords to query
         if pairing == 'beef':
@@ -129,7 +136,6 @@ def pairing_matching_terms(array):
         addition.append(
             f"(lower(pairings) LIKE lower('%{ele}%') OR lower(description) LIKE lower('%{ele}%'))")
     joined_additions = ' OR '.join(addition)
-    # statements.append(f'({joined_additions})')
     return f'({joined_additions})'
 
 
@@ -182,7 +188,7 @@ def wine_notes_sql(notes, notes_are_and):
         return ''
     statements = []
 
-    # The arrays below add these wine buzzwords to the search query, expanding the net
+    # these arrays provide additional catch-all terms for notes
     # red
     earthy_notes = ['earth', 'soil', 'slate', 'graphite']
     herbs = ['herb', 'parsley', 'sage', 'rosemary', 'thyme', 'tarragon']
@@ -207,12 +213,6 @@ def wine_notes_sql(notes, notes_are_and):
 
     for note in notes:
         if (note == 'dark fruit'):
-            # THIS Section could be made more DRY
-            # addition = []
-            # for fruit in dark_fruits:
-            #     addition.append(f"lower(description) LIKE lower('%{fruit}%')")
-            # joined_additions = ' OR '.join(addition)
-            # statements.append(f'({joined_additions})'
             statements.append(note_matching_terms(dark_fruits))
         elif (note == 'earthy'):
             statements.append(note_matching_terms(earthy_notes))
@@ -222,7 +222,6 @@ def wine_notes_sql(notes, notes_are_and):
             statements.append(note_matching_terms(bright_fruits))
         elif (note == 'savory'):
             statements.append(note_matching_terms(savory))
-
         elif (note == 'citrus' or note == 'zesty'):
             statements.append(note_matching_terms(citrus))
         elif (note == 'stone fruit'):
@@ -235,7 +234,6 @@ def wine_notes_sql(notes, notes_are_and):
             statements.append(note_matching_terms(sweets))
         elif (note == 'creamy'):
             statements.append(note_matching_terms(creamy))
-
         elif (note == 'melon-y'):
             statements.append(note_matching_terms(melons))
         else:
@@ -257,7 +255,6 @@ def note_matching_terms(array):
     for ele in array:
         addition.append(f"lower(description) LIKE lower('%{ele}%')")
     joined_additions = ' OR '.join(addition)
-    # statements.append(f'({joined_additions})')
     return f'({joined_additions})'
 
 
