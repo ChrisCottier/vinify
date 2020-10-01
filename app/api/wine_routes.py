@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from sqlalchemy import text
 import urllib
 from bs4 import BeautifulSoup
+from difflib import SequenceMatcher
 
 from app.models import db
 from app.models.wines import Wine
@@ -62,7 +63,7 @@ def wine_details(id):
     return jsonify(wine)
 
 
-@wine_routes.route('/<id>/finder')
+@wine_routes.route('/<id>/find-stores')
 def wine_finder(id):
     wine = Wine.query.get(id).to_dict()
 
@@ -98,11 +99,32 @@ def wine_finder(id):
 
     # make dictionry ciontaining data for each location
     wine_shops = []
-    for i in range(len(shop_names)):
-        city_state = shop_locations_parsed[i].split(', ')
-        wine_shop = {
-            'wine_shop': shop_names[i], 'name': names[i], 'city': city_state[0], 'state': city_state[1], 'buy_link': buy_links_parsed[i]}
-        wine_shops.append(wine_shop)
+    i = 0
+    while i < len(shop_names) and i < len(names) and i < len(shop_locations_parsed) and i < len(buy_links_parsed):
+        print('comp', wine['name'], names[i])
+        # A LOT of matches pulled from the site are not good matches,
+        # so we check the similarity to verify a good match
+        similarity = SequenceMatcher(None, wine['name'], names[i]).ratio()
+        print(similarity)
+        if (similarity > 0.5):
+            city_state = shop_locations_parsed[i].split(', ')
+
+            wine_shop = {
+                'wine_shop': shop_names[i], 'name': names[i], 'city': city_state[0], 'state': city_state[1], 'buy_link': buy_links_parsed[i]}
+            wine_shops.append(wine_shop)
+        i += 1
     print('shops dict', wine_shops)
+
+    # for i in range(len(shop_names)):
+
+    #     # unexpected difference in arrays would cause errors, hence ternary statements
+    #     city_state = ['N/A', 'N/A']
+    #     if len(shop_locations_parsed) > i:
+    #         city_state = shop_locations_parsed[i].split(', ')
+
+    #     wine_shop = {
+    #         'wine_shop': shop_names[i], 'name': names[i] if len(names) > i else 'N/A', 'city': city_state[0], 'state': city_state[1], 'buy_link': buy_links_parsed[i] if len(buy_links_parsed) > i else 'N/A'}
+    #     wine_shops.append(wine_shop)
+    # print('shops dict', wine_shops)
 
     return jsonify(wine_shops)

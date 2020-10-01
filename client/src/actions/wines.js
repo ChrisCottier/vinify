@@ -5,6 +5,7 @@ export const MATCHING_WINES = "MATCHING_WINES";
 export const WINE_DETAILS = "WINE_DETAILS";
 export const TOGGLE_FOLLOW = "TOGGLE_FOLLOW";
 export const WINE_RESET = "WINE_RESET";
+export const WINE_STORES = "WINE_STORES";
 
 export const searchWines = (data) => async (dispatch) => {
   const res = await fetch(`${apiUrl}/wines/matches`, {
@@ -50,5 +51,15 @@ export const followWine = (token, wineId) => async (dispatch) => {
   if (res.ok) {
     let following = await res.json();
     dispatch({ type: TOGGLE_FOLLOW, following });
+  }
+};
+
+export const findStores = (wineId) => async (dispatch) => {
+  const res = await fetch(`${apiUrl}/wines/${wineId}/find-stores`);
+
+  if (res.ok) {
+    const stores = await res.json();
+
+    dispatch({ type: WINE_STORES, stores });
   }
 };

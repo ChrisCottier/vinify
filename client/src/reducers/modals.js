@@ -1,9 +1,15 @@
-import { SIGN_UP_MODAL, LOG_IN_MODAL, FOOTER_DISPLAY } from "../actions/modals";
+import {
+  SIGN_UP_MODAL,
+  LOG_IN_MODAL,
+  FOOTER_DISPLAY,
+  FIND_WINE_MODAL,
+} from "../actions/modals";
 
 const defaultState = {
   signUpDisplay: "none",
   logInDisplay: "none",
   footerDisplay: "block",
+  findWineDisplay: "none",
 };
 
 const modals = (state = defaultState, action) => {
@@ -28,7 +34,12 @@ const modals = (state = defaultState, action) => {
         footerDisplay: action.display,
       };
     }
-
+    case FIND_WINE_MODAL: {
+      return {
+        ...state,
+        findWineDisplay: action.display,
+      };
+    }
     default:
       return state;
   }

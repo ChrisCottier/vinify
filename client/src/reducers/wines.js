@@ -3,6 +3,7 @@ import {
   WINE_DETAILS,
   TOGGLE_FOLLOW,
   WINE_RESET,
+  WINE_STORES,
 } from "../actions/wines";
 
 const defaultState = {
@@ -37,6 +38,13 @@ const wines = (state = defaultState, action) => {
 
     case WINE_RESET: {
       return defaultState;
+    }
+
+    case WINE_STORES: {
+      return {
+        ...state,
+        stores: action.stores,
+      };
     }
 
     default:
