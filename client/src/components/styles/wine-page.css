@@ -68,10 +68,17 @@ h1.wine-page-title.title {
   justify-content: space-between;
   margin: 0%;
   padding: 0%;
+  padding-top: 5px;
 }
 
 #wine-page-buttons a {
   color: white;
   font-size: 20px;
   padding: 10px;
+}
+
+.wine-store {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #595959;
 }

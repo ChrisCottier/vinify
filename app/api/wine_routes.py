@@ -97,10 +97,16 @@ def wine_finder(id):
     buy_links_parsed = [
         f'https://www.winefetch.com{buy_link}' for buy_link in buy_links]
 
+    # grab list price
+    list_prices_arr = soup.select(
+        'td.retail > span.wf_content_title > b')
+    list_prices = [list_price.get_text() for list_price in list_prices_arr]
+    print(list_prices)
+
     # make dictionry ciontaining data for each location
     wine_shops = []
     i = 0
-    while i < len(shop_names) and i < len(names) and i < len(shop_locations_parsed) and i < len(buy_links_parsed):
+    while i < len(shop_names) and i < len(names) and i < len(shop_locations_parsed) and i < len(buy_links_parsed) and i < len(list_prices):
         print('comp', wine['name'], names[i])
         # A LOT of matches pulled from the site are not good matches,
         # so we check the similarity to verify a good match
@@ -110,10 +116,20 @@ def wine_finder(id):
             city_state = shop_locations_parsed[i].split(', ')
 
             wine_shop = {
-                'wine_shop': shop_names[i], 'name': names[i], 'city': city_state[0], 'state': city_state[1], 'buy_link': buy_links_parsed[i]}
+                'wine_shop': shop_names[i],
+                'wine_name': names[i],
+                'city': city_state[0],
+                'state': city_state[1],
+                'buy_link': buy_links_parsed[i],
+                'list_price': list_prices[i]
+            }
             wine_shops.append(wine_shop)
         i += 1
-    print('shops dict', wine_shops)
+
+    def state_name(instance):
+        return instance.get('state')
+    wine_shops.sort(key=state_name)
+    print('shops dict2', wine_shops)
 
     # for i in range(len(shop_names)):
 

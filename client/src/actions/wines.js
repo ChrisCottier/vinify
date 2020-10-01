@@ -60,6 +60,6 @@ export const findStores = (wineId) => async (dispatch) => {
   if (res.ok) {
     const stores = await res.json();
 
-    dispatch({ type: WINE_STORES, stores });
+    dispatch({ type: WINE_STORES, stores, wineId });
   }
 };

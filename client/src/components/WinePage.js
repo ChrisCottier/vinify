@@ -4,7 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { wineDetails, followWine } from "../actions/wines";
+import { wineDetails, followWine, findStores } from "../actions/wines";
 import Loading from "./Loading";
 import FindStoreModal from "./FindStoreModal";
 import { FIND_WINE_MODAL } from "../actions/modals";
@@ -83,7 +83,7 @@ const WinePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { token } = useSelector((state) => state.auth);
-  const { wine } = useSelector((state) => state.wines);
+  const { wine, wineStoresId, matches } = useSelector((state) => state.wines);
 
   const [fetchedDetails, setFetchedDetails] = useState(false);
 
@@ -102,6 +102,10 @@ const WinePage = () => {
   const toggleFindStoreModal = (event) => {
     event.stopPropagation();
     dispatch({ type: FIND_WINE_MODAL, display: "block" });
+
+    if (wineStoresId !== id) {
+      dispatch(findStores(id));
+    }
   };
 
   if (!wine || !fetchedDetails) return <Loading></Loading>;
@@ -115,10 +119,13 @@ const WinePage = () => {
       <div id="shadow"></div>
       <div className="container is-widescreen">
         <div id="wine-page-buttons" className="buttons">
-          <NavLink
-            to="/matches"
-            className="back-to-matches"
-          >{`< Matches`}</NavLink>
+          {matches ? (
+            <NavLink to="/matches" className="back-to-matches">
+              {`< Matches`}
+            </NavLink>
+          ) : (
+            <span></span>
+          )}
           <div>
             <a onClick={toggleFindStoreModal}>Find It!</a>
             <a className="toggle-follow" onClick={toggleFollow}>

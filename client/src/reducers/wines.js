@@ -8,6 +8,7 @@ import {
 
 const defaultState = {
   matches: null,
+  stores: [],
 };
 
 const wines = (state = defaultState, action) => {
@@ -44,6 +45,7 @@ const wines = (state = defaultState, action) => {
       return {
         ...state,
         stores: action.stores,
+        wineStoresId: action.wineId,
       };
     }
 
