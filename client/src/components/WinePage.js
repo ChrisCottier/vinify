@@ -4,8 +4,10 @@ import { NavLink, useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { wineDetails, followWine } from "../actions/wines";
+import { wineDetails, followWine, findStores } from "../actions/wines";
 import Loading from "./Loading";
+import FindStoreModal from "./FindStoreModal";
+import { FIND_WINE_MODAL } from "../actions/modals";
 
 const AboutSection = ({ title, content }) => {
   return (
@@ -58,7 +60,7 @@ const WineAbout = ({ wine }) => {
       {wine.pairings ? (
         <AboutSection
           title="Food Pairings"
-          content={wine.pairings.split(",").map((pairing) => {
+          content={wine.pairings.split(",").map((pairing, ind) => {
             if (pairing.endsWith("Recipe")) {
               pairing = pairing.slice(0, pairing.length - 7);
             }
@@ -81,7 +83,7 @@ const WinePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { token } = useSelector((state) => state.auth);
-  const { wine } = useSelector((state) => state.wines);
+  const { wine, wineStoresId, matches } = useSelector((state) => state.wines);
 
   const [fetchedDetails, setFetchedDetails] = useState(false);
 
@@ -97,6 +99,15 @@ const WinePage = () => {
     dispatch(followWine(token, wine.id));
   };
 
+  const toggleFindStoreModal = (event) => {
+    event.stopPropagation();
+    dispatch({ type: FIND_WINE_MODAL, display: "block" });
+
+    if (wineStoresId !== id) {
+      dispatch(findStores(id));
+    }
+  };
+
   if (!wine || !fetchedDetails) return <Loading></Loading>;
   let photosArr = [wine.primary_image];
   if (wine.photos) {
@@ -104,28 +115,41 @@ const WinePage = () => {
   }
   return (
     <main>
+      <FindStoreModal id={id}></FindStoreModal>
       <div id="shadow"></div>
       <div className="container is-widescreen">
         <div id="wine-page-buttons" className="buttons">
-          <NavLink
-            to="/matches"
-            className="back-to-matches"
-          >{`< Matches`}</NavLink>
-          <a className="toggle-follow" onClick={toggleFollow}>
-            {wine.user_follows ? (
-              <i className="fas fa-heart follow-heart"></i>
-            ) : (
-              <i className="far fa-heart follow-heart"></i>
-            )}
-            <span>{wine.user_follows ? " Following" : " Follow"}</span>
-          </a>
+          {matches ? (
+            <NavLink to="/matches" className="back-to-matches">
+              {`< Matches`}
+            </NavLink>
+          ) : (
+            <span></span>
+          )}
+          <div>
+            <a onClick={toggleFindStoreModal}>Find It!</a>
+            <a className="toggle-follow" onClick={toggleFollow}>
+              {wine.user_follows ? (
+                <i className="fas fa-heart follow-heart"></i>
+              ) : (
+                <i className="far fa-heart follow-heart"></i>
+              )}
+              <span>{wine.user_follows ? "   Following" : "   Follow"}</span>
+            </a>
+          </div>
         </div>
         <div className="columns is-gapless">
           <div id="wine-pictures-container" className="column is-half">
             <div id="carousel-container">
               <Carousel>
-                {photosArr.map((photo) => {
-                  return <img className="wine-page-image" src={photo}></img>;
+                {photosArr.map((photo, ind) => {
+                  return (
+                    <img
+                      key={ind}
+                      className="wine-page-image"
+                      src={photo}
+                    ></img>
+                  );
                 })}
               </Carousel>
             </div>

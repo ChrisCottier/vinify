@@ -68,10 +68,37 @@ h1.wine-page-title.title {
   justify-content: space-between;
   margin: 0%;
   padding: 0%;
+  padding-top: 5px;
 }
 
 #wine-page-buttons a {
   color: white;
   font-size: 20px;
   padding: 10px;
+}
+
+#wine-page-buttons a:hover {
+  color: #e4a853;
+}
+
+.wine-store {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #595959;
+}
+
+.wine-store div {
+  color: white;
+}
+
+.wine-store:hover {
+  background-color: #e4a853;
+}
+
+.wine-store-details {
+  color: #303030;
+}
+
+.wine-store-buy {
+  color: #e4a853;
 }

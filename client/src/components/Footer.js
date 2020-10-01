@@ -36,6 +36,10 @@ const Footer = () => {
               .
             </span>
             <span>
+              Wine store data sourced from{" "}
+              <a href="https://www.winefetch.com/wine-search/">Wine Fetch</a>.
+            </span>
+            <span>
               Icons courtesy of <a href="https://icons8.com/">Icons8</a>.
             </span>
           </div>
