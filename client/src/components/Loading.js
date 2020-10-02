@@ -5,7 +5,7 @@ const Loading = () => {
     <main>
       <div id="shadow"></div>
       <div id="loading-container">
-        <img src="static/loading.gif"></img>
+        <img src="https://indiegogo-clone.s3.us-east-2.amazonaws.com/loading.gif"></img>
       </div>
     </main>
   );

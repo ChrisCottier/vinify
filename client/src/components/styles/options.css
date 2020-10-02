@@ -30,6 +30,10 @@
   width: 200px;
 }
 
+div.option-content:hover {
+  cursor: pointer;
+}
+
 .option-text {
   color: white;
   padding-bottom: 20px;

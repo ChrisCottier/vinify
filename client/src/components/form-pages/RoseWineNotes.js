@@ -56,7 +56,7 @@ const RoseWineNotes = () => {
             optionText: "I'm open to whatever",
             optionValue: "any",
             optionPic: (
-              <img src="https://img.icons8.com/color/96/000000/shrug-emoticon.png" />
+              <img src="https://img.icons8.com/officel/80/000000/checked.png" />
             ),
           },
         ]}

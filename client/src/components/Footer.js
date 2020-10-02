@@ -15,7 +15,8 @@ const Footer = () => {
       dispatch({ type: FOOTER_DISPLAY, display: "block" });
     }
   }, [window.location.pathname]);
-  if (loggedOut) {
+
+  if (loggedOut && window.location.pathname !== "/") {
     return <Redirect to="/"></Redirect>;
   }
 
@@ -30,7 +31,7 @@ const Footer = () => {
         <div className="columns footer-columns">
           <div id="footer-credits" className="column is-two-fifths">
             <span>This site was individually created by Chris Cottier.</span>
-            <span>Logo and wine glass animation by Lena Rush.</span>
+            <span>Logo and animations by Lena Rush.</span>
             <span>
               Wine data sourced from <a href="http://www.snooth.com/">Snooth</a>
               .

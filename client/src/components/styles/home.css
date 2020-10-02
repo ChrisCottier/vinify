@@ -10,7 +10,7 @@
 
 .home-text-display {
   position: absolute;
-  top: 25%;
+  top: 20%;
   font-size: 100px;
   color: #e4a853;
 }
@@ -41,4 +41,13 @@
   min-width: 100%;
   min-height: 100vh;
   object-fit: cover;
+}
+
+#sign-up-logo {
+  max-height: 150px;
+  max-width: 150px;
+}
+
+#sign-up-logo:hover {
+  cursor: pointer;
 }

@@ -49,7 +49,9 @@ const WhiteWineVerietal = () => {
           {
             optionText: "Anything",
             optionValue: "anything",
-            optionPic: <img src="static/white-grapes.png" />,
+            optionPic: (
+              <img src="https://img.icons8.com/officel/80/000000/checked.png" />
+            ),
           },
         ]}
         question={"What grape strikes your fancy?"}
