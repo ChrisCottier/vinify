@@ -10,6 +10,7 @@ const Home = () => {
   const { loggedOut } = useSelector((state) => state.auth);
 
   const text = useRef(null);
+  // const [showGlassesAnimation, setShowGlassesAnimation] = useState(false);
   const [currentFrame, setCurrentFrame] = useState(1);
   let n = 1;
 
@@ -50,6 +51,12 @@ const Home = () => {
     return () => clearInterval(changeFrame);
   }, [text]);
 
+  // useEffect(() => {
+  //   const triggerAnimation = setTimeout(() => {
+  //     setShowGlassesAnimation(true);
+  //   }, 24000);
+  // });
+
   const signUp = () => {
     dispatch({ type: SIGN_UP_MODAL, display: "block" });
   };
@@ -59,8 +66,19 @@ const Home = () => {
   return (
     <main>
       <video autoPlay muted id="splash-video">
-        <source src="static/splash-video.mp4" type="video/mp4"></source>
+        <source
+          src="https://misc0103.s3.us-east-2.amazonaws.com/wine_and_glasses2.mp4"
+          type="video/mp4"
+        ></source>
       </video>
+      {/* {showGlassesAnimation ? (
+        <video autoPlay muted id="splash-video">
+          <source src="static/glasses_animation.mp4" type="video/mp4"></source>
+        </video>
+      ) : (
+        <></>
+      )} */}
+
       <div id="home-page-container">
         {currentFrame === 1 ? (
           <span
@@ -137,9 +155,14 @@ const Home = () => {
             >
               Try it out!
             </span>
-            <button className="button is-large" onClick={signUp}>
+            {/* <button className="button is-large" onClick={signUp}>
               Sign Up
-            </button>
+            </button> */}
+            <img
+              id="sign-up-logo"
+              src="/static/logo-large.png"
+              onClick={signUp}
+            />
           </>
         ) : (
           <></>
