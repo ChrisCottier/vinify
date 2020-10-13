@@ -51,3 +51,14 @@ main {
   justify-content: center;
   height: 100%;
 }
+
+.clickable:hover {
+  color: #e4a853;
+  cursor: pointer;
+}
+
+.help-message {
+  text-align: center;
+  color: #303030;
+  font-size: 1.5vw;
+}

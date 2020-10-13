@@ -3,6 +3,7 @@ import {
   LOG_IN_MODAL,
   FOOTER_DISPLAY,
   FIND_WINE_MODAL,
+  IMAGE_HELP_MODAL
 } from "../actions/modals";
 
 const defaultState = {
@@ -10,6 +11,7 @@ const defaultState = {
   logInDisplay: "none",
   footerDisplay: "block",
   findWineDisplay: "none",
+  imageHelpDisplay: 'none'
 };
 
 const modals = (state = defaultState, action) => {
@@ -39,6 +41,12 @@ const modals = (state = defaultState, action) => {
         ...state,
         findWineDisplay: action.display,
       };
+    }
+    case IMAGE_HELP_MODAL: {
+      return {
+        ...state,
+        imageHelpDisplay: action.display
+      }
     }
     default:
       return state;

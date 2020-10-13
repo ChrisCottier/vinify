@@ -1,21 +1,32 @@
 #sign-up-modal .modal-card-body,
-#log-in-modal .modal-card-body {
+#log-in-modal .modal-card-body,
+#image-help-modal .modal-card-body {
   background-color: #b7b7b7;
 }
 
 #sign-up-modal .modal-card-head,
-#log-in-modal .modal-card-head {
+#log-in-modal .modal-card-head,
+#image-help-modal .modal-card-head{
   background-color: #595959;
 }
 
 #sign-up-modal p,
-#log-in-modal p {
+#log-in-modal p,
+#image-help-modal p {
   color: white;
 }
 
 .login-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+#image-help-modal a {
+  color: #111111;
+}
+
+#image-help-modal ul {
+  list-style-type: square;
 }
 
 /* .login-buttons button {

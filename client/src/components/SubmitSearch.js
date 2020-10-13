@@ -50,12 +50,12 @@ const SubmitSearch = (props) => {
         </NavLink>
       </div>
       <div id="form-navigation-container">
-        <button
-          className="button previous-page background wine-color"
+        <div
+          className="previous-page form-nav clickable"
           onClick={changePage}
         >
-          Previous
-        </button>
+          {'< Previous'}
+        </div>
         <span></span>
         {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>

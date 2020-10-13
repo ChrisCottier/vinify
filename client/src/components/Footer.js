@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer
       id="custom-footer"
-      className="footer"
+      // className="footer"
       style={{ display: footerDisplay }}
     >
       <div className="container">
@@ -33,43 +33,44 @@ const Footer = () => {
             <span>This site was individually created by Chris Cottier.</span>
             <span>Logo and animations by Lena Rush.</span>
             <span>
-              Wine data sourced from <a href="http://www.snooth.com/">Snooth</a>
+              Wine data sourced from <a href="http://www.snooth.com/" rel="noopener noreferrer" target="_blank">Snooth</a>
               .
             </span>
             <span>
               Wine store data sourced from{" "}
-              <a href="https://www.winefetch.com/wine-search/">Wine Fetch</a>.
+              <a href="https://www.winefetch.com/wine-search/" rel="noopener noreferrer" target="_blank">Wine Fetch</a>.
             </span>
             <span>
-              Icons courtesy of <a href="https://icons8.com/">Icons8</a>.
+              Icons courtesy of <a href="https://icons8.com/" rel="noopener noreferrer" target="_blank">Icons8</a>.
             </span>
           </div>
           {/* LINKS INCOMPLETE */}
           <div className="column is-one-fifth personal-links">
-            <a href="https://github.com/ChrisCottier" className="title">
+            <a href="https://github.com/ChrisCottier" className="title" rel="noopener noreferrer" target="_blank">
               GitHub
             </a>
-            <a href="https://github.com/ChrisCottier">
-              <i className="fab fa-github fa-9x"></i>
+            <a href="https://github.com/ChrisCottier" rel="noopener noreferrer" target="_blank">
+              <i className="fab fa-github fa-5x"></i>
             </a>
           </div>
           <div className="column is-one-fifth personal-links">
             <a
               href="https://www.linkedin.com/in/christopher-cottier-92587194/"
               className="title"
+              rel="noopener noreferrer" target="_blank"
             >
               LinkedIn
             </a>
-            <a href="https://www.linkedin.com/in/christopher-cottier-92587194/">
-              <i className="fab fa-linkedin fa-9x"></i>
+            <a href="https://www.linkedin.com/in/christopher-cottier-92587194/" rel="noopener noreferrer" target="_blank">
+              <i className="fab fa-linkedin fa-5x"></i>
             </a>
           </div>
           <div className="column is-one-fifth personal-links">
-            <a href="https://angel.co/u/christopher-cottier" className="title">
+            <a href="https://angel.co/u/christopher-cottier" rel="noopener noreferrer" target="_blank" className="title">
               AngelList
             </a>
-            <a href="https://angel.co/u/christopher-cottier">
-              <i className="fab fa-angellist fa-9x"></i>
+            <a href="https://angel.co/u/christopher-cottier" rel="noopener noreferrer" target="_blank">
+              <i className="fab fa-angellist fa-5x"></i>
             </a>
           </div>
         </div>

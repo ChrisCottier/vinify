@@ -1,9 +1,7 @@
 #custom-footer {
-  margin-top: 0px;
-  /* background-color: #e51073; */
+  padding-top: 10px;
   background-color: #303030;
   color: white;
-  height: 275px;
 }
 
 #custom-footer a {

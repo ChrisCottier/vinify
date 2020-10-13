@@ -15,7 +15,7 @@ const OptionsContainer = (props) => {
       {canChooseMultiple ? (
         <></>
       ) : (
-        <h3 className="title is-5 choose-one">*Choose One*</h3>
+        <h3 className="help-message">*Choose One*</h3>
       )}
       <div className={`options-grid-${numOptions}`}>
         {options.map((option, index) => {

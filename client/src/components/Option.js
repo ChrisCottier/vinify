@@ -69,7 +69,8 @@ const Option = (props) => {
         onClick={toggleSelection}
       >
         <span className={`option-text`}>{optionText}</span>
-        <figure className="image is-96x96">{optionPic}</figure>
+        {/* <figure className="image is-96x96">{optionPic}</figure> */}
+        {optionPic}
       </div>
     </div>
   );
