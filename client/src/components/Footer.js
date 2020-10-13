@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <footer
       id="custom-footer"
-      className="footer"
+      // className="footer"
       style={{ display: footerDisplay }}
     >
       <div className="container">
@@ -50,7 +50,7 @@ const Footer = () => {
               GitHub
             </a>
             <a href="https://github.com/ChrisCottier" rel="noopener noreferrer" target="_blank">
-              <i className="fab fa-github fa-9x"></i>
+              <i className="fab fa-github fa-5x"></i>
             </a>
           </div>
           <div className="column is-one-fifth personal-links">
@@ -62,7 +62,7 @@ const Footer = () => {
               LinkedIn
             </a>
             <a href="https://www.linkedin.com/in/christopher-cottier-92587194/" rel="noopener noreferrer" target="_blank">
-              <i className="fab fa-linkedin fa-9x"></i>
+              <i className="fab fa-linkedin fa-5x"></i>
             </a>
           </div>
           <div className="column is-one-fifth personal-links">
@@ -70,7 +70,7 @@ const Footer = () => {
               AngelList
             </a>
             <a href="https://angel.co/u/christopher-cottier" rel="noopener noreferrer" target="_blank">
-              <i className="fab fa-angellist fa-9x"></i>
+              <i className="fab fa-angellist fa-5x"></i>
             </a>
           </div>
         </div>
