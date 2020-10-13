@@ -13,18 +13,14 @@ import { NavLink } from "react-router-dom";
 //each part of the Form will have a FormPage, which will have a Question, Option(s), Response
 //components that render
 //GRID your formpage for sure, for pixel perfection
-const FormPage = (props) => {
+
+const FormNavigation = (props) => {
   const dispatch = useDispatch();
-  // const [redirect, setRedirect] = useState(false);
   const { form, selections, pageNum } = useSelector((state) => state.forms);
+
   const {
     type,
-    category,
-    options,
-    question,
-    defaultOutput,
-    canChooseMultiple,
-    notesAndOption,
+    category
   } = props;
 
   const changePage = (event) => {
@@ -36,6 +32,77 @@ const FormPage = (props) => {
       dispatch({ type: CHANGE_PAGE, value: pageNum + 1 });
     }
   };
+
+  //the code before the return controls how the nav buttons are rendered
+  //and where they go to
+
+  let navNext = <></>;
+  let selectionsPrevious = <></>;
+  let selectionsNext = <></>;
+
+  if (type === "nav" && form) {
+    navNext = (<>
+    <span></span>
+    <NavLink className="form-nav clickable" to={`/${form}`}>
+      {'Next >'}
+    </NavLink>
+  </>)
+  }
+
+  if (type === "selections") {
+
+    if (pageNum > 1) {
+      selectionsPrevious = (
+        <div
+        className="previous-page form-nav clickable"
+        onClick={changePage}
+      >
+        {'< Previous'}
+      </div>
+      )
+    } else {
+      selectionsPrevious = <div></div>
+    }
+    if (selections[category].length > 0) {
+      selectionsNext = (
+        <div
+        className="next-page form-nav clickable"
+        onClick={changePage}
+      >
+        {'Next >'}
+      </div>
+      )
+    } else {
+      selectionsNext = <div></div>
+    }
+
+  }
+
+
+
+
+  return (
+    <div id="form-navigation-container">
+        {navNext}
+        {selectionsPrevious}
+        {selectionsNext}
+      </div>
+  )
+}
+
+const FormPage = (props) => {
+
+  const {
+    type,
+    category,
+    options,
+    question,
+    defaultOutput,
+    canChooseMultiple,
+    notesAndOption,
+  } = props;
+
+  
 
   return (
     <div className="container is-widescreen form-container">
@@ -50,6 +117,7 @@ const FormPage = (props) => {
           category={category}
         ></OptionsContainer>
       </div>
+      <FormNavigation type={type} category={category}></FormNavigation>
       <div id="output-container" className="">
         <Output
           defaultOutput={defaultOutput}
@@ -58,49 +126,6 @@ const FormPage = (props) => {
           category={category}
           notesAndOption={notesAndOption}
         ></Output>
-      </div>
-      <div id="form-navigation-container">
-        {type === "nav" && form ? (
-          <>
-            <span></span>
-            <NavLink className="button wine-color background" to={`/${form}`}>
-              Next
-            </NavLink>
-          </>
-        ) : (
-          <></>
-        )}
-
-        {type === "nav" && !form ? (
-          <>
-            <span></span>
-            <span></span>
-          </>
-        ) : (
-          <></>
-        )}
-
-        {type === "selections" && pageNum > 1 ? (
-          <button
-            className="button previous-page wine-color background"
-            onClick={changePage}
-          >
-            Previous
-          </button>
-        ) : (
-          <></>
-        )}
-        {type === "selections" && selections[category].length > 0 ? (
-          <button
-            className="button next-page wine-color background"
-            onClick={changePage}
-          >
-            Next
-          </button>
-        ) : (
-          <></>
-        )}
-        {/* {next ? <button className="button">Next</button> : <span></span>} */}
       </div>
     </div>
   );

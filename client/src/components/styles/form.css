@@ -13,7 +13,7 @@ div.form-container > div {
 #form-navigation-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .button.next-page {
@@ -42,4 +42,9 @@ div.form-container > div {
 
 #search-logo:hover {
   cursor: pointer;
+}
+
+.form-nav {
+  color: white;
+  font-size: 2vw;
 }

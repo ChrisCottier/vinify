@@ -34,10 +34,6 @@ const MatchCard = ({ match }) => {
           </span>
         </div>
         <img src={match.primary_image} className="match-image" />
-        {/* <div className="match-content-right">
-          <span>{match.verietal ? match.verietal : ""}</span>
-          <span>{match.country ? match.country : ""}</span>
-        </div> */}
       </div>
     </NavLink>
   );
