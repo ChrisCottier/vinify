@@ -37,8 +37,8 @@
 .match-image {
   min-height: 400px;
   max-height: 400px;
-  min-width: 200px;
-  max-width: 300px;
+  /* min-width: 200px; */
+  max-width: 350px; 
   border-radius: 10%;
 }
 
@@ -97,3 +97,9 @@
   font-style: italic;
   text-align: center;
 }
+
+#matches-header {
+  display: flex;
+  justify-content: space-between;
+}
+
