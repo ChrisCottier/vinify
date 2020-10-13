@@ -46,7 +46,7 @@ const RoseWineNotes = () => {
           },
           {
             optionText:
-              "When I close my eyes and sip, I want to see the field from the sound of music",
+              "Smells like a meadow in the Alps",
             optionValue: "floral",
             optionPic: (
               <img src="https://img.icons8.com/color/96/000000/ikebana.png" />

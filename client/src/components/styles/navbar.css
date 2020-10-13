@@ -15,6 +15,10 @@ nav.navbar a:hover {
   max-height: 50px;
 }
 
+#main-nav .navbar-menu{
+  background-color: black;
+}
+
 /* #main-nav .navbar-link {
   color: #e4a853;
 } */
