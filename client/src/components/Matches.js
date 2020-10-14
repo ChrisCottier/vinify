@@ -67,9 +67,11 @@ const ImageHelpModal = () => {
           <p></p>
           <ul>
             <li>These images are hosted publicly, by snooth.com, an http scheme website.</li>
-            <li>In order to see the images, your browser must accept responses from snooth</li>
-            <li>Click <a href="http://www.snooth.com/" rel="noopener noreferrer" target="_blank">here </a>to go to snooth. </li>
-            <li>When your browser will ask you if you trust this source, say yes.</li>
+            <li>In order to see the images, your browser must accept "Insecure content"</li>
+            <li>To allow insecure content on a google chrome browser, see <a href="https://support.google.com/chrome/answer/114662?co=GENIE.Platform%3DDesktop&hl=en" rel="noopener noreferrer" target="_blank">this </a>link. </li>
+            <li>The only change necessary is to change the Insecure content setting to "allow" for this site</li>
+            <li>If you want to make this change, make sure it is ONLY for this site, not all sites.</li>
+            <li>Otherwise, try a new browser; many browsers allow the image content to be seen by other users.</li>
           </ul>
         </section>
       </div>
