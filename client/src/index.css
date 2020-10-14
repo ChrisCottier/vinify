@@ -11,7 +11,7 @@ main {
   margin-top: 50px;
   height: 100%;
   width: auto;
-  min-height: 95vh;
+  min-height: 94vh;
   background-image: url("https://indiegogo-clone.s3.us-east-2.amazonaws.com/barrel-room.jpg");
   color: white;
   background-color: rgba(0, 0, 0, 1);
@@ -59,6 +59,6 @@ main {
 
 .help-message {
   text-align: center;
-  color: #303030;
+  color: rgba(255,255,255, .3);
   font-size: 1.5vw;
 }
