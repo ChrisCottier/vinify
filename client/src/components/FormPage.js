@@ -109,14 +109,14 @@ const FormPage = (props) => {
       <div id="question-container" className="">
         <Question question={question}></Question>
       </div>
-      <div id="options-container" className="">
+      {/* <div id="options-container" className=""> */}
         <OptionsContainer
           options={options}
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
         ></OptionsContainer>
-      </div>
+      {/* </div> */}
       <FormNavigation type={type} category={category}></FormNavigation>
       <div id="output-container" className="">
         <Output
