@@ -24,6 +24,7 @@ export const searchWines = (data) => async (dispatch) => {
     const { form } = data;
     let matches = await res.json();
 
+    //IMPLEMENTATION of the check below not working yet; picture loading error still shown
     // This conditional checks if the images are able to load from the user's browser.
     // If not, a default image is used.
     if (matches.length >= 1) {
@@ -52,8 +53,10 @@ export const wineDetails = (token, wineId) => async (dispatch) => {
     let wine = await res.json();
     if (typeof wine !== "object") return;
 
+    //IMPLEMENTATION of the check below not working yet; picture loading error still shown
     // This conditional checks if the images are able to load from the user's browser.
     // If not, a default image is used.
+    
     if (!linkWorks(wine.primary_image)) {
         wine.primary_image = defaultWineImg;
         wine.photos = null;
