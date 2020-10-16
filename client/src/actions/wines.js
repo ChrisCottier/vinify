@@ -1,5 +1,8 @@
 import { apiUrl } from "../config";
 import { NEW_FORM } from "./forms";
+import {linkWorks} from '../utils'
+import {defaultWineImg} from '../config'
+
 export const SEARCH_WINES = "SEARCH_WINES";
 export const MATCHING_WINES = "MATCHING_WINES";
 export const WINE_DETAILS = "WINE_DETAILS";
@@ -19,7 +22,20 @@ export const searchWines = (data) => async (dispatch) => {
 
   if (res.ok) {
     const { form } = data;
-    const matches = await res.json();
+    let matches = await res.json();
+
+    // This conditional checks if the images are able to load from the user's browser.
+    // If not, a default image is used.
+    if (matches.length >= 1) {
+      const firstInstance = matches[0];
+      if (!linkWorks(firstInstance.primary_image)) {
+        for (let match of matches) {
+          match.primary_image = defaultWineImg;
+          match.photos = null;
+        }
+      }
+    }
+
     dispatch({ type: MATCHING_WINES, matches, form });
   }
 };
@@ -35,6 +51,13 @@ export const wineDetails = (token, wineId) => async (dispatch) => {
   if (res.ok) {
     let wine = await res.json();
     if (typeof wine !== "object") return;
+
+    // This conditional checks if the images are able to load from the user's browser.
+    // If not, a default image is used.
+    if (!linkWorks(wine.primary_image)) {
+        wine.primary_image = defaultWineImg;
+        wine.photos = null;
+    }
     dispatch({ type: WINE_DETAILS, wine });
   }
 };

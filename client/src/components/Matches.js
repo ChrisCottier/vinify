@@ -63,11 +63,11 @@ const ImageHelpModal = () => {
           <p className="modal-card-title">Image Help</p>
         </header>
         <section className="modal-card-body">
-          <p>Why can't I see the images?</p>
+          <p>Why am I seeing a stock image?</p>
           <p></p>
           <ul>
-            <li>These images are hosted publicly, by snooth.com, an http scheme website.</li>
-            <li>In order to see the images, your browser must accept "Insecure content"</li>
+            <li>The actual wine images are hosted publicly, by snooth.com, an http scheme website.</li>
+            <li>In order to see the real images, your browser must accept "Insecure content"</li>
             <li>To allow insecure content on a google chrome browser, see <a href="https://support.google.com/chrome/answer/114662?co=GENIE.Platform%3DDesktop&hl=en" rel="noopener noreferrer" target="_blank">this </a>link. </li>
             <li>The only change necessary is to change the Insecure content setting to "allow" for this site</li>
             <li>If you want to make this change, make sure it is ONLY for this site, not all sites.</li>
@@ -141,7 +141,7 @@ const Matches = () => {
           <div className="matches-container">
             <div id="matches-header">
               <span className="help-message">*Scroll up and down to see wines*</span>
-              <span onClick={displayImageModal} className="help-message clickable">Can't see images?</span>
+              <span onClick={displayImageModal} className="help-message clickable">Only seeing stock images?</span>
             </div>
             <div className="horizontal-scroll-wrapper" onWheel={handleScroll}>
               {matches.map((match) => {
