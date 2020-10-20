@@ -102,21 +102,17 @@ const FormPage = (props) => {
     notesAndOption,
   } = props;
 
-  
-
   return (
     <div className="container is-widescreen form-container">
-      <div id="question-container" className="">
+      <div id="question-container">
         <Question question={question}></Question>
       </div>
-      {/* <div id="options-container" className=""> */}
         <OptionsContainer
           options={options}
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
         ></OptionsContainer>
-      {/* </div> */}
       <FormNavigation type={type} category={category}></FormNavigation>
       <div id="output-container" className="">
         <Output
