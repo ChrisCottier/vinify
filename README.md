@@ -27,43 +27,41 @@ Modular, component based design allows for fast creation of new form pages, lead
 The redux store handles the transition between form pages and the subsequent search.
 
 ```javascript
-{
-  const FormPage = (props) => {
-    const {
-      type,
-      category,
-      options,
-      question,
-      defaultOutput,
-      canChooseMultiple,
-      notesAndOption,
-    } = props;
+const FormPage = (props) => {
+  const {
+    type,
+    category,
+    options,
+    question,
+    defaultOutput,
+    canChooseMultiple,
+    notesAndOption,
+  } = props;
 
-    return (
-      <div className="container is-widescreen form-container">
-        <div id="question-container">
-          <Question question={question}></Question>
-        </div>
-        <OptionsContainer
-          options={options}
+  return (
+    <div className="container is-widescreen form-container">
+      <div id="question-container">
+        <Question question={question}></Question>
+      </div>
+      <OptionsContainer
+        options={options}
+        canChooseMultiple={canChooseMultiple}
+        type={type}
+        category={category}
+      ></OptionsContainer>
+      <FormNavigation type={type} category={category}></FormNavigation>
+      <div id="output-container" className="">
+        <Output
+          defaultOutput={defaultOutput}
           canChooseMultiple={canChooseMultiple}
           type={type}
           category={category}
-        ></OptionsContainer>
-        <FormNavigation type={type} category={category}></FormNavigation>
-        <div id="output-container" className="">
-          <Output
-            defaultOutput={defaultOutput}
-            canChooseMultiple={canChooseMultiple}
-            type={type}
-            category={category}
-            notesAndOption={notesAndOption}
-          ></Output>
-        </div>
+          notesAndOption={notesAndOption}
+        ></Output>
       </div>
-    );
-  };
-}
+    </div>
+  );
+};
 ```
 
 ![Alt Text](https://misc0103.s3.us-east-2.amazonaws.com/vinify-form.gif)
@@ -76,7 +74,6 @@ To match the specific elements with the desired data, xpath and CSS selectors we
 Data was collected to CSV's and imported into Amazon RDS database.
 
 ```python
-{
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, self.parse, args={'wait': 1})
@@ -111,7 +108,6 @@ Data was collected to CSV's and imported into Amazon RDS database.
             "pairings": pairings,
             "photos": photos
         }
-}
 ```
 
 ### Wine Matching Algorithm
@@ -121,7 +117,6 @@ However, the wine matching would potentially require dozens of and / or statemen
 wine preferences. Due to the complicated nature of these requests, various functions were created to handle the user input and translate it to raw SQL statements.
 
 ```python
-{
     def wine_notes_sql(notes, notes_are_and):
     if ('any' in notes):
         return ''
@@ -168,7 +163,6 @@ wine preferences. Due to the complicated nature of these requests, various funct
         sql_formatted = ' OR '.join(statements)
 
     return f'AND ({sql_formatted})'
-}
 ```
 
 ![Alt Text](https://misc0103.s3.us-east-2.amazonaws.com/vinify-search.gif)
@@ -180,7 +174,6 @@ The lack of a public API for this led to the approach of using a wine industry s
 Using the BeautifulSoup python package, HTML data was parsed and harvested to create a reliable API for finding wine stores.
 
 ```python
-{
     @wine_routes.route('/<id>/find-stores')
 def wine_finder(id):
     wine = Wine.query.get(id).to_dict()
@@ -231,7 +224,6 @@ def wine_finder(id):
     wine_shops.sort(key=state_name)
 
     return jsonify(wine_shops)
-}
 ```
 
 ![Alt Text](https://misc0103.s3.us-east-2.amazonaws.com/vinify-store-finder.gif)
