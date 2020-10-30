@@ -6,7 +6,7 @@
 
 #sign-up-modal .modal-card-head,
 #log-in-modal .modal-card-head,
-#image-help-modal .modal-card-head{
+#image-help-modal .modal-card-head {
   background-color: #595959;
 }
 
@@ -16,9 +16,10 @@
   color: white;
 }
 
-.login-buttons {
+.login-buttons,
+.sign-up-button {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #image-help-modal a {
@@ -28,8 +29,3 @@
 #image-help-modal ul {
   list-style-type: square;
 }
-
-/* .login-buttons button {
-  display: flex;
-  justify-content: space-between;
-} */

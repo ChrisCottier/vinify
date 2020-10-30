@@ -30,12 +30,6 @@ const LogIn = () => {
     dispatch(logIn({ email, password }));
   };
 
-  const demoUser = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    dispatch(logIn({ email: "demo@gmail.com", password: "password" }));
-  };
-
   const modalOff = () => {
     dispatch({ type: LOG_IN_MODAL, display: "none" });
   };
@@ -81,12 +75,6 @@ const LogIn = () => {
               <div className="control login-buttons">
                 <button className="button background wine-color" type="submit">
                   Log In
-                </button>
-                <button
-                  className="button background wine-color"
-                  onClick={demoUser}
-                >
-                  Demo User
                 </button>
               </div>
             </div>
