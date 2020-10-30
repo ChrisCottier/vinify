@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import { SIGN_UP_MODAL, LOG_IN_MODAL } from "../actions/modals";
+import {logIn} from '../actions/auth'
 
 const NavbarLoggedOut = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,11 @@ const NavbarLoggedOut = () => {
     event.target.classList.toggle('is-active');
     menu.current.classList.toggle('is-active')
   }
+
+  const demoUser = (event) => {
+    event.stopPropagation();
+    dispatch(logIn({ email: "demo@gmail.com", password: "password" }));
+  };
 
   return (
     <>
@@ -42,6 +48,9 @@ const NavbarLoggedOut = () => {
             </div>
             <div className="navbar-item">
               <a onClick={showLogIn}>Log In</a>
+            </div>
+            <div className="navbar-item">
+              <a onClick={demoUser}>Demo Log In</a>
             </div>
           </div>
         </div>
