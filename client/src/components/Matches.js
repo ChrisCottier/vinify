@@ -143,7 +143,7 @@ const Matches = () => {
               <span className="help-message">*Scroll up and down to see wines*</span>
               <span onClick={displayImageModal} className="help-message clickable">Can't see any wine images?</span>
             </div>
-            <div className="horizontal-scroll-wrapper" onWheel={handleScroll}>
+            <div className="horizontal-scroll-wrapper" onWheel={handleScroll} onTouchMove={handleScroll}>
               {matches.map((match) => {
                 return <MatchCard match={match} key={match.id}></MatchCard>;
               })}
