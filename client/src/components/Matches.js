@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 
@@ -84,6 +84,8 @@ const Matches = () => {
   const { matches } = useSelector((state) => state.wines);
   const { form } = useSelector((state) => state.forms);
   const [footerOff, setFooterOff] = useState(false);
+  const matchesDisplay = useRef(null);
+  let touchStart;
 
   //Footer interferes with sideways scrolling of matches, so it will be disabled
   useEffect(() => {
@@ -92,6 +94,7 @@ const Matches = () => {
     setFooterOff(true);
   });
 
+  //allows scrolling through matches for users on desktop
   const handleScroll = (event) => {
     event.stopPropagation();
     if (event.deltaY > 0) {
@@ -100,6 +103,22 @@ const Matches = () => {
       event.currentTarget.scrollLeft -= 100;
     }
   };
+
+  //for mobile users scrolling
+  const mobileTouchStart = (event) => {
+    event.stopPropagation();
+    touchStart = event.originalEvent.touches[0].clientY;
+  }
+
+  const mobileTouchEnd = (event) => {
+    event.stopPropagation();
+    let touchEnd = event.originalEvent.changedTouches[0].clientY;
+    if (touchStart > touchEnd) {
+      matchesDisplay.scrollLeft += 100;
+    } else {
+      matchesDisplay.scrollLeft -= 100;
+    }
+  }
 
   const displayImageModal = (event) => {
     event.stopPropagation();
@@ -136,14 +155,14 @@ const Matches = () => {
     );
   } else {
     return (
-      <main>
+      <main onTouchStart={mobileTouchStart} onTouchEnd={mobileTouchEnd}>
         <div className="container is-widescreen">
           <div className="matches-container">
             <div id="matches-header">
               <span className="help-message">*Scroll up and down to see wines*</span>
               <span onClick={displayImageModal} className="help-message clickable">Can't see any wine images?</span>
             </div>
-            <div className="horizontal-scroll-wrapper" onWheel={handleScroll} onTouchMove={handleScroll}>
+            <div className="horizontal-scroll-wrapper" onWheel={handleScroll} ref={matchesDisplay}>
               {matches.map((match) => {
                 return <MatchCard match={match} key={match.id}></MatchCard>;
               })}

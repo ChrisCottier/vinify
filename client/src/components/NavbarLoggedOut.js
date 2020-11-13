@@ -33,7 +33,7 @@ const NavbarLoggedOut = () => {
           <NavLink to="/find" className="logo">
             <img id="vinify-logo" src="static/2vinify_logo_1356x745.png" />
           </NavLink>
-          <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
+          <a role="button" className="navbar-burger" id="burger-menu" aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
