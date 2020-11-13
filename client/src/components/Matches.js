@@ -85,7 +85,6 @@ const Matches = () => {
   const { form } = useSelector((state) => state.forms);
   const [footerOff, setFooterOff] = useState(false);
   const matchesDisplay = useRef(null);
-  let touchStart;
 
   //Footer interferes with sideways scrolling of matches, so it will be disabled
   useEffect(() => {
@@ -103,22 +102,6 @@ const Matches = () => {
       event.currentTarget.scrollLeft -= 100;
     }
   };
-
-  //for mobile users scrolling
-  const mobileTouchStart = (event) => {
-    event.stopPropagation();
-    touchStart = event.originalEvent.touches[0].clientY;
-  }
-
-  const mobileTouchEnd = (event) => {
-    event.stopPropagation();
-    let touchEnd = event.originalEvent.changedTouches[0].clientY;
-    if (touchStart > touchEnd) {
-      matchesDisplay.scrollLeft += 100;
-    } else {
-      matchesDisplay.scrollLeft -= 100;
-    }
-  }
 
   const displayImageModal = (event) => {
     event.stopPropagation();
@@ -155,11 +138,15 @@ const Matches = () => {
     );
   } else {
     return (
-      <main onTouchStart={mobileTouchStart} onTouchEnd={mobileTouchEnd}>
+      <main>
         <div className="container is-widescreen">
           <div className="matches-container">
             <div id="matches-header">
-              <span className="help-message">*Scroll up and down to see wines*</span>
+              <div>
+                <progress className="help-message">Desktop: Scroll up and down to browse matches.</progress>
+                <progress className="help-message">Touch Screen: Touch and drag to browse matches.</progress>
+
+              </div>
               <span onClick={displayImageModal} className="help-message clickable">Can't see any wine images?</span>
             </div>
             <div className="horizontal-scroll-wrapper" onWheel={handleScroll} ref={matchesDisplay}>
