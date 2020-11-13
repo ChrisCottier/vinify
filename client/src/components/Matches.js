@@ -143,8 +143,8 @@ const Matches = () => {
           <div className="matches-container">
             <div id="matches-header">
               <div>
-                <progress className="help-message">Desktop: Scroll up and down to browse matches.</progress>
-                <progress className="help-message">Touch Screen: Touch and drag to browse matches.</progress>
+                <p className="help-message">Desktop: Scroll up and down to browse matches.</p>
+                <p className="help-message">Touch Screen: Touch and drag to browse matches.</p>
 
               </div>
               <span onClick={displayImageModal} className="help-message clickable">Can't see any wine images?</span>
