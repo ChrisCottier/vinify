@@ -15,10 +15,20 @@ nav.navbar a:hover {
   max-height: 50px;
 }
 
-#main-nav .navbar-menu{
+#main-nav .navbar-menu {
   background-color: black;
 }
 
 /* #main-nav .navbar-link {
   color: #e4a853;
 } */
+#burger-menu {
+  min-width: 52px;
+  min-height: 52px;
+}
+
+#burger-menu span {
+  width: 100%;
+  /* height: 2%; */
+  padding: 0px;
+}
