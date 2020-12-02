@@ -34,13 +34,6 @@ const SubmitSearch = (props) => {
         <Question question={"Submit Search?"}></Question>
       </div>
       <div id="submit-search-container" className="">
-        {/* <NavLink
-          to="/matches"
-          className="button is-large background wine-color"
-          onClick={submitSelections}
-        >
-          Submit Search
-        </NavLink> */}
         <NavLink to="/matches">
           <img
             id="search-logo"

@@ -51,3 +51,14 @@
 #sign-up-logo:hover {
   cursor: pointer;
 }
+
+#auth-buttons {
+  padding-top: 6vh;
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#auth-buttons button {
+  width: 20%;
+}

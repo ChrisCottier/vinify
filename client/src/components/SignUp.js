@@ -103,7 +103,7 @@ const SignUp = () => {
             </div>
             <div className="field">
               <div className="control sign-up-button">
-                <button className="button wine-color background" type="submit">
+                <button className="button accent-color background" type="submit">
                   Register
                 </button>
               </div>
