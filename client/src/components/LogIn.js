@@ -73,7 +73,7 @@ const LogIn = () => {
             </div>
             <div className="field">
               <div className="control login-buttons">
-                <button className="button background wine-color" type="submit">
+                <button className="button background accent-color" type="submit">
                   Log In
                 </button>
               </div>

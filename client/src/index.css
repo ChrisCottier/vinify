@@ -36,13 +36,13 @@ main {
   font-family: "Josefin Sans", sans-serif;
 }
 
-.wine-color.background {
-  background-color: #55001e;
+.accent-color.background {
+  background-color: #e4a853;
   color: white;
 }
 
-.wine-color.background:hover {
-  color: #e4a853;
+.accent-color.background:hover {
+  color: #52091d;
 }
 
 #loading-container {
@@ -59,6 +59,6 @@ main {
 
 .help-message {
   text-align: center;
-  color: rgba(255,255,255, .3);
+  color: rgba(255, 255, 255, 0.3);
   font-size: 1.5vw;
 }

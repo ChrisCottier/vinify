@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../actions/auth";
+import {logIn} from '../actions/auth'
 
-import { SIGN_UP_MODAL } from "../actions/modals";
+
+import { SIGN_UP_MODAL, LOG_IN_MODAL } from "../actions/modals";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ const Home = () => {
     if (!text || currentFrame > 1) return;
 
     const changeFrame = setInterval(() => {
-      if (n < 7) {
+      if (n < 4) {
         let next = currentFrame + n;
         setCurrentFrame(next);
         n++;
@@ -51,14 +53,12 @@ const Home = () => {
     return () => clearInterval(changeFrame);
   }, [text]);
 
-  // useEffect(() => {
-  //   const triggerAnimation = setTimeout(() => {
-  //     setShowGlassesAnimation(true);
-  //   }, 24000);
-  // });
+  const showSignUp = () => dispatch({ type: SIGN_UP_MODAL, display: "block" });
+  const showLogIn = () => dispatch({ type: LOG_IN_MODAL, display: "block" });
 
-  const signUp = () => {
-    dispatch({ type: SIGN_UP_MODAL, display: "block" });
+  const demoUser = (event) => {
+    event.stopPropagation();
+    dispatch(logIn({ email: "demo@gmail.com", password: "password" }));
   };
 
   if (loggedOut === false) return <Redirect to="/find"></Redirect>;
@@ -67,17 +67,10 @@ const Home = () => {
     <main>
       <video autoPlay muted id="splash-video">
         <source
-          src="https://misc0103.s3.us-east-2.amazonaws.com/wine_and_glasses2.mp4"
+          src="https://misc0103.s3.us-east-2.amazonaws.com/glasses-video-short.mp4"
           type="video/mp4"
         ></source>
       </video>
-      {/* {showGlassesAnimation ? (
-        <video autoPlay muted id="splash-video">
-          <source src="static/glasses_animation.mp4" type="video/mp4"></source>
-        </video>
-      ) : (
-        <></>
-      )} */}
 
       <div id="home-page-container">
         {currentFrame === 1 ? (
@@ -114,39 +107,6 @@ const Home = () => {
           <></>
         )}
         {currentFrame === 4 ? (
-          <span
-            ref={text}
-            className="home-text-display"
-            style={{ display: "none" }}
-          >
-            Whether you've got a social-distanced dinner party...
-          </span>
-        ) : (
-          <></>
-        )}
-        {currentFrame === 5 ? (
-          <span
-            ref={text}
-            className="home-text-display"
-            style={{ display: "none" }}
-          >
-            Or you're just looking to treat yourself...
-          </span>
-        ) : (
-          <></>
-        )}
-        {currentFrame === 6 ? (
-          <span
-            ref={text}
-            className="home-text-display"
-            style={{ display: "none" }}
-          >
-            We can find a wine for you
-          </span>
-        ) : (
-          <></>
-        )}
-        {currentFrame === 7 ? (
           <>
             <span
               ref={text}
@@ -155,14 +115,17 @@ const Home = () => {
             >
               Try it out!
             </span>
-            {/* <button className="button is-large" onClick={signUp}>
-              Sign Up
-            </button> */}
+
             <img
               id="sign-up-logo"
               src="/static/logo-large.png"
-              onClick={signUp}
+              onClick={showSignUp}
             />
+            <div id="auth-buttons">
+              <button className="button accent-color background" onClick={showSignUp}>Sign Up</button>
+              <button className="button accent-color background" onClick={showLogIn}>Log In</button>
+              <button className="button accent-color background" onClick={demoUser}>Demo Log In</button>
+            </div>
           </>
         ) : (
           <></>
