@@ -53,7 +53,7 @@ const LogIn = () => {
               <SimpleInput
                 type="email"
                 label="Email"
-                placeHolder="What's your email address?"
+                placeHolder="Email"
                 value={email}
                 handleChange={handleChange}
                 require={true}
@@ -63,7 +63,7 @@ const LogIn = () => {
               <SimpleInput
                 type="password"
                 label="Password"
-                placeHolder="Choose A Password"
+                placeHolder="Password"
                 value={password}
                 handleChange={handleChange}
                 require={true}
