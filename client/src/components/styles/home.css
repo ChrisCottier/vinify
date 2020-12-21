@@ -8,6 +8,10 @@
   position: relative;
 }
 
+main.splash-background {
+  background-image: none;
+}
+
 .home-text-display {
   position: absolute;
   top: 20%;
