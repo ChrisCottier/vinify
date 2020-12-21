@@ -64,7 +64,7 @@ const Home = () => {
   if (loggedOut === false) return <Redirect to="/find"></Redirect>;
 
   return (
-    <main>
+    <main className="splash-background">
       <video autoPlay muted id="splash-video">
         <source
           src="https://misc0103.s3.us-east-2.amazonaws.com/glasses-video-short.mp4"
