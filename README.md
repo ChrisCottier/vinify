@@ -7,7 +7,7 @@ Live demo: https://vinify.herokuapp.com/
 
 ## Technologies
 
-- Backend: Python / Flask / SQLAlchemy / PostgresSQL
+- Backend: Python / Flask / SQLAlchemy / PostgreSQL
 - Frontend: React / Redux
 - Amazon RDS
 - python scrapy, scrapy-splash, BeautifulSoup
@@ -69,7 +69,7 @@ const FormPage = (props) => {
 ### Data Scraping
 
 Because of the lack of reliable and affordable wine APIs, a personal database of 80,000+ wines was constructed.
-Using the scrapy and scrapy-splash packages, wine data and details were scraped conscienciously.
+Using the scrapy and scrapy-splash packages, wine data and details were scraped conscientiously.
 To match the specific elements with the desired data, xpath and CSS selectors were used.
 Data was collected to CSV's and imported into Amazon RDS database.
 
@@ -81,7 +81,7 @@ Data was collected to CSV's and imported into Amazon RDS database.
     def parse(self, response):
         # [img.attrib['src'] for img in response.css('img')]
 
-        # name also has year???
+        # name also has year
         name = response.xpath('//*[@id="wine-name"]/text()').get()
 
         # vintage
@@ -103,7 +103,7 @@ Data was collected to CSV's and imported into Amazon RDS database.
             "name": name.strip(),
             "community_rank": community_rank,
             "description": description,
-            "verietal": verietal,
+            "varietal": varietal,
             "winery": winery,
             "pairings": pairings,
             "photos": photos
@@ -156,7 +156,7 @@ wine preferences. Due to the complicated nature of these requests, various funct
                 f"lower(description) LIKE lower('%{note}%')")
 
     sql_formatted = ''
-    # This turnary takes into account if the user is querying and or or for notes
+    # This ternary takes into account if the user is querying and or or for notes
     if (notes_are_and):
         sql_formatted = ' AND '.join(statements)
     else:
@@ -169,7 +169,7 @@ wine preferences. Due to the complicated nature of these requests, various funct
 
 ### Store Finding Feature
 
-On each wine page, the user may press the "Find It!" button to return a list of stores and distrubutors they can purchase this wine from.
+On each wine page, the user may press the "Find It!" button to return a list of stores and distributors they can purchase this wine from.
 The lack of a public API for this led to the approach of using a wine industry search engine to find if each wine was available anywhere in the USA.
 Using the BeautifulSoup python package, HTML data was parsed and harvested to create a reliable API for finding wine stores.
 
@@ -197,7 +197,7 @@ def wine_finder(id):
 
     ...
 
-    # make dictionry ciontaining data for each location
+    # make dictionary containing data for each location
     wine_shops = []
     i = 0
     while i < len(shop_names) and i < len(names) and i < len(shop_locations_parsed) and i < len(buy_links_parsed) and i < len(list_prices):
